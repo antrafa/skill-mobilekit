@@ -12,7 +12,7 @@ Start from the reference order in `prompts/README.md`, then **cut it down**:
 
 - Remove every step whose capability `PRODUCT.md` marks "later" or "never". No payments step for an app with no payments.
 - Replace the generic screen steps with the actual screens from `DESIGN.md`, in its build order — core screens first.
-- Choose between mutually exclusive prompts and say why in one line: `auth-clerk` vs `auth-backend`; `supabase` vs `api-integration` for an existing API; `react-query` only if data comes from a remote source; `in-app-purchases` (digital) vs `payments` (physical goods and services).
+- Choose between mutually exclusive prompts and say why in one line: `auth-clerk` vs `auth-backend`; `supabase` vs `api-integration` for an existing API; `react-query` only if data comes from a remote source; `in-app-purchases`, `payments` and `ads` per `PRODUCT.md`'s Monetization section — where the app earns money and that section is missing, run `monetization.md` first.
 - **Keep the steps a store submission requires**, whatever the product is: `native-permissions` if the app asks for any, `privacy-consent` if any analytics or tracking ships, `store-compliance` and `accessibility` before the first submission, `account-recovery` if the app has passwords, `content-moderation` if users can publish anything other users see.
 - Read the repo. Anything already done is marked done, not queued — check `package.json` and the actual files.
 

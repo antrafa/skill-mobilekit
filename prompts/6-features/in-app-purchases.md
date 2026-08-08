@@ -34,6 +34,13 @@ Integrate RevenueCat for purchases and entitlement checks.
 - One entitlement hook as the single source of truth, subscribed to customer-info updates so expiry and renewal propagate without a restart. Gate features on entitlement identifiers, not product ids
 - Loading state distinct from "not entitled" — showing a paywall to a paying customer while entitlements load is the worst failure mode here
 
+**Consumable credits**, where chosen — the model behind pay-per-use and AI metering (`PRODUCT.md`'s Monetization section):
+
+- The balance lives server-side, granted by validated purchase events (RevenueCat webhook or server API). A client-held balance is a number anyone can edit
+- Grant exactly once per purchase: the store retries, the app dies mid-flow, the user restores — none of those may double-credit
+- Spend server-side too, where the metered action runs (`ai-features.md`'s server is the natural place); the app only displays the balance
+- The balance visible before every paid action, and the empty-balance path designed: what the user sees, and where it sends them
+
 ### Done when
 
 - [ ] A sandbox purchase completes and unlocks the feature without a restart
@@ -41,4 +48,5 @@ Integrate RevenueCat for purchases and entitlement checks.
 - [ ] Cancelling the sheet leaves the app in a clean state
 - [ ] Prices come from offerings and display correctly in a second locale
 - [ ] Entitlement loading never flashes the paywall at an entitled user
+- [ ] Where credits are sold: a sandbox purchase credits the balance exactly once — verified by killing the app mid-purchase and by restoring — and a reinstall keeps it
 - [ ] Verified on both platforms if both ship

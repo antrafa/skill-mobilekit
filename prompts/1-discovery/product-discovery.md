@@ -14,12 +14,10 @@ You are running a product discovery interview before any code is written.
 
 ### Hard rules
 
+`RULES.md` §1 owns the interview mechanics — one question per message, a stated default per question ("Default: single welcome screen — confirm or change"), one follow-up for a vague answer, `UNDECIDED — ask before assuming` for anything left open. The blocks below are the grill, not a questionnaire to hand over. On top of that:
+
 1. **Do not write application code, do not install packages, and do not create any file other than `docs/PRODUCT.md` until this interview is complete.**
-2. **One question per message**, per `RULES.md` §1. Wait for the answer before asking the next. The blocks below are the grill; they are not a questionnaire to hand over.
-3. For every question, propose a **recommended default** so the answer can be a confirmation instead of an essay. State the default explicitly, e.g. "Default: single welcome screen — confirm or change."
-4. **Never infer the domain from the app name, the folder name, or an existing template.** A repo scaffolded from a tutorial tells you nothing about the product being built.
-5. If an answer is vague ("some kind of feed", "the usual settings"), ask one follow-up. Do not resolve the ambiguity yourself.
-6. Anything still undecided at the end is recorded literally as `UNDECIDED — ask before assuming`. Never fill a gap with a plausible guess.
+2. **Never infer the domain from the app name, the folder name, or an existing template.** A repo scaffolded from a tutorial tells you nothing about the product being built.
 
 ### Block A — Product and user
 
@@ -68,7 +66,7 @@ Do not design any schema here. Stop after recording the answers and hand this to
 
 For each: needed **now**, needed **later**, or **never**?
 
-19. Payments or subscriptions — and if yes, digital content (app store rules apply) or physical goods/services?
+19. Payments or subscriptions — and if yes, digital content (app store rules apply) or physical goods/services? Marked "now", or the developer unsure how the app should earn → `monetization.md` runs after this interview and decides the model.
 20. Push notifications — and what would actually trigger one?
 21. AI / LLM features — and does it need real-time voice/video, or is request/response enough?
 22. Analytics and error tracking.
@@ -137,6 +135,7 @@ Keep it under 100 lines. It is read before every task, so it must stay skimmable
 
 ## After this
 
+- If the app earns money — or that is still open — run `monetization.md`: it decides the model and appends the `## Monetization` section.
 - Run `agents-md.md` — build the AGENTS.md **from** `PRODUCT.md`, not from a generic template.
 - Run `domain-model.md` — turn the domain vocabulary into types and, if needed, a schema.
 - Every later prompt: read `docs/PRODUCT.md` first. If a prompt needs a decision that is `UNDECIDED` there, **ask, then update `PRODUCT.md`** — do not decide it inline and move on.

@@ -267,7 +267,7 @@ and it asks you for the empty, loading and error states inline, and records the 
 ## Where to look next
 
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../../prompts/README.md) — all 51 prompts with a description each, and the reference build order
+- [`../prompts/README.md`](../../prompts/README.md) — all 56 prompts with a description each, and the reference build order
 - [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. §1 and §4 are the two that shape this path.
 
 **Once the plan is cut, you are on the normal path.** [new-app.md](new-app.md) covers the build loop, the release gate and post-release observability in full — read it from *Phase 4* onward and ignore the phases you have already done.

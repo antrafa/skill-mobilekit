@@ -1,6 +1,6 @@
 # mobilekit — prompt library
 
-51 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
+56 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
 
 Folders are the phase order. **Filenames are the ids**: a prompt keeps its name wherever it moves, so `BUILD-PLAN.md` entries and cross-references between prompts survive reorganization.
 
@@ -29,6 +29,7 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 |---|---|
 | [Rules](./RULES.md) | Read before every prompt: grill one question at a time, request docs, invent nothing |
 | [product-discovery](./1-discovery/product-discovery.md) | **Start here for a new app.** Interview that defines the product → `docs/PRODUCT.md` |
+| [monetization](./1-discovery/monetization.md) | Concept round: how the app earns — model, free/paid boundary, trial → `PRODUCT.md §Monetization` |
 | [agents-md](./1-discovery/agents-md.md) | Build a project-specific AGENTS.md from `PRODUCT.md` |
 
 ### `2-design` — what does it look like
@@ -41,9 +42,11 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | Prompt | Description |
 |---|---|
 | [expo-setup](./3-foundation/expo-setup.md) | Initialize Expo with TypeScript and Router |
+| [dev-environment](./3-foundation/dev-environment.md) | Dev build vs Expo Go, devices, env per environment, repo hygiene |
 | [nativewind](./3-foundation/nativewind.md) | Install and configure NativeWind (Tailwind CSS) |
 | [domain-model](./3-foundation/domain-model.md) | Entities, schema or existing-table mapping, types, fixtures |
 | [ui-components](./3-foundation/ui-components.md) | Only the shared set `DESIGN.md` identified — nothing speculative |
+| [app-shell](./3-foundation/app-shell.md) | Root layout, boot sequence, splash gating, app-wide error boundary |
 
 ### `4-platform` — auth, data, and the server side
 | Prompt | Description |
@@ -84,8 +87,9 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | [i18n](./6-features/i18n.md) | Multiple languages, locale formatting, RTL |
 | [offline](./6-features/offline.md) | Cached reads, queued writes, honest degradation |
 | [ai-features](./6-features/ai-features.md) | Text, streaming, and realtime voice/video — via your own server |
-| [in-app-purchases](./6-features/in-app-purchases.md) | Store billing for digital content and subscriptions |
+| [in-app-purchases](./6-features/in-app-purchases.md) | Store billing for digital content, subscriptions, and consumable credits |
 | [payments](./6-features/payments.md) | Stripe, for physical goods and services |
+| [ads](./6-features/ads.md) | AdMob behind the consent chain — formats, placement, kids categories |
 
 ### `7-ship` — the release gate
 | Prompt | Description |
@@ -96,6 +100,7 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | [store-compliance](./7-ship/store-compliance.md) | Privacy declarations, reviewer access, listing — what rejects builds |
 | [ci-cd](./7-ship/ci-cd.md) | What runs on every PR, on merge, and on a release tag |
 | [eas-build](./7-ship/eas-build.md) | Build, environment variables, store submission, OTA updates |
+| [beta-and-review](./7-ship/beta-and-review.md) | TestFlight / Play tracks, exit criteria, and the store rejection loop |
 
 ### `8-observability` — knowing what happens after
 | Prompt | Description |
@@ -118,13 +123,16 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 
 ```
 product-discovery   → docs/PRODUCT.md          (nothing runs before this)
+monetization        → PRODUCT.md §Monetization (only if the app earns money — model and boundary)
 agents-md           → AGENTS.md from PRODUCT.md
 design-conception   → docs/DESIGN.md           (before any screen)
 expo-setup
+dev-environment                                (dev build vs Expo Go, devices, env files)
 nativewind
 design-system
 domain-model        → docs/DOMAIN.md           (before any screen)
 ui-components                                  (only the shared list from DESIGN.md)
+app-shell                                      (root layout and boot sequence — before any screen or auth)
 onboarding
 auth-clerk | auth-backend                      (skip if PRODUCT.md says no accounts)
 account-recovery                               (if the app has passwords)
@@ -147,7 +155,7 @@ dark-mode
 i18n                                           (if multiple languages)
 secure-backend                                 (before any service with a secret)
 ai-features                                    (if AI is in scope)
-in-app-purchases | payments                    (only if PRODUCT.md marks it "now")
+in-app-purchases | payments | ads              (the ones PRODUCT.md §Monetization selects)
 privacy-consent                                (before any analytics SDK initializes)
 analytics
 error-tracking
@@ -161,6 +169,7 @@ accessibility                                  (before first submission)
 store-compliance                               (before first submission)
 ci-cd                                          (once more than one person commits)
 eas-build
+beta-and-review                                (testers before the public; the rejection loop)
 release-rollback                               (prepared before the first release)
 post-release                                   (after real users, not before)
 sdk-upgrade                                    (every SDK cycle, forever)
@@ -183,8 +192,8 @@ The [`plan`](../workflow/plan.md) phase generates this list cut down to only the
 
 ## Stack covered
 
-Expo · React Native · TypeScript · Expo Router · NativeWind · Zustand + AsyncStorage · Clerk / Supabase / custom auth · Supabase · OpenAPI / REST / GraphQL clients · TanStack Query · PostHog · Sentry · Expo Notifications · Reanimated · RevenueCat · Stripe · Expo API Routes for anything holding a secret · provider-agnostic AI, always proxied server-side · EAS Build + EAS Update.
+Expo · React Native · TypeScript · Expo Router · NativeWind · Zustand + AsyncStorage · Clerk / Supabase / custom auth · Supabase · OpenAPI / REST / GraphQL clients · TanStack Query · PostHog · Sentry · Expo Notifications · Reanimated · RevenueCat · Stripe · AdMob · Expo API Routes for anything holding a secret · provider-agnostic AI, always proxied server-side · EAS Build + EAS Update.
 
 Cross-cutting concerns with their own prompts: permissions, media, moderation, i18n, offline, deep linking, biometrics, testing, performance, accessibility, consent, store compliance, CI/CD, rollback, post-release observability, SDK upgrades.
 
-**Not covered.** The library is opinionated about a segment: content, productivity and SaaS-style apps. It has no prompts for maps and geofencing, Bluetooth, health platforms, media streaming, cart-based commerce, widgets and Live Activities, or advertising SDKs. Those verticals need prompts of their own — the shape to write them in is in [CONTRIBUTING.md](../CONTRIBUTING.md).
+**Not covered.** The library is opinionated about a segment: content, productivity and SaaS-style apps. It has no prompts for maps and geofencing, Bluetooth, health platforms, media streaming, cart-based commerce, or widgets and Live Activities. Those verticals need prompts of their own — the shape to write them in is in [CONTRIBUTING.md](../CONTRIBUTING.md).

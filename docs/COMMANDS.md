@@ -95,7 +95,7 @@ Pass an argument to run one step only: `/mobilekit:design screens`.
 
 ## `/mobilekit:plan`
 
-Cuts 51 prompts down to the ones your app actually needs, in order.
+Cuts 56 prompts down to the ones your app actually needs, in order.
 
 **Prerequisite** `docs/PRODUCT.md`. `docs/DESIGN.md` strongly preferred — without it, screen steps are guesses.
 **Writes** `docs/BUILD-PLAN.md`, a checklist of unchecked boxes.

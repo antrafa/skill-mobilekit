@@ -85,7 +85,7 @@ Rare, and it costs the reader. A phase earns its place when it has a distinct pr
 
 ## Changing the rules
 
-`prompts/RULES.md` changes the behaviour of all 51 prompts at once. Say in the commit body which failure the change prevents, and check that no prompt now contradicts it.
+`prompts/RULES.md` changes the behaviour of all 56 prompts at once. Say in the commit body which failure the change prevents, and check that no prompt now contradicts it.
 
 ## Testing a change
 

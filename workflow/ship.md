@@ -15,6 +15,7 @@ Read `prompts/RULES.md` first.
 5. **`prompts/8-observability/privacy-consent.md`** — if any analytics, tracking or crash reporting ships to users in the EU or Brazil.
 6. **`prompts/7-ship/store-compliance.md`** — privacy manifest, data-safety declarations, tracking permission, policy URL, reviewer account, age rating, metadata. This is what rejects builds.
 7. **`prompts/7-ship/eas-build.md`** — profiles, environment variables, submission.
+8. **`prompts/7-ship/beta-and-review.md`** — a build in testers' hands before the public, review notes, and the rejection loop the first submission usually meets.
 
 A step is skipped only when the developer says to, and it is recorded in the report as skipped rather than passed.
 

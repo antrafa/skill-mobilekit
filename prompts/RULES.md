@@ -6,7 +6,7 @@ It exists because the common failure is not bad code. It is an assistant decidin
 
 ## 1. Grill, one question at a time
 
-Most prompts carry a `### Grill` block; `product-discovery.md` and `design-conception.md` are one from end to end. Wherever the questions are, work down them **one per message**, waiting for the answer before asking the next. Six questions asked at once are six questions answered badly.
+Most prompts carry a `### Grill` block; `product-discovery.md`, `monetization.md` and `design-conception.md` are one from end to end. Wherever the questions are, work down them **one per message**, waiting for the answer before asking the next. Six questions asked at once are six questions answered badly.
 
 - **Recommend an answer to every question**, in one line, with the reason. The answer can then be a confirmation instead of an essay.
 - **A fact is looked up, never asked.** Installed version, folder layout, whether `babel.config.js` exists, which tables the database has, what `PRODUCT.md` already says — read it. Spending the developer's attention on something you could have read is the fastest way to lose it.
