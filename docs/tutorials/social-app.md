@@ -2,11 +2,9 @@
 
 The path where the screens are the easy part. Once one member can see another member's content, the work is authentication, row-level authorization, moderation, consent and deletion — and each of those is a decision the agent will stop and ask you for rather than pick.
 
-The example is **Muda**, a plant-swap community: members post cuttings they have spare, other members comment, and you follow the people whose plants you want. Vocabulary: `Member`, `Post`, `Comment`, `Follow`. That is the whole domain; everything interesting below is platform work.
+The example is **Muda**, a plant-swap community: members post cuttings they have spare, other members comment, and you follow the people whose plants you want. Vocabulary: `Member`, `Post`, `Comment`, `Follow`. That is the whole domain; everything interesting below is platform work. If you have not run the skill before, read [new-app.md](new-app.md) first for how the phases fit together — this tutorial covers only what this path adds.
 
 > **Not your starting point?** [Thirty minutes and no accounts](quickstart.md) · [a complete app from scratch](new-app.md) · [the data is behind someone else's API](external-api.md) · [a project you already started](existing-project.md) · [an app already in the stores](legacy-app.md). Full index: [TUTORIALS.md](../TUTORIALS.md).
-
-If you have not run the skill before, read [new-app.md](new-app.md) first for how the phases fit together. This tutorial does not repeat them; it covers what this path adds.
 
 ---
 
@@ -19,8 +17,7 @@ If you have not run the skill before, read [new-app.md](new-app.md) first for ho
 | An auth provider project and a backend project | Clerk publishable key, or a Supabase project URL and anon key. The agent stops rather than stub a credential. |
 | **A named person who will read reports, and a target time** | `content-moderation.md` asks for a name and a target. This is the prerequisite people arrive without, and it is not a technical one. |
 | A published developer contact route | A store requirement for user-generated content, needed in the submitted build and reachable while signed out. |
-| Whoever owns your privacy policy | `privacy-consent.md` lists that person as a prerequisite. It states no legal thresholds and it will not invent your policy. |
-| 40 minutes for discovery and design | They are conversation. Answering them distracted produces a plausible product definition, which is worse than none. |
+| Whoever owns your privacy policy, and 40 minutes of attention | `privacy-consent.md` lists the policy owner as a prerequisite and invents no policy of its own. Discovery and design are conversation; answered distracted they produce a plausible product definition, which is worse than none. |
 
 ---
 
@@ -136,8 +133,7 @@ Same three steps as any app. Three questions bite harder here:
 - **Where does the app open on cold start** — for a new user, a returning signed-in user, and a returning signed-out user. Three routes, three redirects someone forgets to write.
 - **Which screens require authentication, and what happens when a signed-out member arrives via a link.** This is recorded because `deep-linking.md` needs it as an input. A shared Post link is the whole growth mechanism of an app like Muda, and it will be opened by people with no account.
 - **Own profile or public profile.** `profile-screen.md` opens with it: *is this the user's own profile, a public profile others can view, or both? They are different screens with different privacy rules; do not build one and assume it covers the other.* Muda needs both, so `DESIGN.md` lists two screens.
-
-Then the four states per core screen. For the Feed, the error state is the one people get wrong: already-loaded posts stay on screen and the failure is retryable, rather than a blank rectangle where a working list used to be.
+- **The four states per core screen.** For the Feed, the error state is the one people get wrong: already-loaded posts stay on screen and the failure is retryable, rather than a blank rectangle where a working list used to be.
 
 ---
 
@@ -181,9 +177,8 @@ Then the four states per core screen. For the Feed, the error state is the one p
 ## Release
 - [ ] testing
 - [ ] accessibility
-- [ ] performance
-- [ ] error-tracking
 - [ ] privacy-consent
+- [ ] error-tracking
 - [ ] store-compliance
 - [ ] eas-build
 
@@ -194,7 +189,6 @@ Then the four states per core screen. For the Feed, the error state is the one p
 | ai-features | PRODUCT.md: AI = never |
 | analytics | PRODUCT.md: analytics = later |
 | push-notifications | PRODUCT.md: push = later |
-| offline | PRODUCT.md: offline = no |
 ```
 
 Compare that `content-moderation` line with the exemplar's, where it was *skipped* with the reason "Notes are visible only inside a private Club — confirm if that changes". Same prompt, opposite outcome, and the deciding input is one line in `PRODUCT.md`. The plan cites the reason either way, so in six months the entry reads as a decision rather than an oversight.
@@ -258,9 +252,7 @@ Because Muda has photos, `media-upload.md` hands off here explicitly: where uplo
 
 ## Consent runs before analytics, and deletion is real
 
-**Ordering.** `privacy-consent.md` runs *before* `analytics.md` and `error-tracking.md`, and the reason is mechanical: an SDK that starts collecting at launch has already collected — device identifier, IP, session — before any consent screen renders, and **that ordering is the violation**. Retrofitting a dialog in front of an already-initialized SDK does not undo it. The prompt goes further: importing the module at the top of a screen is often enough to start it, so the stored decision has to be read before the first paint, in the same root-layout gate as auth and theme hydration. A gate that resolves one frame late is a frame of collection.
-
-It states no legal thresholds and offers no legal advice; the basis for each purpose belongs to your counsel or privacy officer. What it does is make the app behave the way that basis says it does. Verification is a network capture on a real device — refuse consent on a fresh install and watch nothing leave, including on cold start, backgrounding and crash. The simulator's console cannot prove this.
+**Ordering.** `privacy-consent.md` runs *before* `analytics.md` and `error-tracking.md`, and the reason is mechanical: an SDK that starts collecting at launch has already collected — device identifier, IP, session — before any consent screen renders, and **that ordering is the violation**. Retrofitting a dialog in front of an already-initialized SDK does not undo it. The prompt goes further: importing the module at the top of a screen is often enough to start it, so the stored decision has to be read before the first paint, in the same root-layout gate as auth and theme hydration. A gate that resolves one frame late is a frame of collection. It states no legal thresholds and offers no legal advice; the basis for each purpose belongs to your counsel or privacy officer, and the prompt's job is making the app behave the way that basis says it does. Verification is a network capture on a real device — refuse consent on a fresh install and watch nothing leave, including on cold start, backgrounding and crash. The simulator's console cannot prove this.
 
 **Deletion.** `profile-screen.md` asks it directly: *if the app has accounts and ships on the App Store, in-app deletion is required by Apple.* `store-compliance.md` repeats it as a required in-app mechanism — reachable without contacting support, and it must actually delete rather than just sign out. What gets built: double confirmation, an explicit statement of what is deleted, **a server-side action, never client-only**, and immediate sign-out afterwards. `privacy-consent.md` then points back at that same path for data-subject deletion rather than building a second one, and says why: two deletion paths means one of them will be forgotten and keep the data.
 
@@ -277,11 +269,11 @@ It states no legal thresholds and offers no legal advice; the basis for each pur
 | "Blocked: this needs the Supabase project URL and anon key." | It will not invent a credential or stub one to keep moving. | Create the project, paste them. The box stays unchecked until a real query returns data. |
 | "I need the `@supabase/supabase-js` docs for the installed major — the session storage adapter shape changed." | It read `package.json` and will not write setup from memory. | Paste the page, or save it under `docs/vendor/`. Anything there is read first next time, so the ask happens once. |
 | "Who reviews a report, and within what target time? I need a name." | `content-moderation.md` requires a named owner; an unstaffed queue looks handled and is not. | Name someone. If nobody can be named, that is the finding, not a blocker to route around. |
-| "RLS: not verifiable — I could not sign in as a second member." | Reported as **not verifiable** rather than passed. That third outcome is the honest one. | Make the second account, run it yourself. Do not tick it for the agent. |
+| "RLS: not verifiable — I could not sign in as a second member." | Reported as **not verifiable** rather than passed; that third outcome is the honest one. | Make the second account and run it yourself. Do not tick it for the agent. |
 | "What happens to a deleted member's Posts — deleted, anonymised, or retained?" | Asked by two prompts because both need the answer. | Answer once; it is written back to `PRODUCT.md`. |
 | "Recommended default: publish immediately, remove on report. Confirm or change." | An option is a question. | Confirm, or commit to staffing a queue every day, weekends included. |
 
-**Checking progress:**
+Checking progress:
 
 ```
 /mobilekit:status

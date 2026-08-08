@@ -183,9 +183,7 @@ Nothing else in this app is ours.
 
 ## The connection most readers miss: those limits are screen decisions
 
-Scenario C step 4 does not record the limits as trivia. It records them "because those limits will decide screen behavior later" — and later is two steps down the plan, in a different prompt, possibly a different session.
-
-Here is the payoff, verbatim from `list-screen.md`'s grill:
+Scenario C step 4 does not record the limits as trivia. It records them "because those limits will decide screen behavior later" — and later is two steps down the plan, in a different prompt, possibly a different session. Here is the payoff, verbatim from `list-screen.md`'s grill:
 
 > **Does search filter locally or query the server?** Local only works when the full set is already loaded. Server search needs an endpoint and debouncing.
 
@@ -194,12 +192,10 @@ An agent without `DOMAIN.md` asks you that question cold. With it, the answer is
 | Limit recorded | What the screen can promise |
 |---|---|
 | No server-side filtering | Search is local — so the Stops screen must load all ~4,100 rows once, and that decides the loading state and the cache |
-| No pagination | No end-reached paging, no footer loader. The list-screen grill's "roughly how many records" question is answered by the payload, not estimated |
+| No pagination | No end-reached paging, no footer loader. Guess cursor pagination for an API that has none and you ship silent duplicate rows, which no user reports as a bug |
 | Rate limit, no `Retry-After` | Pull-to-refresh is throttled; `react-query` gets a long `staleTime` for Lines and Stops and a short one for Departures — reference data and live data never want the same value |
 | Eventual consistency | Departures are shown **with their age**, per `offline.md`: show cached data with its age rather than pretending it is current |
 | Fields may vanish without notice | The boundary validation is not defensive programming for its own sake; it is the announcement channel the API owner does not provide |
-
-Get this wrong in the other direction and the failure is quiet: guess cursor pagination for an API that has none and you ship silent duplicate rows, which no user reports as a bug.
 
 ---
 
@@ -267,9 +263,10 @@ Next:       /mobilekit:next
 | "Which write endpoints are safe to retry, and do any accept an idempotency key?" | Usually undocumented — the prompt says ask the API owner | This may mean emailing someone. It is not the agent stalling |
 | "Is staging data shaped like production's — the volume, the odd characters, the long names?" | A list tested against six tidy staging rows is untested | Answer truthfully, or test against production reads |
 | "No validation library installed — hand-written guards, or add one?" | `RULES.md` §5 | Either. It is your call, not a default |
+| "The provider's docs call this a secret key" | `RULES.md` §6 | `secure-backend` first, then this step |
 | A checklist item comes back **not verifiable** | No device, no server log, no second page of data | Fix the gap or accept the unticked box |
 
-**One limitation, stated rather than papered over.** Nothing in this library watches the upstream contract for you. What you get is the boundary validation that turns a change into a domain error, and `api-integration.md`'s instruction to commit or pin the spec so a regeneration produces a reviewable diff. Upstream drift is caught at runtime by your own code, not in CI by a contract test — there is no prompt for that.
+**One limitation, stated rather than papered over.** Nothing in this library watches the upstream contract for you. You get boundary validation that turns a change into a domain error, and `api-integration.md`'s instruction to commit or pin the spec so a regeneration diff shows what moved. Upstream drift is caught at runtime by your own code, never in CI by a contract test — there is no prompt for that.
 
 ---
 
@@ -279,16 +276,15 @@ Next:       /mobilekit:next
 
 **One shared type for DTO and domain.** Saves a file this week. Costs you `DEP_TM_SCHED` in twelve components, twelve parses of a zoneless string, and a rename upstream that becomes a diff across every screen instead of one mapper.
 
-**Building the Stops list before `DOMAIN.md` records the limits.** The plan orders `domain-model` first for a reason. Build the list first and you will implement end-reached pagination against an API that has none, then wonder why the footer loader never resolves.
+**Building the Stops list before `DOMAIN.md` records the limits.** The plan orders `domain-model` first for a reason. Override it and you implement end-reached pagination against an API that has none, then wonder why the footer loader never resolves.
 
-**Putting a secret key in `EXPO_PUBLIC_*` because it works in development.** It does work. It also ships extractable in every build, and the fix is not deleting the file — it is rotating the key and explaining to whoever owns it why.
+**Putting a secret key in `EXPO_PUBLIC_*` because it works in development.** It does work. It also ships extractable in every build, and the fix is not deleting the file — it is rotating the key and explaining to its owner why.
 
 ---
 
 ## Where to look next
 
-- [`new-app.md`](new-app.md) — the same loop run to a monitored release: what `ship` and `store-compliance` actually cost
+- [`new-app.md`](new-app.md) — the same loop run to a monitored release: what `ship` and `store-compliance` actually cost. Your next read
 - [`existing-project.md`](existing-project.md) — if the screens already exist and you are retrofitting the boundary
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/RULES.md`](../../prompts/RULES.md) — §3 and §6 are the two that shape this path. Short, worth reading yourself
-- [`../prompts/README.md`](../../prompts/README.md) — all 51 prompts and the reference order the plan cuts down from
+- [`../prompts/RULES.md`](../../prompts/RULES.md) — §3 and §6 shape this path. Short, worth reading yourself

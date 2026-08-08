@@ -28,9 +28,7 @@ mkdir feira && cd feira && git init
 /mobilekit:init
 ```
 
-It reads `package.json`, finds no `expo` dependency, and asks the only question it can ask: scaffold, is this a legacy app to modernize, or are you in the wrong directory. Confirm scaffold — that routes through `expo-setup`, which grills you on app name, slug, bundle identifiers, deep-link scheme, target platforms, and whether source sits under `src/` or at the root. That last one is recorded, and every later prompt reads it from the repo rather than assuming.
-
-It then writes `AGENTS.md` with only what is true regardless of the product, marking the product sections `TBD — run discovery` rather than inventing a domain to fill them. Nothing from the skill is copied into your repo — the prompt library is read from where it lives, so a fix to a prompt reaches every project at once.
+It reads `package.json`, finds no `expo` dependency, and asks the only question it can ask: scaffold, is this a legacy app to modernize, or are you in the wrong directory. Confirm scaffold — that routes through `expo-setup`, which grills you on app name, slug, bundle identifiers, deep-link scheme, target platforms, and whether source sits under `src/` or at the root. That last one is recorded, and every later prompt reads it from the repo rather than assuming. It then writes `AGENTS.md` with only what is true regardless of the product, marking the product sections `TBD — run discovery` rather than inventing a domain to fill them. Nothing from the skill is copied into your repo — the prompt library is read from where it lives, so a fix to a prompt reaches every project at once.
 
 ## Phase 1 — `discovery`
 
@@ -55,10 +53,8 @@ Then Block D, where this path gets cheap:
 
 > **Does the data already live somewhere?**
 > Recommended: **D — no backend yet, ship local content first**. Nothing in the journey you described needs a second device today, and a schema is the most expensive thing to get wrong early. Confirm or change.
->
-> — D.
 
-That single answer is why the rest of the run is short. Scenario D sends `domain-model` down its local-content branch: types in `types/`, typed fixtures in `data/`, access through the same `getX()` / `getXById()` shapes a real backend would use, and **the swap point written into `docs/DOMAIN.md`** — which files change when a backend arrives and which do not. No migration, no row-level policy, no credentials. It is the cheapest honest start available, and it is not a dead end, because the swap is recorded rather than remembered.
+Confirm. That single answer is why the rest of the run is short. Scenario D sends `domain-model` down its local-content branch: types in `types/`, typed fixtures in `data/`, access through the same `getX()` / `getXById()` shapes a real backend would use, and **the swap point written into `docs/DOMAIN.md`** — which files change when a backend arrives and which do not. No migration, no row-level policy, no credentials. It is the cheapest honest start available, and it is not a dead end, because the swap is recorded rather than remembered.
 
 Block F, capabilities, each now / later / never:
 
@@ -83,9 +79,7 @@ Question 15 asks whether the app needs to work offline. Yes — shops have no si
 
 Into `PRODUCT.md`'s `## Open questions` goes, verbatim: `Merge rule when two Members edit one List offline — UNDECIDED — ask before assuming`.
 
-The skill will not resolve this now and will not resolve it later either — the `offline` prompt's grill exists to ask it, per entity if necessary, and until it is answered any step depending on it stops. An agent that had quietly chosen last-write-wins would have handed you a working app that silently eats somebody's groceries.
-
-**What you get:** `docs/PRODUCT.md`, under 100 lines, read before every later task.
+The skill will not resolve this now and will not resolve it later either — the `offline` prompt's grill exists to ask it, per entity if necessary, and until it is answered any step depending on it stops. An agent that had quietly chosen last-write-wins would have handed you a working app that silently eats somebody's groceries. What comes out of the phase is `docs/PRODUCT.md`, under 100 lines, read before every later task.
 
 ## Phase 2 — `design screens`
 
@@ -93,9 +87,7 @@ The skill will not resolve this now and will not resolve it later either — the
 /mobilekit:design screens
 ```
 
-The argument runs step 1 only. The visual-system step needs a palette decision the agent will not make for you, and this run does not need tokens to prove anything — `design-system` stays in the plan as its own step.
-
-Every screen must trace to a core-journey step or a capability marked "now". Feira came out at three core screens: **Lists**, **List** (Entries grouped by Aisle), **Add an Entry**. A Members screen was dropped — nothing in the journey reaches it while there are no accounts — and the reason is written down.
+The argument runs step 1 only. The visual-system step needs a palette decision the agent will not make for you, and this run does not need tokens to prove anything — `design-system` stays in the plan as its own step. Every screen must trace to a core-journey step or a capability marked "now". Feira came out at three core screens: **Lists**, **List** (Entries grouped by Aisle), **Add an Entry**. A Members screen was dropped — nothing in the journey reaches it while there are no accounts — and the reason is written down.
 
 Then navigation, where it recommends **single stack** — tabs are for 3–5 destinations a user switches between freely, and you have one job. Confirm and `tab-navigation` never enters the plan. An option offered is a question, not a decision already taken.
 
