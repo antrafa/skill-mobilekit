@@ -19,8 +19,6 @@ The example is **Muda**, a plant-swap community: members post cuttings they have
 | A published developer contact route | A store requirement for user-generated content, needed in the submitted build and reachable while signed out. |
 | Whoever owns your privacy policy, and 40 minutes of attention | `privacy-consent.md` lists the policy owner as a prerequisite and invents no policy of its own. Discovery and design are conversation; answered distracted they produce a plausible product definition, which is worse than none. |
 
----
-
 **Four things separate a social app that ships from one that gets rejected:** the auth decision made once and early; row-level authorization, which is not a later task; moderation, which is a store requirement rather than a feature; and consent before any SDK initializes, with deletion that deletes. Everything else — feed, detail, profile, comment box — is the shape covered in [new-app.md](new-app.md).
 
 ---
@@ -272,8 +270,6 @@ Because Muda has photos, `media-upload.md` hands off here explicitly: where uplo
 | "RLS: not verifiable — I could not sign in as a second member." | Reported as **not verifiable** rather than passed; that third outcome is the honest one. | Make the second account and run it yourself. Do not tick it for the agent. |
 | "What happens to a deleted member's Posts — deleted, anonymised, or retained?" | Asked by two prompts because both need the answer. | Answer once; it is written back to `PRODUCT.md`. |
 | "Recommended default: publish immediately, remove on report. Confirm or change." | An option is a question. | Confirm, or commit to staffing a queue every day, weekends included. |
-
-Checking progress:
 
 ```
 /mobilekit:status
