@@ -130,7 +130,7 @@ Most bugs reported as "the app is broken" are one of those four missing. Decidin
 /mobilekit:plan
 ```
 
-56 prompts go in, your app's steps come out. Four things happen:
+57 prompts go in, your app's steps come out. Four things happen:
 
 1. Every capability marked later/never is removed, and appears in a **Skipped** table with the reason — so six months later you can see it was a decision, not an oversight.
 2. Generic screen steps are replaced by your real screens, core first.
@@ -172,6 +172,7 @@ Sarau's plan, abbreviated:
 - [ ] testing
 - [ ] accessibility
 - [ ] performance
+- [ ] security-review
 - [ ] store-compliance
 - [ ] error-tracking
 - [ ] eas-build
@@ -248,7 +249,7 @@ Runs one prompt regardless of the plan, and names the prerequisites it is missin
 /mobilekit:ship
 ```
 
-A gate, not a step. Eight prompts in a fixed order, because each finds problems that are cheaper before submission than after: tests → accessibility → performance → error tracking → consent → store compliance → build → beta and the review loop. That last one treats a first-submission rejection as the normal case: testers before the public, review notes a stranger can follow, and the resolution-center loop planned rather than improvised.
+A gate, not a step. Nine prompts in a fixed order, because each finds problems that are cheaper before submission than after: tests → accessibility → performance → security review → error tracking → consent → store compliance → build → beta and the review loop. That last one treats a first-submission rejection as the normal case: testers before the public, review notes a stranger can follow, and the resolution-center loop planned rather than improvised.
 
 Plus three checks that belong to the gate itself:
 
@@ -300,7 +301,7 @@ Because mobile has no rollback. A binary already installed on a phone cannot be 
 ## Where to look next
 
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../../prompts/README.md) — all 56 prompts with a description each, and the reference build order
+- [`../prompts/README.md`](../../prompts/README.md) — all 57 prompts with a description each, and the reference build order
 - [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Worth reading once yourself.
 - [`../CONTRIBUTING.md`](../../CONTRIBUTING.md) — adding a prompt, or a whole vertical the library does not cover
 

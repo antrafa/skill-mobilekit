@@ -11,11 +11,12 @@ Read `prompts/RULES.md` first.
 1. **`prompts/7-ship/testing.md`** — risk-driven scope. For an app handling money or auth, not optional.
 2. **`prompts/7-ship/accessibility.md`** — the cross-app sweep. Store review rejects on this; users leave over it.
 3. **`prompts/7-ship/performance.md`** — startup time, bundle size, list and image behaviour on a low-end device.
-4. **`prompts/8-observability/error-tracking.md`** — if it has not run. Shipping without it makes the first production crash invisible.
-5. **`prompts/8-observability/privacy-consent.md`** — if any analytics, tracking or crash reporting ships to users in the EU or Brazil.
-6. **`prompts/7-ship/store-compliance.md`** — privacy manifest, data-safety declarations, tracking permission, policy URL, reviewer account, age rating, metadata. This is what rejects builds.
-7. **`prompts/7-ship/eas-build.md`** — profiles, environment variables, submission.
-8. **`prompts/7-ship/beta-and-review.md`** — a build in testers' hands before the public, review notes, and the rejection loop the first submission usually meets.
+4. **`prompts/7-ship/security-review.md`** — the adversarial sweep: re-test every ticked security check, the joints between features, the storage dump, the logs. Before store-compliance, because a finding here changes the declarations.
+5. **`prompts/8-observability/error-tracking.md`** — if it has not run. Shipping without it makes the first production crash invisible.
+6. **`prompts/8-observability/privacy-consent.md`** — if any analytics, tracking or crash reporting ships to users in the EU or Brazil.
+7. **`prompts/7-ship/store-compliance.md`** — privacy manifest, data-safety declarations, tracking permission, policy URL, reviewer account, age rating, metadata. This is what rejects builds.
+8. **`prompts/7-ship/eas-build.md`** — profiles, environment variables, submission.
+9. **`prompts/7-ship/beta-and-review.md`** — a build in testers' hands before the public, review notes, and the rejection loop the first submission usually meets.
 
 A step is skipped only when the developer says to, and it is recorded in the report as skipped rather than passed.
 

@@ -141,7 +141,7 @@ Same three steps as any app. Three questions bite harder here:
 /mobilekit:plan
 ```
 
-56 prompts in, your steps out. The rule that matters on this path is in `workflow/plan.md`: steps a store submission requires stay in whatever the product is — including **`content-moderation` if users can publish anything other users see**, and `account-recovery` if the app has passwords. Neither is negotiable by preference.
+57 prompts in, your steps out. The rule that matters on this path is in `workflow/plan.md`: steps a store submission requires stay in whatever the product is — including **`content-moderation` if users can publish anything other users see**, and `account-recovery` if the app has passwords. Neither is negotiable by preference.
 
 `docs/BUILD-PLAN.md`, abbreviated:
 
@@ -179,6 +179,7 @@ Same three steps as any app. Three questions bite harder here:
 - [ ] accessibility
 - [ ] privacy-consent
 - [ ] error-tracking
+- [ ] security-review · the two-party checks, re-run on the release build
 - [ ] store-compliance
 - [ ] eas-build
 - [ ] beta-and-review
@@ -306,7 +307,7 @@ That `Drift` line is the most useful output in the tool: a ticked box whose work
 ## Where to look next
 
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../../prompts/README.md) — all 56 prompts with a description each, and the reference build order
+- [`../prompts/README.md`](../../prompts/README.md) — all 57 prompts with a description each, and the reference build order
 - [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. §6, on what ships in the bundle, is the one this path lives on.
 - [`prompts/6-features/content-moderation.md`](../../prompts/6-features/content-moderation.md) — read it before you plan, not when you reach it
 

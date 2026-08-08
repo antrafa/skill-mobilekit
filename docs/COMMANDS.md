@@ -95,7 +95,7 @@ Pass an argument to run one step only: `/mobilekit:design screens`.
 
 ## `/mobilekit:plan`
 
-Cuts 56 prompts down to the ones your app actually needs, in order.
+Cuts 57 prompts down to the ones your app actually needs, in order.
 
 **Prerequisite** `docs/PRODUCT.md`. `docs/DESIGN.md` strongly preferred — without it, screen steps are guesses.
 **Writes** `docs/BUILD-PLAN.md`, a checklist of unchecked boxes.
@@ -178,11 +178,12 @@ Order, and why it is this order:
 1. `testing` — risk-driven scope. Not optional for money or auth.
 2. `accessibility` — store review rejects on this; users leave over it.
 3. `performance` — measured on a low-end device, the only device whose numbers matter.
-4. `error-tracking` — shipping without it makes the first production crash invisible.
-5. `privacy-consent` — if any analytics ships to the EU or Brazil.
-6. `store-compliance` — privacy manifest, data-safety declarations, reviewer account, listing. This is what rejects builds.
-7. `eas-build` — profiles, environment variables, submission.
-8. `beta-and-review` — testers before the public, review notes, and the rejection loop a first submission usually meets.
+4. `security-review` — re-test every ticked security check, the joints between features, storage, logs.
+5. `error-tracking` — shipping without it makes the first production crash invisible.
+6. `privacy-consent` — if any analytics ships to the EU or Brazil.
+7. `store-compliance` — privacy manifest, data-safety declarations, reviewer account, listing. This is what rejects builds.
+8. `eas-build` — profiles, environment variables, submission.
+9. `beta-and-review` — testers before the public, review notes, and the rejection loop a first submission usually meets.
 
 Plus three checks that belong to the gate rather than to any prompt:
 

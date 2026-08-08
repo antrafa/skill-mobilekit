@@ -1,6 +1,6 @@
 # mobilekit — prompt library
 
-56 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
+57 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
 
 Folders are the phase order. **Filenames are the ids**: a prompt keeps its name wherever it moves, so `BUILD-PLAN.md` entries and cross-references between prompts survive reorganization.
 
@@ -97,6 +97,7 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | [testing](./7-ship/testing.md) | Risk-driven test scope, from domain logic to one E2E path |
 | [accessibility](./7-ship/accessibility.md) | Cross-app sweep before first submission |
 | [performance](./7-ship/performance.md) | Startup, lists, images, re-renders — measured on a low-end device |
+| [security-review](./7-ship/security-review.md) | Adversarial sweep: re-test ticked checks, the joints between features, storage, logs |
 | [store-compliance](./7-ship/store-compliance.md) | Privacy declarations, reviewer access, listing — what rejects builds |
 | [ci-cd](./7-ship/ci-cd.md) | What runs on every PR, on merge, and on a release tag |
 | [eas-build](./7-ship/eas-build.md) | Build, environment variables, store submission, OTA updates |
@@ -166,6 +167,7 @@ offline                                        (if required)
 testing                                        (earlier if the app handles money or auth)
 accessibility                                  (before first submission)
 performance
+security-review                                (the joints, the storage dump, the red audit)
 store-compliance                               (before first submission)
 ci-cd                                          (once more than one person commits)
 eas-build
@@ -196,4 +198,4 @@ Expo · React Native · TypeScript · Expo Router · NativeWind · Zustand + Asy
 
 Cross-cutting concerns with their own prompts: permissions, media, moderation, i18n, offline, deep linking, biometrics, testing, performance, accessibility, consent, store compliance, CI/CD, rollback, post-release observability, SDK upgrades.
 
-**Not covered.** The library is opinionated about a segment: content, productivity and SaaS-style apps. It has no prompts for maps and geofencing, Bluetooth, health platforms, media streaming, cart-based commerce, or widgets and Live Activities. Those verticals need prompts of their own — the shape to write them in is in [CONTRIBUTING.md](../CONTRIBUTING.md).
+**Not covered.** The library is opinionated about a segment: content, productivity and SaaS-style apps. It has no prompts for maps and geofencing, Bluetooth, health platforms, media streaming, cart-based commerce, or widgets and Live Activities. It also does not build a standalone backend: the assumed shapes are a managed backend (`supabase`), Expo API Routes for anything holding a secret (`secure-backend`), or an API that already exists (`api-integration`) — a custom server's architecture, deployment and monitoring need a toolkit of their own, and here it is treated as an API the app consumes. Those verticals need prompts of their own — the shape to write them in is in [CONTRIBUTING.md](../CONTRIBUTING.md).

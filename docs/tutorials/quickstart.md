@@ -108,7 +108,7 @@ The loading and error rows look like paperwork on a local-only app. They are the
 /mobilekit:plan
 ```
 
-56 prompts in, this out:
+57 prompts in, this out:
 
 ```markdown
 # Build Plan
@@ -142,7 +142,7 @@ The loading and error rows look like paperwork on a local-only app. They are the
 | i18n, dark-mode, animations | later · tab-navigation: shape is a single stack |
 | offline | Local data is already offline. The merge rule is UNDECIDED in PRODUCT.md — decide it before a backend lands, not after |
 | content-moderation | A List is visible only to Members typed into it. Re-add if Lists become shareable by link |
-| store-compliance, eas-build, beta-and-review, ci-cd, release-rollback, post-release | PRODUCT.md: stage = prototype, no submission planned. Re-add before the first one |
+| security-review, store-compliance, eas-build, beta-and-review, ci-cd, release-rollback, post-release | PRODUCT.md: stage = prototype, no submission planned. Re-add before the first one |
 
 ```
 
@@ -219,4 +219,4 @@ Next:       /mobilekit:next
 - [`new-app.md`](new-app.md) — the same loop run to a monitored release: accounts, a backend, push, `ship`, and what `store-compliance` actually costs. This is your next read.
 - [`existing-project.md`](existing-project.md) — adopting the skill in a repo that already has screens
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Short, and worth reading yourself once. [`../prompts/README.md`](../../prompts/README.md) lists all 56 prompts and the reference order the plan cuts down from.
+- [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Short, and worth reading yourself once. [`../prompts/README.md`](../../prompts/README.md) lists all 57 prompts and the reference order the plan cuts down from.

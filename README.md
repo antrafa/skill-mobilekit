@@ -4,7 +4,7 @@
 
 **A phase-driven workflow for building React Native / Expo apps with an AI coding agent — from "I have an idea" to "I know what broke in production".**
 
-56 prompts · 8 phases · 9 phase commands · works with Claude Code, Codex, Antigravity, Cursor, and anything that reads `AGENTS.md`
+57 prompts · 8 phases · 9 phase commands · works with Claude Code, Codex, Antigravity, Cursor, and anything that reads `AGENTS.md`
 
 [Install](#install) · [Quick start](#quick-start) · [Tutorials](docs/TUTORIALS.md) · [Command reference](docs/COMMANDS.md) · [Prompt library](prompts/README.md) · [Contributing](CONTRIBUTING.md)
 
@@ -86,7 +86,7 @@ cd my-app
 /mobilekit:init          # inspects the repo, writes AGENTS.md
 /mobilekit:discovery     # the product interview → docs/PRODUCT.md
 /mobilekit:design        # screens, navigation, states → docs/DESIGN.md
-/mobilekit:plan          # cuts 56 prompts to the ones you need → docs/BUILD-PLAN.md
+/mobilekit:plan          # cuts 57 prompts to the ones you need → docs/BUILD-PLAN.md
 /mobilekit:next          # runs one step. repeat.
 /mobilekit:ship          # the release gate
 ```
@@ -136,7 +136,7 @@ Runs a single prompt out of order, and tells you which prerequisites are missing
 | [`init`](docs/COMMANDS.md#mobilekitinit) | Inspects the project, writes `AGENTS.md`, routes a legacy app | `AGENTS.md` |
 | [`discovery`](docs/COMMANDS.md#mobilekitdiscovery) | The product interview — never infers the domain | `docs/PRODUCT.md` |
 | [`design`](docs/COMMANDS.md#mobilekitdesign) | Screen inventory, navigation shape, four states per screen, tokens | `docs/DESIGN.md` |
-| [`plan`](docs/COMMANDS.md#mobilekitplan) | Cuts 56 prompts down to only what this app needs | `docs/BUILD-PLAN.md` |
+| [`plan`](docs/COMMANDS.md#mobilekitplan) | Cuts 57 prompts down to only what this app needs | `docs/BUILD-PLAN.md` |
 | [`next`](docs/COMMANDS.md#mobilekitnext) | Runs the first unchecked step, one at a time | ticks the box |
 | [`build <topic>`](docs/COMMANDS.md#mobilekitbuild-topic) | One prompt out of order — the escape hatch | — |
 | [`ship`](docs/COMMANDS.md#mobilekitship) | Release gate: tests → a11y → perf → consent → compliance → build | — |
