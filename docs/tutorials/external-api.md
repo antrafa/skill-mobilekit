@@ -84,6 +84,7 @@ Design is unchanged by the data source: screens trace to journey steps, and ever
 - [ ] design-system
 - [ ] domain-model
 - [ ] ui-components
+- [ ] app-shell · boot: saved-Stops hydration and the error boundary
 
 ## Platform
 - [ ] api-integration · the transit API, contract shape B
@@ -104,6 +105,7 @@ Design is unchanged by the data source: screens trace to journey steps, and ever
 | Step | Why |
 |---|---|
 | supabase | Data scenario C — `api-integration` replaces it |
+| dev-environment | Expo Go reaches the API — re-add with the first native dependency |
 | auth-clerk, auth-backend, account-recovery | PRODUCT.md: accounts = no. Saved Stops live on the device |
 | form-screens, media-upload, content-moderation | Nothing here is user-authored |
 | secure-backend | The API key is publishable — re-add the moment a secret-keyed endpoint is needed |

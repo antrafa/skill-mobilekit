@@ -142,10 +142,12 @@ Sarau's plan, abbreviated:
 ```markdown
 ## Foundation
 - [x] expo-setup · already present
+- [ ] dev-environment · push and permissions need a development build
 - [ ] nativewind
 - [ ] design-system
 - [ ] domain-model
 - [ ] ui-components
+- [ ] app-shell · boot: session and fonts behind the splash; the auth gate lives here
 
 ## Platform
 - [ ] auth-clerk · managed, because there is no backend team here
@@ -173,13 +175,14 @@ Sarau's plan, abbreviated:
 - [ ] store-compliance
 - [ ] error-tracking
 - [ ] eas-build
+- [ ] beta-and-review
 - [ ] release-rollback
 
 ## Skipped
 | Step | Why |
 |---|---|
 | media-upload | PRODUCT.md: media = never |
-| in-app-purchases, payments | PRODUCT.md: payments = never |
+| monetization, in-app-purchases, payments, ads | PRODUCT.md: payments = never |
 | ai-features | PRODUCT.md: AI = never |
 | analytics | PRODUCT.md: analytics = later |
 | i18n | PRODUCT.md: i18n = later |
@@ -210,7 +213,7 @@ Repeat until the plan is empty. Each run: announces the step and gives you a cha
 | "Blocked: this needs a Clerk publishable key." | It will not invent a credential or stub one to keep moving. | Create the account, paste the key. The box stays unchecked until it works. |
 | "Recommended default: A — single welcome screen. Confirm or change." | An option is a question. | Confirm, or pick another. |
 
-**Order matters and the plan encodes it.** `domain-model` before any screen, because screens built on `Item` get retrofitted and that retrofit is the most expensive rework in the build. `native-permissions` before `push-notifications`. `secure-backend` before anything holding a secret. `privacy-consent` before any analytics SDK, because an SDK that initializes on launch has already collected before your consent screen renders.
+**Order matters and the plan encodes it.** `domain-model` before any screen, because screens built on `Item` get retrofitted and that retrofit is the most expensive rework in the build. `app-shell` before the first screen, so auth, onboarding and any lock plug into one gate instead of fighting over the root layout. `native-permissions` before `push-notifications`. `secure-backend` before anything holding a secret. `privacy-consent` before any analytics SDK, because an SDK that initializes on launch has already collected before your consent screen renders.
 
 **Checking progress:**
 
@@ -245,7 +248,7 @@ Runs one prompt regardless of the plan, and names the prerequisites it is missin
 /mobilekit:ship
 ```
 
-A gate, not a step. Seven prompts in a fixed order, because each finds problems that are cheaper before submission than after: tests → accessibility → performance → error tracking → consent → store compliance → build.
+A gate, not a step. Eight prompts in a fixed order, because each finds problems that are cheaper before submission than after: tests → accessibility → performance → error tracking → consent → store compliance → build → beta and the review loop. That last one treats a first-submission rejection as the normal case: testers before the public, review notes a stranger can follow, and the resolution-center loop planned rather than improvised.
 
 Plus three checks that belong to the gate itself:
 

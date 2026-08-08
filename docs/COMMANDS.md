@@ -104,7 +104,7 @@ How the cut is made:
 
 - Every step whose capability `PRODUCT.md` marks "later" or "never" is removed, and appears in a **Skipped** table with the reason. No payments step for an app with no payments.
 - Generic screen steps are replaced by your real screens from `DESIGN.md`, core screens first.
-- Mutually exclusive prompts are decided with a one-line reason: managed auth or your own, a managed backend or an existing API, store billing or a payment gateway.
+- Mutually exclusive prompts are decided with a one-line reason: managed auth or your own, a managed backend or an existing API; store billing, a payment gateway or ads follow `PRODUCT.md`'s Monetization section.
 - Steps a store submission requires stay in whatever the product is — permissions, consent, accessibility, compliance.
 - **The repo is read.** Anything already done is marked done, not queued.
 
@@ -182,6 +182,7 @@ Order, and why it is this order:
 5. `privacy-consent` — if any analytics ships to the EU or Brazil.
 6. `store-compliance` — privacy manifest, data-safety declarations, reviewer account, listing. This is what rejects builds.
 7. `eas-build` — profiles, environment variables, submission.
+8. `beta-and-review` — testers before the public, review notes, and the rejection loop a first submission usually meets.
 
 Plus three checks that belong to the gate rather than to any prompt:
 

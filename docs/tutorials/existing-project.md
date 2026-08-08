@@ -137,6 +137,7 @@ This is the payoff of the whole path. `plan` reads your repo — `package.json` 
 - [ ] design-system
 - [ ] domain-model
 - [ ] ui-components
+- [ ] app-shell · the screens exist; the root layout has no owner yet
 
 ## Screens
 - [x] tab-navigation · already present · Sessions · Routines · Profile
@@ -155,13 +156,14 @@ This is the payoff of the whole path. `plan` reads your repo — `package.json` 
 - [ ] performance
 - [ ] store-compliance
 - [ ] eas-build
+- [ ] beta-and-review
 
 ## Skipped
 | Step | Why |
 |---|---|
 | supabase, react-query | PRODUCT.md: Data scenario D — local content first, no remote source yet |
 | auth-clerk, auth-backend, account-recovery | PRODUCT.md: accounts = no |
-| in-app-purchases, payments | PRODUCT.md: payments = never |
+| monetization, in-app-purchases, payments, ads | PRODUCT.md: payments = never |
 | media-upload, native-permissions | PRODUCT.md: media = never, no permission requested |
 | content-moderation | Sessions are private to one device — revisit when the backend lands |
 ```

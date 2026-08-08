@@ -227,7 +227,7 @@ From that point the rest of the library works normally — `domain-model.md` nex
 
 **Letting parity stay an adjective.** "We'll keep everything working" is not a plan, it is a hope with a nice tone. The list is tedious to produce and it is the only thing that makes the migration verifiable.
 
-**Forgetting that an upgrade regression reaches everyone at once.** A new feature fails for the users who touch it; a bad migration fails for all 900 employees at 8am. Run [`release-rollback.md`](../../prompts/8-observability/release-rollback.md) *before* the first submission — and remember that mobile has no rollback, only levers with different reach. The one that matters here is whether the previous good bundle is identifiable by a recorded id, because a channel pointing at "latest" with no record of what was previous is not a lever, it is a hope.
+**Forgetting that an upgrade regression reaches everyone at once.** A new feature fails for the users who touch it; a bad migration fails for all 900 employees at 8am. Put the migration build through [`beta-and-review.md`](../../prompts/7-ship/beta-and-review.md)'s internal track first — a dozen employees for a week is where the session migration gets to fail cheaply — and run [`release-rollback.md`](../../prompts/8-observability/release-rollback.md) *before* the first submission, remembering that mobile has no rollback, only levers with different reach. The one that matters here is whether the previous good bundle is identifiable by a recorded id, because a channel pointing at "latest" with no record of what was previous is not a lever, it is a hope.
 
 ---
 

@@ -147,9 +147,11 @@ Same three steps as any app. Three questions bite harder here:
 
 ```markdown
 ## Foundation
+- [ ] dev-environment · media and permissions need a development build
 - [ ] design-system
 - [ ] domain-model
 - [ ] ui-components
+- [ ] app-shell · session gate and the three cold-start routes
 
 ## Platform
 - [ ] auth-clerk · Step 1 only — provider-agnostic auth UI
@@ -179,11 +181,12 @@ Same three steps as any app. Three questions bite harder here:
 - [ ] error-tracking
 - [ ] store-compliance
 - [ ] eas-build
+- [ ] beta-and-review
 
 ## Skipped
 | Step | Why |
 |---|---|
-| in-app-purchases, payments | PRODUCT.md: payments = never |
+| monetization, in-app-purchases, payments, ads | PRODUCT.md: payments = never |
 | ai-features | PRODUCT.md: AI = never |
 | analytics | PRODUCT.md: analytics = later |
 | push-notifications | PRODUCT.md: push = later |
