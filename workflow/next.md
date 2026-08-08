@@ -8,10 +8,12 @@ Run the first unchecked step of the plan. Alias: `/mobilekit:next`.
 
 1. Read `BUILD-PLAN.md` and take the **first unchecked box**. One step. The next one stays untouched however small it looks.
 2. Announce which step and which prompt file, and give the developer a chance to skip it before starting.
-3. Execute it per the skill's "Executing a prompt" procedure: read `prompts/RULES.md`, `docs/PRODUCT.md`, `docs/DESIGN.md`, `AGENTS.md`; follow the prompt's `## Prompt` section as written; work its `### Grill` block one question at a time.
-4. Resolve the installed version of anything you configure against `package.json`, and get that version's docs per `prompts/RULES.md` §3.
-5. Walk the `Done when` checklist and report each item met / not met / not verifiable. A box you did not test stays unticked.
-6. Check the box in `BUILD-PLAN.md` only when the checklist actually passed. Partially done stays unchecked, with a note of what remains.
+3. Execute it per the skill's "Executing a prompt" procedure — read, grill, build, walk `Done when`.
+4. Check the box in `BUILD-PLAN.md` only when the checklist actually passed. Partially done stays unchecked, with a note of what remains.
+
+## Every box checked
+
+The plan is done, not the product. Not yet submitted → the ship phase. Submitted → `prompts/8-observability/post-release.md`. A next version taking shape → a discovery round for the delta, then the plan phase to extend `BUILD-PLAN.md`.
 
 ## Blocked
 

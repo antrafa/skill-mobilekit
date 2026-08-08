@@ -17,7 +17,7 @@ Build the shared UI components for this app.
 Then confirm:
 
 - Which variants and sizes are genuinely used? Five button variants when the app uses two is four too many — build a variant when a screen needs it.
-- Is a variant helper (`cva` or similar) already installed, or is a conditional class map enough? For a handful of components, plain conditionals are fewer moving parts. Ask before adding a dependency.
+- Is a variant helper (`cva` or similar) already installed, or is a conditional class map enough? For a handful of components, plain conditionals are fewer moving parts.
 
 ### The likely set
 
@@ -45,4 +45,3 @@ Build only the ones the answers justify:
 - [ ] No hard-coded style values
 - [ ] Tap targets and accessible labels verified with a screen reader on both platforms
 - [ ] Loading button does not resize; skeletons match real layout
-- [ ] No dependency added without approval

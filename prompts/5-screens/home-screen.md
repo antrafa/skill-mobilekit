@@ -36,9 +36,8 @@ Build the Home screen.
 
 ### Every state, explicitly
 
-- **Loading** — skeletons that match the real layout, so nothing jumps when data lands
-- **Empty** — real copy and the action that fills it, not "No data"
-- **Error** — plain message plus retry, and never a blank screen
+The empty, loading, error, and populated states are decided in `DESIGN.md` — render those decisions, with skeletons matching the real layout and the `EmptyState` component from `ui-components.md`. One state is Home's own:
+
 - **Partial** — one section failing must not blank the whole screen
 
 ### Done when

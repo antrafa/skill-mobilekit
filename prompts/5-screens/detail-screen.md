@@ -29,9 +29,9 @@ Build the detail screen.
 
 ### Every state, explicitly
 
-- **Loading** — skeleton matching the layout
+Loading, error, and populated are decided in `DESIGN.md` — render them, skeleton matching the layout. Two states are detail-specific:
+
 - **Not found / deleted** — a real message and a way back. This happens routinely via stale links and shared URLs
-- **Error** — message plus retry
 - **Action in flight** — the button shows progress and cannot be double-fired
 
 ### Done when

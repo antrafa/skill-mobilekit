@@ -12,7 +12,7 @@ Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Prepare this app for store review and fix everything that would get it rejected.
 
-**Store policy is the moving part of this prompt.** Every item below names a concern, never a current rule. Resolve each one's actual requirement per `RULES.md §3` — read the store's own policy or form the day you submit, and where this agent has no fetch or docs tool, ask the developer to paste the current page or save it under `docs/vendor/`. Never state a form field, threshold, asset size, or category name from memory: a stale checklist confidently followed is worse than no checklist.
+**Store policy is the moving part of this prompt.** Every item below names a concern, never a current rule. Resolve each one's actual requirement per `RULES.md` §3, against the store's own policy or form the day you submit. Never state a form field, threshold, asset size, or category name from memory: a stale checklist confidently followed is worse than no checklist.
 
 ### Grill
 

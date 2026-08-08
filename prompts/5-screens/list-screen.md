@@ -31,12 +31,11 @@ Build the list screen.
 
 ### Every state, explicitly
 
-- **Loading** — skeleton rows matching the row layout
-- **Empty (no data at all)** — illustration or icon, real copy, and the action that creates the first record
-- **Empty (filtered or searched)** — different copy, plus a clear-filters action
-- **Error** — message and retry, with any already-loaded rows kept visible
+The base states — empty, loading, error, populated — are decided in `DESIGN.md`; render them with skeleton rows matching the row layout and the `EmptyState` component from `ui-components.md`. A list adds three of its own:
+
+- **Empty (filtered or searched)** — different copy from "nothing here yet", plus a clear-filters action
 - **Loading more** — footer spinner that does not shift the layout
-- **Refreshing** — the platform indicator, not a full-screen loader
+- **Refreshing** — the platform indicator, not a full-screen loader; already-loaded rows stay visible through an error
 
 ### Done when
 

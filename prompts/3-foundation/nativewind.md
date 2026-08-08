@@ -12,14 +12,7 @@ Set up NativeWind in this Expo app.
 
 ### Before you write anything
 
-**The setup differs substantially between versions, and stale steps are the single most common failure here.** Check `package.json` for the installed `nativewind` and `tailwindcss` versions, then follow the official installation guide **for those exact majors** (RULES.md §3 · canonical: https://www.nativewind.dev). Specifically:
-
-- Whether a `tailwind.config.js` is required at all, or the theme is defined in CSS
-- Which Tailwind directives or `@import` lines the CSS entry file needs
-- Whether a Babel plugin/preset is required, or the Metro transformer handles it alone
-- Where the CSS entry file must be imported
-
-Do not create `tailwind.config.js` or `babel.config.js` because an older guide mentions them. Create a config file only if the installed version requires it. If the repo already has these files, follow what is there.
+**The setup differs substantially between versions, and stale steps are the single most common failure here.** Work `RULES.md` §3 for the installed `nativewind` and `tailwindcss` majors (canonical: https://www.nativewind.dev) — whether a Tailwind config, a Babel plugin, or CSS directives exist at all is decided by those docs, not by an older guide. §4 owns config files: one exists when the installed version requires it, and what the repo already has is followed.
 
 ### Build
 

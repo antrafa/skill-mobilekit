@@ -33,5 +33,5 @@ This repo is the skill, not an app built with it. See [CONTRIBUTING.md](./CONTRI
 
 - `prompts/RULES.md` is the single source of truth for prompt behaviour; `SKILL.md` owns the phase model. Everything else points at them.
 - **Filenames in `prompts/` are the ids.** A prompt keeps its name wherever it moves; `BUILD-PLAN.md` entries and the cross-references between prompts depend on it.
-- Folder numbers (`1-discovery`) are phase order and may be reorganized; only `prompts/README.md` and `SKILL.md` carry links to fix.
+- Folder numbers (`1-discovery`) are phase order and may be reorganized; `prompts/README.md`, `SKILL.md` and the `workflow/` files carry links to fix — `grep -rl 'prompts/' workflow/ SKILL.md AGENTS.md prompts/README.md` finds them all.
 - A new prompt goes in the folder matching its phase and gets a row in `prompts/README.md`.

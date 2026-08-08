@@ -16,10 +16,9 @@ You are designing the screen and navigation structure of this app. **Write no ap
 
 ### Hard rules
 
+`RULES.md` §1 owns the interview mechanics — one question per message with a recommended default, `UNDECIDED — ask before assuming` for anything left open — and §2 the vocabulary: the real noun, never "item detail". The blocks below are the grill, not a form to hand over. On top of that:
+
 1. Every screen you list must trace back to a step in the core journey or a capability marked "now" in `PRODUCT.md`. A screen that traces to neither does not go in the list — say why you dropped it.
-2. Use the domain vocabulary from `PRODUCT.md`. Not "item detail" — the real noun.
-3. **One question per message** with a recommended default, per `RULES.md` §1. The blocks below are the grill, not a form to hand over.
-4. Anything undecided is recorded as `UNDECIDED — ask before assuming`. Never fill it with a plausible guess.
 
 ### Block A — Screen inventory
 

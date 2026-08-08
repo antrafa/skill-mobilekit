@@ -1,6 +1,6 @@
 ---
 name: mobilekit
-description: Guided end-to-end workflow for building and modernizing React Native / Expo mobile apps — product discovery, design conception, implementation, store release, and post-release observability. Use when starting a mobile app, deciding what to build next in an Expo project, modernizing a legacy or hybrid mobile app, or on any /mobilekit command. Covers auth, APIs, state, backend, AI, media, analytics, payments, screens, i18n, offline, permissions, testing, accessibility, store compliance, EAS deploy and monitoring.
+description: Guided end-to-end workflow for building and modernizing React Native / Expo mobile apps — product discovery, design conception, implementation, store release, and post-release observability. Use when starting a mobile app, deciding what to build next in an Expo project, modernizing a legacy or hybrid mobile app, adding one capability to an existing app (auth, payments, push, offline, AI, store release…), or on any /mobilekit command.
 license: MIT
 metadata:
   version: 2.1.0
@@ -50,7 +50,7 @@ The presence of three documents *is* the phase. Never guess at a missing one.
 
 ## Executing a prompt
 
-Prompts share a shape: a header saying when it applies, a `## Prompt` section, a `### Grill` block holding the developer's decisions, and a `### Done when` checklist. The two that produce a document rather than code — `product-discovery.md` and `design-conception.md` — carry an `## Output` structure in place of the checklist, and are a grill from end to end.
+Prompts share a shape: a header saying when it applies, a `## Prompt` section, a `### Grill` block holding the developer's decisions, and a `### Done when` checklist. The ones that produce a document rather than code — `product-discovery.md`, `monetization.md` and `design-conception.md` — carry an `## Output` structure in place of the checklist, and are a grill from end to end.
 
 1. Read `prompts/RULES.md`, `docs/PRODUCT.md`, `docs/DESIGN.md` (if present) and the project's `AGENTS.md`.
 2. Read the prompt and follow its `## Prompt` section **as written** — it is the instruction, not a summary to paraphrase.
@@ -61,21 +61,7 @@ Prompts share a shape: a header saying when it applies, a `## Prompt` section, a
 
 ## Finding a prompt
 
-`prompts/` is organized by phase; filenames are the ids.
-
-| Folder | Contains |
-|---|---|
-| `1-discovery` | product-discovery, agents-md |
-| `2-design` | design-conception, design-system |
-| `3-foundation` | expo-setup, nativewind, domain-model, ui-components |
-| `4-platform` | auth-clerk, auth-backend, biometric-lock, supabase, api-integration, zustand, react-query, secure-backend, native-permissions |
-| `5-screens` | onboarding, tab-navigation, home-screen, list-screen, detail-screen, form-screens, modals-sheets, profile-screen, settings-screen, account-recovery |
-| `6-features` | push-notifications, deep-linking, media-upload, content-moderation, animations, dark-mode, i18n, offline, ai-features, in-app-purchases, payments |
-| `7-ship` | testing, accessibility, performance, store-compliance, ci-cd, eas-build |
-| `8-observability` | privacy-consent, analytics, error-tracking, post-release, release-rollback |
-| `9-maintain` | legacy-modernization, sdk-upgrade |
-
-Descriptions and the reference build order: [`prompts/README.md`](prompts/README.md).
+`prompts/` is organized by phase: the numbered folders are the phase order, filenames are the ids. The index — every prompt with its description — and the reference build order live in [`prompts/README.md`](prompts/README.md).
 
 ## Where the library is read from
 

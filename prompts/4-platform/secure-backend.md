@@ -14,9 +14,7 @@ Set up secure server-side integration for [service].
 
 ### The rule this prompt exists for
 
-`EXPO_PUBLIC_*` variables are compiled into the JavaScript bundle. Anyone can extract them from a published app in minutes. A key that can spend money, read other users' data, or impersonate the service **never** goes in the app — no matter how convenient, and no matter that it "works in development".
-
-Publishable/anon keys designed to be public are fine. If the provider's docs call it a secret key, it is server-side only.
+`RULES.md` §6, applied without exception: anything the provider calls a secret stays server-side. `EXPO_PUBLIC_*` is extracted from a published bundle in minutes, so a key that can spend money, read other users' data, or impersonate the service **never** goes in the app — no matter how convenient, and no matter that it "works in development".
 
 ### Grill
 
