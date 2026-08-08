@@ -1,21 +1,22 @@
 # mobilekit — prompt library
 
-Reusable prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the `/mobilekit:*` commands, or paste one by hand.
+51 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
 
-Folders are the phase order. File numbers are stable IDs — they never change, so `BUILD-PLAN.md` and cross-references between prompts keep working when a file moves.
+Folders are the phase order. **Filenames are the ids**: a prompt keeps its name wherever it moves, so `BUILD-PLAN.md` entries and cross-references between prompts survive reorganization.
 
 ---
 
 ## How to use
 
 1. Read [**RULES.md**](./RULES.md) once yourself. It is short, and every prompt starts by reading it. It exists because the common failure is not bad code — it is an assistant deciding something you never chose.
-2. Run [`1-discovery/00-product-discovery.md`](./1-discovery/00-product-discovery.md) first. It writes `docs/PRODUCT.md`, which every other prompt reads instead of guessing what you are building.
-3. Create `AGENTS.md` from `PRODUCT.md` with [`1-discovery/00-agents-md-guide.md`](./1-discovery/00-agents-md-guide.md).
-4. Decide screens and navigation with [`2-design/00c-design-conception.md`](./2-design/00c-design-conception.md) → `docs/DESIGN.md`. Screens built before this get rewritten.
-5. Define the domain with [`3-foundation/05b-domain-model.md`](./3-foundation/05b-domain-model.md) → `docs/DOMAIN.md`.
-6. Then follow the build order below, or pick individual prompts for an existing project.
+2. **An app that already ships starts at [`9-maintain/legacy-modernization.md`](./9-maintain/legacy-modernization.md).** It inventories what exists and derives `PRODUCT.md` from it, instead of interviewing you about a product that is already live.
+3. **A new app starts at [`1-discovery/product-discovery.md`](./1-discovery/product-discovery.md).** It writes `docs/PRODUCT.md`, which every other prompt reads instead of guessing what you are building.
+4. Create `AGENTS.md` from `PRODUCT.md` with [`1-discovery/agents-md.md`](./1-discovery/agents-md.md).
+5. Decide screens and navigation with [`2-design/design-conception.md`](./2-design/design-conception.md) → `docs/DESIGN.md`. Screens built before this get rewritten.
+6. Define the domain with [`3-foundation/domain-model.md`](./3-foundation/domain-model.md) → `docs/DOMAIN.md`.
+7. Then follow the build order below, or pick individual prompts for an existing project.
 
-Outputs live in the project's `docs/` — `PRODUCT.md`, `DESIGN.md`, `DOMAIN.md`, `BUILD-PLAN.md`. The library lives here. They are deliberately separate: the first four are documentation someone reads without knowing this skill exists.
+Outputs live in the project's `docs/` — `PRODUCT.md`, `DESIGN.md`, `DOMAIN.md`, `BUILD-PLAN.md`, and `MODERNIZATION.md` for a legacy app. The library lives here. They are deliberately separate: the outputs are documentation someone reads without knowing this skill exists.
 
 Where a prompt offers a menu ("Option A / B / C"), that is a question for you, not a choice for the assistant to make silently.
 
@@ -24,120 +25,148 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 ## Index
 
 ### `1-discovery` — what are we building
-| # | Prompt | Description |
-|---|--------|-------------|
-| — | [Rules](./RULES.md) | Read before every prompt: verify versions, don't invent, ask instead of assume |
-| 00 | [Product Discovery](./1-discovery/00-product-discovery.md) | **Start here.** Interview that defines the product → `docs/PRODUCT.md` |
-| 00 | [AGENTS.md Guide](./1-discovery/00-agents-md-guide.md) | Build a project-specific AGENTS.md from `PRODUCT.md` |
+| Prompt | Description |
+|---|---|
+| [Rules](./RULES.md) | Read before every prompt: grill one question at a time, request docs, invent nothing |
+| [product-discovery](./1-discovery/product-discovery.md) | **Start here for a new app.** Interview that defines the product → `docs/PRODUCT.md` |
+| [agents-md](./1-discovery/agents-md.md) | Build a project-specific AGENTS.md from `PRODUCT.md` |
 
 ### `2-design` — what does it look like
-| # | Prompt | Description |
-|---|--------|-------------|
-| 00c | [Design Conception](./2-design/00c-design-conception.md) | Screen inventory, navigation shape, per-screen states → `docs/DESIGN.md` |
-| 03 | [Design System](./2-design/03-design-system.md) | Color, type, spacing, radius, elevation — centralized as tokens |
+| Prompt | Description |
+|---|---|
+| [design-conception](./2-design/design-conception.md) | Screen inventory, navigation shape, per-screen states → `docs/DESIGN.md` |
+| [design-system](./2-design/design-system.md) | Color, type, spacing, radius, elevation — centralized as tokens |
 
 ### `3-foundation` — the base everything sits on
-| # | Prompt | Description |
-|---|--------|-------------|
-| 01 | [Expo Project Setup](./3-foundation/01-expo-project-setup.md) | Initialize Expo with TypeScript and Router |
-| 02 | [NativeWind Setup](./3-foundation/02-nativewind-setup.md) | Install and configure NativeWind (Tailwind CSS) |
-| 05b | [Domain Model & Data Layer](./3-foundation/05b-domain-model.md) | Entities, schema or existing-table mapping, types, fixtures |
-| 24 | [Common UI Components](./3-foundation/24-common-ui-components.md) | Only the shared set `DESIGN.md` identified — nothing speculative |
+| Prompt | Description |
+|---|---|
+| [expo-setup](./3-foundation/expo-setup.md) | Initialize Expo with TypeScript and Router |
+| [nativewind](./3-foundation/nativewind.md) | Install and configure NativeWind (Tailwind CSS) |
+| [domain-model](./3-foundation/domain-model.md) | Entities, schema or existing-table mapping, types, fixtures |
+| [ui-components](./3-foundation/ui-components.md) | Only the shared set `DESIGN.md` identified — nothing speculative |
 
 ### `4-platform` — auth, data, and the server side
-| # | Prompt | Description |
-|---|--------|-------------|
-| 04 | [Auth with Clerk](./4-platform/04-authentication-clerk.md) | Managed authentication |
-| 05 | [Auth with Database](./4-platform/05-authentication-database.md) | Custom auth with your own backend or Supabase |
-| 06 | [Supabase Setup](./4-platform/06-supabase-setup.md) | Database, auth, and storage |
-| 07 | [Zustand Setup](./4-platform/07-zustand-setup.md) | Global state with persistence |
-| 12 | [React Query](./4-platform/12-react-query.md) | Data fetching with TanStack Query |
-| 27 | [Secure Backend Integration](./4-platform/27-secure-backend-integration.md) | API routes, token generation, keeping secrets out of the bundle |
+| Prompt | Description |
+|---|---|
+| [auth-clerk](./4-platform/auth-clerk.md) | Managed authentication |
+| [auth-backend](./4-platform/auth-backend.md) | Supabase Auth or your own API |
+| [biometric-lock](./4-platform/biometric-lock.md) | Face ID / fingerprint as a local gate, with a mandatory fallback |
+| [native-permissions](./4-platform/native-permissions.md) | Every OS permission the app asks for, and all three denial paths |
+| [supabase](./4-platform/supabase.md) | Database, auth, and storage |
+| [api-integration](./4-platform/api-integration.md) | An API you do not own: OpenAPI, undocumented REST, or GraphQL |
+| [zustand](./4-platform/zustand.md) | Global state with persistence |
+| [react-query](./4-platform/react-query.md) | Data fetching with TanStack Query |
+| [secure-backend](./4-platform/secure-backend.md) | API routes, token generation, keeping secrets out of the bundle |
 
 ### `5-screens` — the app itself
-| # | Prompt | Description |
-|---|--------|-------------|
-| 15 | [Onboarding Screen](./5-screens/15-onboarding-screen.md) | Welcome / intro experience |
-| 16 | [Tab Navigation](./5-screens/16-tab-navigation.md) | Custom bottom tab bar |
-| 17 | [Home Screen](./5-screens/17-home-screen.md) | Main dashboard / feed |
-| 18 | [Detail Screen](./5-screens/18-detail-screen.md) | Item detail view |
-| 19 | [Profile Screen](./5-screens/19-profile-screen.md) | User profile and account |
-| 20 | [Settings Screen](./5-screens/20-settings-screen.md) | App preferences and configuration |
-| 21 | [Form Screens](./5-screens/21-form-screens.md) | Create / edit forms |
-| 22 | [List Screen](./5-screens/22-list-screen.md) | Lists with search and filtering |
-| 23 | [Modals & Bottom Sheets](./5-screens/23-modal-bottom-sheet.md) | Reusable modals and sheets |
+| Prompt | Description |
+|---|---|
+| [onboarding](./5-screens/onboarding.md) | Welcome / intro experience |
+| [tab-navigation](./5-screens/tab-navigation.md) | Bottom tab bar |
+| [home-screen](./5-screens/home-screen.md) | Main dashboard / feed |
+| [list-screen](./5-screens/list-screen.md) | Lists with search and filtering |
+| [detail-screen](./5-screens/detail-screen.md) | Item detail view |
+| [form-screens](./5-screens/form-screens.md) | Create / edit forms |
+| [modals-sheets](./5-screens/modals-sheets.md) | Reusable modals and bottom sheets |
+| [profile-screen](./5-screens/profile-screen.md) | User profile and account |
+| [settings-screen](./5-screens/settings-screen.md) | App preferences and configuration |
+| [account-recovery](./5-screens/account-recovery.md) | Password reset, credential and email changes |
 
 ### `6-features` — capabilities, only if `PRODUCT.md` marks them "now"
-| # | Prompt | Description |
-|---|--------|-------------|
-| 10 | [Push Notifications](./6-features/10-push-notifications.md) | Expo Notifications setup |
-| 11 | [Reanimated Animations](./6-features/11-reanimated-animations.md) | Smooth, performant animations |
-| 13 | [RevenueCat Purchases](./6-features/13-revenuecat-purchases.md) | In-app purchases and subscriptions |
-| 14 | [Payment Gateway](./6-features/14-payment-gateway.md) | Stripe integration for payments |
-| 25 | [Dark Mode](./6-features/25-dark-mode.md) | Light/dark theme support |
-| 28 | [AI / LLM Features](./6-features/28-ai-features.md) | Text, streaming, and realtime voice/video — via your own server |
-| 29 | [Internationalization](./6-features/29-internationalization.md) | Multiple languages, locale formatting, RTL |
-| 31 | [Offline Support](./6-features/31-offline-support.md) | Cached reads, queued writes, honest degradation |
-| 32 | [Deep Linking](./6-features/32-deep-linking.md) | Custom schemes, universal links, protected destinations |
+| Prompt | Description |
+|---|---|
+| [push-notifications](./6-features/push-notifications.md) | Local and remote notifications |
+| [deep-linking](./6-features/deep-linking.md) | Custom schemes, universal links, protected destinations |
+| [media-upload](./6-features/media-upload.md) | Camera, library, compression, signed uploads |
+| [content-moderation](./6-features/content-moderation.md) | Report, block, review — required for user-generated content |
+| [animations](./6-features/animations.md) | Motion that clarifies state changes |
+| [dark-mode](./6-features/dark-mode.md) | Light/dark theme support |
+| [i18n](./6-features/i18n.md) | Multiple languages, locale formatting, RTL |
+| [offline](./6-features/offline.md) | Cached reads, queued writes, honest degradation |
+| [ai-features](./6-features/ai-features.md) | Text, streaming, and realtime voice/video — via your own server |
+| [in-app-purchases](./6-features/in-app-purchases.md) | Store billing for digital content and subscriptions |
+| [payments](./6-features/payments.md) | Stripe, for physical goods and services |
 
 ### `7-ship` — the release gate
-| # | Prompt | Description |
-|---|--------|-------------|
-| 30 | [Testing](./7-ship/30-testing.md) | Risk-driven test scope, from domain logic to one E2E path |
-| 33 | [Accessibility Audit](./7-ship/33-accessibility-audit.md) | Cross-app sweep before first submission |
-| 26 | [EAS Build & Deploy](./7-ship/26-eas-build-deploy.md) | Build, environment variables, store submission, OTA updates |
+| Prompt | Description |
+|---|---|
+| [testing](./7-ship/testing.md) | Risk-driven test scope, from domain logic to one E2E path |
+| [accessibility](./7-ship/accessibility.md) | Cross-app sweep before first submission |
+| [performance](./7-ship/performance.md) | Startup, lists, images, re-renders — measured on a low-end device |
+| [store-compliance](./7-ship/store-compliance.md) | Privacy declarations, reviewer access, listing — what rejects builds |
+| [ci-cd](./7-ship/ci-cd.md) | What runs on every PR, on merge, and on a release tag |
+| [eas-build](./7-ship/eas-build.md) | Build, environment variables, store submission, OTA updates |
 
 ### `8-observability` — knowing what happens after
-| # | Prompt | Description |
-|---|--------|-------------|
-| 08 | [PostHog Analytics](./8-observability/08-posthog-analytics.md) | Event tracking, feature flags, and A/B testing |
-| 09 | [Sentry Error Tracking](./8-observability/09-sentry-error-tracking.md) | Error tracking and performance monitoring |
-| 34 | [Post-Release Observability](./8-observability/34-post-release-observability.md) | The four numbers you watch once real users are in it |
+| Prompt | Description |
+|---|---|
+| [privacy-consent](./8-observability/privacy-consent.md) | **Runs before analytics.** GDPR / LGPD consent, deferred SDK init, withdrawal |
+| [analytics](./8-observability/analytics.md) | Event tracking, feature flags, and A/B testing |
+| [error-tracking](./8-observability/error-tracking.md) | Crash and error reporting with readable stack traces |
+| [post-release](./8-observability/post-release.md) | The four numbers you watch once real users are in it |
+| [release-rollback](./8-observability/release-rollback.md) | The levers when a release goes bad, prepared before it does |
+
+### `9-maintain` — keeping it alive
+| Prompt | Description |
+|---|---|
+| [legacy-modernization](./9-maintain/legacy-modernization.md) | **Entry point for an app that already ships.** Inventory, parity list, migration path |
+| [sdk-upgrade](./9-maintain/sdk-upgrade.md) | One major at a time, verified between each |
 
 ---
 
 ## Suggested build order (new project)
 
 ```
-00  → Product discovery → docs/PRODUCT.md   (nothing runs before this)
-00  → Create AGENTS.md from PRODUCT.md
-00c → Design conception → docs/DESIGN.md    (before any screen)
-01  → Set up Expo project
-02  → Install NativeWind
-03  → Define design system
-05b → Define the domain model             (before any screen)
-24  → Build common UI components          (only the shared list from DESIGN.md)
-15  → Build onboarding screen
-04/05 → Set up authentication             (skip if PRODUCT.md says no accounts)
-06  → Set up backend                      (if Supabase)
-07  → Set up Zustand
-12  → Set up React Query                   (if data comes from a remote source)
-16  → Build tab navigation
-17  → Build home screen
-22  → Build list screen
-18  → Build detail screen
-21  → Build form screens                   (if users create data)
-23  → Modals & bottom sheets
-19  → Build profile screen
-20  → Build settings screen
-11  → Add animations
-25  → Add dark mode
-29  → Add i18n                             (if multiple languages)
-27  → Secure backend integration           (before any service with a secret)
-28  → Add AI features                      (if AI is in scope)
-13/14 → Add purchases or payments          (only if PRODUCT.md marks it "now")
-08  → Add analytics
-09  → Add error tracking
-10  → Add push notifications
-32  → Deep linking                          (needed by 10, 14, and OAuth)
-31  → Offline support                       (if required)
-30  → Testing                               (earlier if the app handles money or auth)
-33  → Accessibility audit                   (before first submission)
-26  → Build and deploy
-34  → Post-release observability            (after real users, not before)
+product-discovery   → docs/PRODUCT.md          (nothing runs before this)
+agents-md           → AGENTS.md from PRODUCT.md
+design-conception   → docs/DESIGN.md           (before any screen)
+expo-setup
+nativewind
+design-system
+domain-model        → docs/DOMAIN.md           (before any screen)
+ui-components                                  (only the shared list from DESIGN.md)
+onboarding
+auth-clerk | auth-backend                      (skip if PRODUCT.md says no accounts)
+account-recovery                               (if the app has passwords)
+supabase | api-integration                     (whichever backend applies)
+zustand
+react-query                                    (if data comes from a remote source)
+tab-navigation
+home-screen
+list-screen
+detail-screen
+form-screens                                   (if users create data)
+modals-sheets
+profile-screen
+settings-screen
+native-permissions                             (before any feature that asks for one)
+media-upload                                   (if the app handles photos, video or audio)
+content-moderation                             (if users publish anything others see)
+animations
+dark-mode
+i18n                                           (if multiple languages)
+secure-backend                                 (before any service with a secret)
+ai-features                                    (if AI is in scope)
+in-app-purchases | payments                    (only if PRODUCT.md marks it "now")
+privacy-consent                                (before any analytics SDK initializes)
+analytics
+error-tracking
+push-notifications
+deep-linking                                   (needed by push, payments, and OAuth)
+biometric-lock                                 (if the data justifies it)
+offline                                        (if required)
+testing                                        (earlier if the app handles money or auth)
+performance
+accessibility                                  (before first submission)
+store-compliance                               (before first submission)
+ci-cd                                          (once more than one person commits)
+eas-build
+release-rollback                               (prepared before the first release)
+post-release                                   (after real users, not before)
+sdk-upgrade                                    (every SDK cycle, forever)
 ```
 
-`/mobilekit:plan` generates this list cut down to only the steps your `PRODUCT.md` and `DESIGN.md` justify. Skip every step whose capability is marked "later" or "never".
+The [`plan`](../workflow/plan.md) phase generates this list cut down to only the steps your `PRODUCT.md` and `DESIGN.md` justify. Every step whose capability is marked "later" or "never" is skipped.
 
 ---
 
@@ -147,13 +176,15 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 - **Never let the assistant guess the domain**: a decision marked `UNDECIDED` gets asked, not invented
 - **Attach designs**: where a prompt says "attach design", provide the Figma export or screenshot
 - **Skip what you don't need**: not every app needs payments or push notifications
-- **Extend**: add your own prompts to the folder that fits; keep the number prefix unique
-- **Keep AGENTS.md updated** as the stack changes
+- **Override the rules per project**: `docs/mobilekit-overrides.md` is read after `RULES.md` and wins on conflict
+- **Extend**: see [CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
 
 ## Stack covered
 
-Expo · React Native · TypeScript · Expo Router · NativeWind · Zustand + AsyncStorage · Clerk / Supabase / custom auth · Supabase · TanStack Query · PostHog · Sentry · Expo Notifications · Reanimated · RevenueCat · Stripe · Expo API Routes for anything holding a secret · provider-agnostic AI, always proxied server-side · EAS Build + EAS Update.
+Expo · React Native · TypeScript · Expo Router · NativeWind · Zustand + AsyncStorage · Clerk / Supabase / custom auth · Supabase · OpenAPI / REST / GraphQL clients · TanStack Query · PostHog · Sentry · Expo Notifications · Reanimated · RevenueCat · Stripe · Expo API Routes for anything holding a secret · provider-agnostic AI, always proxied server-side · EAS Build + EAS Update.
 
-Cross-cutting concerns with their own prompts: i18n, offline, deep linking, testing, accessibility, post-release observability.
+Cross-cutting concerns with their own prompts: permissions, media, moderation, i18n, offline, deep linking, biometrics, testing, performance, accessibility, consent, store compliance, CI/CD, rollback, post-release observability, SDK upgrades.
+
+**Not covered.** The library is opinionated about a segment: content, productivity and SaaS-style apps. It has no prompts for maps and geofencing, Bluetooth, health platforms, media streaming, cart-based commerce, widgets and Live Activities, or advertising SDKs. Those verticals need prompts of their own — the shape to write them in is in [CONTRIBUTING.md](../CONTRIBUTING.md).
