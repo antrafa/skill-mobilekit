@@ -33,6 +33,10 @@ Session persistence needs a storage adapter, and the correct one depends on the 
 
 **Data access** — one typed function per operation the screens in `PRODUCT.md` actually need, named for the domain entities from `DOMAIN.md`. Do not scaffold generic CRUD for entities nothing reads yet. Return errors as values so callers can distinguish "not found" from "offline".
 
+**Storage** — only if chosen in the grill. One bucket per content class, each with its access model stated: public read, or private with signed URLs. Policies verified the same way as RLS — fetch another user's file and be denied. The upload flow itself belongs to `media-upload.md`; build only the buckets and policies it will need.
+
+**Realtime** — only if chosen in the grill. Subscriptions tie to screen lifecycle: subscribe on mount, unsubscribe on unmount, or every visit to the screen leaks a channel. Confirm private channels are backed by RLS on the underlying table — realtime bypasses nothing, but an open table broadcasts to anyone.
+
 **Authorization** — confirm RLS is enabled with policies on every table holding per-user data, and state which tables are intentionally public. The anon key is in the bundle: without RLS, every row is readable by anyone who extracts it. If `domain-model.md` already wrote the policies, verify them rather than rewriting.
 
 ### Done when
@@ -42,3 +46,5 @@ Session persistence needs a storage adapter, and the correct one depends on the 
 - [ ] Session survives an app restart
 - [ ] Generated types committed; no hand-written table types
 - [ ] Nothing but the anon key exists in the app bundle
+- [ ] Where storage was configured: a file belonging to another user is unreachable
+- [ ] Where realtime was configured: leaving the screen closes its channel, verified in the dashboard

@@ -99,7 +99,7 @@ Then derive `docs/PRODUCT.md` from the inventory, using the output structure in 
 
 ---
 
-## Acceptance checklist
+### Done when
 
 - [ ] The current app builds and runs on a device from a clean checkout, before anything changed
 - [ ] The parity list is complete enough that the developer confirms nothing is missing from it

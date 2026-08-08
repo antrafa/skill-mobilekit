@@ -38,6 +38,7 @@ Order the pipeline by cost: the cheapest check fails first.
 
 - The production build and store submission, with version and build number incremented by the pipeline, not by hand. A hand-edited build number is the standard cause of a rejected upload
 - The OTA channel matched to the build profile, so a preview update cannot reach production users
+- The `runtimeVersion` policy from `eas-build.md` enforced by the pipeline, not remembered by a person — an update published from CI must never target a binary that cannot run it
 - Release notes and rollback path per `release-rollback.md`; store metadata per `store-compliance.md`
 
 **Secrets in CI**

@@ -14,11 +14,11 @@ Define this app's domain model and data access layer.
 
 ### Hard rules
 
-1. **Names come from the domain vocabulary in `docs/PRODUCT.md`.** No `Item`, `Data`, `Record`, `Entity`, `Thing`. If a name is missing there, ask — do not invent one.
-2. **Never invent a column, table, field, or endpoint.** Anything not confirmed by `PRODUCT.md`, by an inspected schema, or by a real API contract must be asked about.
-3. **Show the model and get approval before writing migrations or generating files.** Present it as a table first.
-4. No `any`. Every field gets a real type, and optionality is a decision, not an accident.
-5. Destructive schema changes (drop, rename, type narrowing, `NOT NULL` on populated columns) are **never** applied without explicit confirmation, and never without a rollback path.
+Naming and invention are owned by `RULES.md` §2 and §5 — domain vocabulary only, nothing unconfirmed. On top of them:
+
+1. **Show the model and get approval before writing migrations or generating files.** Present it as a table first.
+2. No `any`. Every field gets a real type, and optionality is a decision, not an accident.
+3. Destructive schema changes (drop, rename, type narrowing, `NOT NULL` on populated columns) are **never** applied without explicit confirmation, and never without a rollback path.
 
 ### Step 0 — Confirm the scenario
 
@@ -116,7 +116,7 @@ Then follow only that scenario's section.
 
 ## Types (all scenarios)
 
-- Where a schema exists, generate types from it and treat the generated file as read-only output. For Supabase this is `supabase gen types` — check the current command and flags in the official docs (RULES.md §3) for the installed CLI version rather than copying a snippet from memory.
+- Where a schema exists, generate types from it and treat the generated file as read-only output. For Supabase this is `supabase gen types` — check the current command and flags for the installed CLI version (RULES.md §3).
 - Re-generate whenever the schema changes, and commit the result so type errors surface in review.
 - Export the app's own model types from one place; screens import from there, never from the generated file directly.
 - Model states the domain actually has. If something is `draft | published | archived`, that is a union type, not a `string`.
@@ -138,7 +138,7 @@ Development should not depend on a populated remote database.
 - `services/` access functions per entity, typed, with errors as part of the return contract rather than thrown strings
 - `docs/DOMAIN.md` — the approved entity tables, the relationships, the scenario, row-level authorization decisions, known limits of the source, and the mock→real swap point
 
-## Acceptance checklist
+### Done when
 
 Before saying this is done, verify and report:
 

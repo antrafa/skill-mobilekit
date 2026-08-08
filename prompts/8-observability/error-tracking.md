@@ -2,7 +2,7 @@
 
 Crash and error reporting. Skip if `PRODUCT.md` marks error tracking "later" or "never" — a prototype does not need it.
 
-Prereq: a Sentry project and DSN.
+Prereq: a Sentry project and DSN. For any app shipping to the EU or Brazil, `privacy-consent.md` decides whether crash reporting may initialize before consent — it is the exception commonly argued for, not an exemption. Run it first.
 
 ---
 

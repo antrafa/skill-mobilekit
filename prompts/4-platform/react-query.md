@@ -36,6 +36,8 @@ Reference for the installed major: https://tanstack.com/query/latest/docs/framew
 - Mutations that invalidate the narrowest key that could have changed. Optimistic updates only where the latency is actually felt, and always with a rollback path
 - Auth: the token comes from the auth layer at request time, not captured at hook creation, or it goes stale after refresh
 
+**Cache persistence** — only if offline reads were chosen in the grill. Persist the query cache with the persister the installed major documents, version the cache so a shape change invalidates it instead of rendering stale structures, and clear it on sign-out — the next account on this device must not see the previous account's data.
+
 **Consumers** — every screen handles loading, error, empty, and success. Empty is not an error state and deserves real copy plus a next action (see `ui-components.md`).
 
 ### Done when
@@ -45,3 +47,4 @@ Reference for the installed major: https://tanstack.com/query/latest/docs/framew
 - [ ] A mutation updates the screen without a manual reload, and a forced failure rolls back
 - [ ] Hook and key names use `DOMAIN.md` vocabulary — no generic `Item`
 - [ ] No screen renders `undefined` while loading
+- [ ] Where persistence was chosen: a cold start in airplane mode renders cached data, and signing out clears it

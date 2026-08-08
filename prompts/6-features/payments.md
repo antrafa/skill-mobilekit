@@ -34,6 +34,8 @@ Integrate Stripe for payments.
 - The endpoint requires authentication and verifies the user may buy this thing
 - A **webhook** endpoint with signature verification as the source of truth for fulfillment. The client returning from the payment sheet is not proof of payment — the user can lose network mid-flow, and the payment still succeeds
 - Idempotency so a retried request does not charge twice
+- Where a saved payment method was chosen in the grill: a Stripe Customer created and stored against the user's server record, and an ephemeral-key endpoint so the sheet can list saved cards — the customer id is never minted client-side
+- Where refunds are in scope: a server-side refund path tied to the order record, with the refund webhook events driving the order's state — an order refunded in the dashboard must not keep showing paid
 
 **App side:**
 
@@ -50,3 +52,5 @@ Integrate Stripe for payments.
 - [ ] An amount tampered with in the request cannot change what is charged
 - [ ] Cancel, decline, and mid-payment network loss all leave a correct, non-duplicated state
 - [ ] Double-tapping pay charges once
+- [ ] Where saved methods were chosen: a returning user sees their saved card in the sheet, and another user does not
+- [ ] Where refunds are in scope: a refund issued in the Stripe dashboard moves the order out of paid via the webhook
