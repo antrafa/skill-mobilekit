@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 # Wire mobilekit into the AI agents installed on this machine.
 # Symlinks only — nothing is copied, no config file is modified.
+#
+# `npx skills add <owner>/<repo>` is the supported alternative and needs none of this.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NAME="$(basename "$REPO")"
 CHECK=0
 EXTRA_DIR=""
 PREFIX="mobilekit-"
+
+# The skill's name comes from SKILL.md's frontmatter, not from the directory it was
+# cloned into — cloning as `skill-mobilekit` must still produce `/mobilekit:*`.
+NAME="$(sed -n 's/^name:[[:space:]]*//p' "$REPO/SKILL.md" | head -1)"
+[ -n "$NAME" ] || { echo "SKILL.md has no name: field" >&2; exit 1; }
 
 usage() {
   cat <<EOF
@@ -56,14 +62,13 @@ link() {
 
 # A flat command dir: one prefixed symlink per command file.
 link_commands_flat() {
-  local dir="$1"
-  local f
+  local dir="$1" f
   for f in "$REPO"/commands/*.md; do
     link "$f" "$dir/${PREFIX}$(basename "$f")"
   done
 }
 
-echo "mobilekit at $REPO"
+echo "$NAME at $REPO"
 [ "$CHECK" = 1 ] && echo "(check only — nothing will be written)"
 
 # --- Claude Code: namespaced command dir, so the whole directory links at once
@@ -75,12 +80,29 @@ else
   echo "Claude Code: not installed, skipped"
 fi
 
-# --- Codex: prompts are a flat directory
+# --- Codex: skills dir if present, and prompts are a flat directory
 if [ -d "$HOME/.codex" ]; then
   echo "Codex:"
+  link "$REPO" "$HOME/.codex/skills/$NAME"
   link_commands_flat "$HOME/.codex/prompts"
 else
   echo "Codex: not installed, skipped"
+fi
+
+# --- Antigravity: global skills live under the Gemini config dir
+if [ -d "$HOME/.gemini" ]; then
+  echo "Antigravity:"
+  link "$REPO" "$HOME/.gemini/antigravity/skills/$NAME"
+else
+  echo "Antigravity: not installed, skipped"
+fi
+
+# --- Cursor
+if [ -d "$HOME/.cursor" ]; then
+  echo "Cursor:"
+  link "$REPO" "$HOME/.cursor/skills/$NAME"
+else
+  echo "Cursor: not installed, skipped"
 fi
 
 # --- Vendor-neutral skill location, when this repo lives somewhere else

@@ -1,98 +1,82 @@
 ---
 name: mobilekit
-description: Guided end-to-end workflow for building React Native / Expo mobile apps — product discovery, design conception, implementation, release, and post-release observability. Use when the user is starting a mobile app, asks what to build next in an Expo project, or invokes any /mobilekit:* command. Carries a phase-organized prompt library covering auth, state, backend, AI, analytics, payments, screens, i18n, offline, testing, accessibility, EAS deploy and monitoring.
+description: Guided end-to-end workflow for building and modernizing React Native / Expo mobile apps — product discovery, design conception, implementation, store release, and post-release observability. Use when starting a mobile app, deciding what to build next in an Expo project, modernizing a legacy or hybrid mobile app, or on any /mobilekit command. Covers auth, APIs, state, backend, AI, media, analytics, payments, screens, i18n, offline, permissions, testing, accessibility, store compliance, EAS deploy and monitoring.
+license: MIT
+metadata:
+  version: 2.0.0
+  tags: [react-native, expo, mobile, ios, android, product-discovery, app-store]
 ---
 
 # mobilekit
 
-A phase-driven workflow over a prompt library. The library lives in `prompts/` next to this file; the target project gets its own copy at `mobilekit/` once `/mobilekit:init` runs.
+A phase-driven workflow over a prompt library. Everything needed to run it lives in this skill: `workflow/` holds one file per phase, `prompts/` holds the library those phases execute.
 
-The value of this skill over reading the files directly is that it knows **where the project is** in the build and refuses steps whose prerequisites are missing.
+The value over reading the files directly is that it knows **where the project is** and refuses steps whose prerequisites are missing.
 
-## Layout in a project
+## Read first, always
 
-The library and the documents it produces are deliberately separate. `PRODUCT.md` is read by people who do not know this skill exists.
+1. **`prompts/RULES.md`** — how prompts are run: grill one question at a time, look facts up, request documentation, invent nothing, report honestly. It is the single source of truth; nothing here restates it.
+2. **`docs/PRODUCT.md`** in the target project — it gates everything. Absent → the answer to almost any request is "run discovery first".
 
-```
-mobilekit/            the prompt library (copied by /mobilekit:init)
-  RULES.md            read before every prompt
-  README.md           index + reference build order
-  1-discovery/  2-design/  3-foundation/  4-platform/
-  5-screens/    6-features/  7-ship/      8-observability/
+## The phases
 
-docs/                 what the workflow produces
-  PRODUCT.md          /mobilekit:discovery
-  DESIGN.md           /mobilekit:design
-  DOMAIN.md           05b-domain-model
-  BUILD-PLAN.md       /mobilekit:plan
-```
+Each is a file in `workflow/`. Read the one you are running; skip the rest.
 
-Folder numbers are phase order. **File numbers are stable IDs** — `05b-domain-model.md` keeps that name wherever it sits, so `BUILD-PLAN.md` entries and prose cross-references between prompts survive reorganization. Never renumber a file.
+| Phase | File | Produces |
+|---|---|---|
+| Install into a project | [`workflow/init.md`](workflow/init.md) | `AGENTS.md`, `docs/` |
+| Product discovery | [`workflow/discovery.md`](workflow/discovery.md) | `docs/PRODUCT.md` |
+| Design conception | [`workflow/design.md`](workflow/design.md) | `docs/DESIGN.md` |
+| Cut the plan | [`workflow/plan.md`](workflow/plan.md) | `docs/BUILD-PLAN.md` |
+| Run the next step | [`workflow/next.md`](workflow/next.md) | ticks a box |
+| Run one step out of order | [`workflow/build.md`](workflow/build.md) | — |
+| Release gate | [`workflow/ship.md`](workflow/ship.md) | a submitted build |
+| Where the project is | [`workflow/status.md`](workflow/status.md) | nothing |
+| Modernize an existing app | [`prompts/9-maintain/legacy-modernization.md`](prompts/9-maintain/legacy-modernization.md) | `docs/MODERNIZATION.md` |
+
+Slash commands, where the host has them, are thin aliases: `/mobilekit:next` → `workflow/next.md`. Where it has none, read the phase file directly — that is the whole mechanism.
+
+**A legacy app enters through modernization, not discovery.** An app that already ships has a domain; the job is to inventory it and choose a migration path, then join the normal flow.
 
 ## State
 
-The presence of the three documents *is* the phase:
+The presence of three documents *is* the phase. Never guess at a missing one.
 
 | File | Written by | Means |
 |---|---|---|
-| `docs/PRODUCT.md` | `/mobilekit:discovery` | The product is defined. Nothing else may run before this exists. |
-| `docs/DESIGN.md` | `/mobilekit:design` | Screens, navigation and per-screen states are decided. |
-| `docs/BUILD-PLAN.md` | `/mobilekit:plan` | An ordered checklist of only the steps this app needs. This is the progress tracker. |
-
-Never guess at a missing one. If `PRODUCT.md` is absent, the answer to almost any `/mobilekit:*` command is "run `/mobilekit:discovery` first".
-
-## Hard rules
-
-These override the general instinct to be helpful by filling gaps:
-
-1. **Never invent the domain.** Not from the folder name, not from an existing template, not from a scaffold. A repo cloned from a tutorial tells you nothing about the product.
-2. **Never decide an `UNDECIDED`.** Ask, then update the file that records it.
-3. **Verify the installed version before writing setup code.** Read `package.json`, then that version's docs via context7 or the official URL. Config layout moved in Tailwind 3→4, NativeWind 4→5, Reanimated 3→4, Sentry 7→8. Setup pasted from memory is the most common failure here.
-4. **Inspect the repo before creating files.** `app/` or `src/app/`? Does `babel.config.js` exist? Follow what is there. Paths in the prompts are illustrative.
-5. **Options are questions.** Where a prompt offers Option A / B / C, present them and recommend one in a line. Do not choose silently.
-6. **Secrets stay server-side.** `EXPO_PUBLIC_*` ships inside the bundle and is public by definition. Never commit keys or `.env`.
-7. **Skip what `PRODUCT.md` marks "later" or "never"** — no prompt run, no dependency installed.
-8. **Report honestly.** What was skipped, what was assumed, what could not be verified. A failed step means showing the output.
+| `docs/PRODUCT.md` | discovery | The product is defined. Nothing else runs before this exists. |
+| `docs/DESIGN.md` | design | Screens, navigation and per-screen states are decided. |
+| `docs/BUILD-PLAN.md` | plan | The ordered checklist of only the steps this app needs. The progress tracker. |
 
 ## Executing a prompt
 
-Every prompt file has the same shape: a header explaining when it applies, a `## Prompt` section, and a `### Done when` checklist.
+Prompts share a shape: a header saying when it applies, a `## Prompt` section, a `### Grill` block holding the developer's decisions, and a `### Done when` checklist. The two that produce a document rather than code — `product-discovery.md` and `design-conception.md` — carry an `## Output` structure in place of the checklist, and are a grill from end to end.
 
-1. Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DESIGN.md` (if it exists) and `AGENTS.md`.
-2. Read the prompt file and follow its `## Prompt` section **as written** — it is the instruction, not a summary to paraphrase.
-3. Answer its "Ask first" block by asking the user. Do not answer it on their behalf.
+1. Read `prompts/RULES.md`, `docs/PRODUCT.md`, `docs/DESIGN.md` (if present) and the project's `AGENTS.md`.
+2. Read the prompt and follow its `## Prompt` section **as written** — it is the instruction, not a summary to paraphrase.
+3. Work its `### Grill` block one question at a time, recommending an answer to each. Look facts up; put decisions to the developer.
 4. Build.
-5. Walk its `Done when` checklist and report each item as met, not met, or not verifiable. Do not tick a box you did not test.
+5. Walk `Done when` and report each item met, not met, or not verifiable.
 6. If `docs/BUILD-PLAN.md` exists, mark that step done in it.
-
-## Phase map
-
-```
-idea      → /mobilekit:discovery   1-discovery/00-product-discovery   → docs/PRODUCT.md
-            /mobilekit:init        1-discovery/00-agents-md-guide     → AGENTS.md + mobilekit/
-design    → /mobilekit:design      2-design/                          → docs/DESIGN.md
-plan      → /mobilekit:plan        (reads both)                       → docs/BUILD-PLAN.md
-build     → /mobilekit:next        the next unchecked step
-            /mobilekit:build <x>   one step, out of order
-ship      → /mobilekit:ship        7-ship/ + 8-observability/09       → release gate
-observe   → /mobilekit:build 34    8-observability/34                 → after real users
-```
-
-`/mobilekit:status` reads the three documents and says where the project is.
 
 ## Finding a prompt
 
-Glob `mobilekit/**/<number>-*.md` — file numbers are unique across the library, so a number alone resolves. By phase:
+`prompts/` is organized by phase; filenames are the ids.
 
 | Folder | Contains |
 |---|---|
-| `1-discovery` | 00-product-discovery, 00-agents-md-guide |
-| `2-design` | 00c-design-conception, 03-design-system |
-| `3-foundation` | 01-expo-project-setup, 02-nativewind-setup, 05b-domain-model, 24-common-ui-components |
-| `4-platform` | 04-authentication-clerk, 05-authentication-database, 06-supabase-setup, 07-zustand-setup, 12-react-query, 27-secure-backend-integration |
-| `5-screens` | 15-onboarding, 16-tab-navigation, 17-home, 18-detail, 19-profile, 20-settings, 21-form, 22-list, 23-modal-bottom-sheet |
-| `6-features` | 10-push-notifications, 11-reanimated, 13-revenuecat, 14-payment-gateway, 25-dark-mode, 28-ai-features, 29-internationalization, 31-offline-support, 32-deep-linking |
-| `7-ship` | 30-testing, 33-accessibility-audit, 26-eas-build-deploy |
-| `8-observability` | 08-posthog-analytics, 09-sentry-error-tracking, 34-post-release-observability |
+| `1-discovery` | product-discovery, agents-md |
+| `2-design` | design-conception, design-system |
+| `3-foundation` | expo-setup, nativewind, domain-model, ui-components |
+| `4-platform` | auth-clerk, auth-backend, biometric-lock, supabase, api-integration, zustand, react-query, secure-backend, native-permissions |
+| `5-screens` | onboarding, tab-navigation, home-screen, list-screen, detail-screen, form-screens, modals-sheets, profile-screen, settings-screen, account-recovery |
+| `6-features` | push-notifications, deep-linking, media-upload, content-moderation, animations, dark-mode, i18n, offline, ai-features, in-app-purchases, payments |
+| `7-ship` | testing, accessibility, performance, store-compliance, ci-cd, eas-build |
+| `8-observability` | privacy-consent, analytics, error-tracking, post-release, release-rollback |
+| `9-maintain` | legacy-modernization, sdk-upgrade |
 
-Full descriptions and the reference build order: `mobilekit/README.md`.
+Descriptions and the reference build order: [`prompts/README.md`](prompts/README.md).
+
+## Where the library is read from
+
+Prompts are read from this skill, wherever it is installed. `workflow/init.md` writes documents into the project and copies nothing — a correction to a prompt reaches every project at once. A project needing its own rules writes `docs/mobilekit-overrides.md`, read after `prompts/RULES.md` and winning on conflict.
