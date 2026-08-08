@@ -4,6 +4,8 @@ Eight commands, one per phase of the workflow. Each is a thin alias for a file i
 
 Invocation differs by host: `/mobilekit:next` in Claude Code, `/mobilekit-next` in Codex, and "run the mobilekit next phase" in anything else. This page uses the Claude Code form.
 
+New to the workflow? [TUTORIAL.md](TUTORIAL.md) walks one app through every phase with a worked example; this page is the reference.
+
 **Reading order if you are new:** [`init`](#mobilekitinit) → [`discovery`](#mobilekitdiscovery) → [`design`](#mobilekitdesign) → [`plan`](#mobilekitplan) → [`next`](#mobilekitnext) until the plan is empty → [`ship`](#mobilekitship).
 
 ---
