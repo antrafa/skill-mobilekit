@@ -1,0 +1,3 @@
+interface:
+  display_name: "mobilekit"
+  short_description: "Phase-driven workflow for building Expo / React Native apps"

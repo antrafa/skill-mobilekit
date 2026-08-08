@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# Wire mobilekit into the AI agents installed on this machine.
+# Symlinks only — nothing is copied, no config file is modified.
+set -euo pipefail
+
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NAME="$(basename "$REPO")"
+CHECK=0
+EXTRA_DIR=""
+PREFIX="mobilekit-"
+
+usage() {
+  cat <<EOF
+usage: install.sh [--check] [--commands-dir DIR] [--prefix P]
+
+  --check              verify existing links, change nothing
+  --commands-dir DIR   also link each command into DIR (for an agent not known here)
+  --prefix P           filename prefix used in flat command dirs   [default: mobilekit-]
+EOF
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --check) CHECK=1 ;;
+    --commands-dir) EXTRA_DIR="${2:?--commands-dir needs a path}"; shift ;;
+    --prefix) PREFIX="${2:?--prefix needs a value}"; shift ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "unknown option: $1" >&2; usage >&2; exit 2 ;;
+  esac
+  shift
+done
+
+ok=0; skipped=0; conflict=0
+
+# link TARGET LINK — idempotent; never clobbers something that is not ours
+link() {
+  local target="$1" link="$2"
+  if [ -L "$link" ]; then
+    if [ "$(readlink -f "$link")" = "$(readlink -f "$target")" ]; then
+      printf '  ok       %s\n' "$link"; ok=$((ok+1)); return
+    fi
+    printf '  CONFLICT %s -> %s (expected %s)\n' "$link" "$(readlink "$link")" "$target" >&2
+    conflict=$((conflict+1)); return
+  fi
+  if [ -e "$link" ]; then
+    printf '  CONFLICT %s exists and is not a symlink — left alone\n' "$link" >&2
+    conflict=$((conflict+1)); return
+  fi
+  if [ "$CHECK" = 1 ]; then
+    printf '  missing  %s\n' "$link"; skipped=$((skipped+1)); return
+  fi
+  mkdir -p "$(dirname "$link")"
+  ln -s "$target" "$link"
+  printf '  linked   %s\n' "$link"; ok=$((ok+1))
+}
+
+# A flat command dir: one prefixed symlink per command file.
+link_commands_flat() {
+  local dir="$1"
+  local f
+  for f in "$REPO"/commands/*.md; do
+    link "$f" "$dir/${PREFIX}$(basename "$f")"
+  done
+}
+
+echo "mobilekit at $REPO"
+[ "$CHECK" = 1 ] && echo "(check only — nothing will be written)"
+
+# --- Claude Code: namespaced command dir, so the whole directory links at once
+if [ -d "$HOME/.claude" ]; then
+  echo "Claude Code:"
+  link "$REPO" "$HOME/.claude/skills/$NAME"
+  link "$REPO/commands" "$HOME/.claude/commands/$NAME"
+else
+  echo "Claude Code: not installed, skipped"
+fi
+
+# --- Codex: prompts are a flat directory
+if [ -d "$HOME/.codex" ]; then
+  echo "Codex:"
+  link_commands_flat "$HOME/.codex/prompts"
+else
+  echo "Codex: not installed, skipped"
+fi
+
+# --- Vendor-neutral skill location, when this repo lives somewhere else
+if [ -d "$HOME/.agents/skills" ] && [ "$REPO" != "$HOME/.agents/skills/$NAME" ]; then
+  echo "Agent skills:"
+  link "$REPO" "$HOME/.agents/skills/$NAME"
+fi
+
+# --- Anything else, by explicit path
+if [ -n "$EXTRA_DIR" ]; then
+  echo "$EXTRA_DIR:"
+  link_commands_flat "$EXTRA_DIR"
+fi
+
+echo
+echo "linked/ok: $ok · missing: $skipped · conflicts: $conflict"
+if [ "$conflict" -gt 0 ]; then
+  echo "Resolve the conflicts above by hand — nothing was overwritten." >&2
+  exit 1
+fi
+[ "$CHECK" = 1 ] && [ "$skipped" -gt 0 ] && exit 1
+exit 0
