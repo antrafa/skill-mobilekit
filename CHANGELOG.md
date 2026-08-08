@@ -4,6 +4,52 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] — 2026-08-08
+
+### Added
+
+- **Six prompts closing critical-path gaps** found by a full audit of the library (57 prompts now):
+  - `3-foundation/app-shell.md` — the root layout had no owner: auth, onboarding, hydration and
+    the biometric lock all fought for it. Now they plug into one gate with a boot list behind
+    the splash and the app-wide error boundary.
+  - `3-foundation/dev-environment.md` — dev build vs Expo Go, devices, env files per
+    environment, repo hygiene. Decided once, right after `expo-setup`, instead of discovered
+    when Expo Go stops being enough.
+  - `1-discovery/monetization.md` — a concept round that derives how the app earns from
+    `PRODUCT.md` signals and teaches as it asks. Writes `PRODUCT.md §Monetization`, which
+    `plan`, `in-app-purchases`, `payments` and `ads` read instead of re-asking.
+  - `6-features/ads.md` — AdMob behind the consent chain; ads leave the not-covered list.
+  - `7-ship/beta-and-review.md` — TestFlight / Play tracks with exit criteria, and the store
+    rejection loop treated as the normal case.
+  - `7-ship/security-review.md` — the adversarial sweep: re-test every ticked security check
+    on the release build, the joints between features, the device storage dump, the logs, the
+    red dependency audit. The ship gate is now nine steps.
+- Consumable credits in `in-app-purchases.md` — server-side balance, granted exactly once,
+  spent where the metered action runs.
+- The README states the backend boundary explicitly: managed backend, API routes for
+  secrets, or an existing API — building a standalone server is out of scope.
+
+### Fixed
+
+- Cross-prompt contracts that never landed at their target: the permission and biometric rows
+  in `settings-screen`, storage and realtime in `supabase`, cache persistence in
+  `react-query`, saved methods and refunds in `payments`, the consent gate ahead of
+  `analytics` and `error-tracking`, and the kill switch `release-rollback` depends on.
+- Release gaps in `eas-build` and `ci-cd`: recommended defaults on every grill question,
+  Android keystore backup, and a `runtimeVersion` policy so an OTA update cannot land on an
+  incompatible binary.
+- Four prerequisite inversions in the reference build order (`deep-linking`,
+  `secure-backend`, `account-recovery`, `release-rollback`), and the ship order divergence
+  between `prompts/README.md` and `workflow/ship.md`.
+
+### Changed
+
+- Deduplication throughout: prompts point at the `RULES.md` section that owns each rule
+  instead of restating it, and the screen state blocks defer to `DESIGN.md`, keeping only
+  their screen-specific states.
+- Checklist headings normalized to `Done when` across the library.
+- All six tutorials and the command reference reflect the new flow.
+
 ## [2.1.0] — 2026-08-08
 
 ### Added
