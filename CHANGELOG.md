@@ -4,6 +4,33 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] — 2026-08-08
+
+### Added
+
+- **Six tutorials, indexed by starting point** in `docs/TUTORIALS.md`. The reference in
+  `docs/COMMANDS.md` answers "what does `ship` do" but not "what does building an app with
+  this feel like", and the second question is the one that decides whether the workflow gets
+  used correctly. Each tutorial shows the commands typed, the documents produced, and where
+  the agent stops and asks — with a worked example whose domain needs no explanation.
+  - `tutorials/quickstart.md` — shared shopping list. Thirty minutes, no paid accounts, no
+    backend. Ends at the first green step. Teaches why the plan comes out short: because the
+    answers were short.
+  - `tutorials/new-app.md` — book club. The full path to a monitored release.
+  - `tutorials/social-app.md` — plant-swap community. Auth, row-level authorization,
+    moderation as a store requirement, consent before any SDK initializes.
+  - `tutorials/external-api.md` — transport timetables. The documentation ask, DTO versus
+    domain, and how the source's limits decide what a screen can promise.
+  - `tutorials/existing-project.md` — half-built workout journal. Adoption without
+    restarting: `plan` ticking what already exists, and `status` catching drift.
+  - `tutorials/legacy-app.md` — time-clock app in Cordova. The second entry point, where
+    inventory replaces the interview, plus shorter treatments of the other three scenarios.
+
+### Changed
+
+- `README.md` and `docs/COMMANDS.md` point at the tutorial index rather than at a single
+  walkthrough.
+
 ## [2.0.0] — 2026-08-08
 
 A structural release. The workflow engine moved into the skill so the whole thing works

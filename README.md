@@ -6,7 +6,7 @@
 
 51 prompts · 8 phases · 9 phase commands · works with Claude Code, Codex, Antigravity, Cursor, and anything that reads `AGENTS.md`
 
-[Install](#install) · [Quick start](#quick-start) · [Tutorial](docs/TUTORIAL.md) · [Command reference](docs/COMMANDS.md) · [Prompt library](prompts/README.md) · [Contributing](CONTRIBUTING.md)
+[Install](#install) · [Quick start](#quick-start) · [Tutorials](docs/TUTORIALS.md) · [Command reference](docs/COMMANDS.md) · [Prompt library](prompts/README.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
@@ -93,7 +93,7 @@ cd my-app
 
 Discovery takes ten to twenty minutes of your attention and is the step that decides whether everything after it is worth anything. It asks one question at a time, with a recommended default for each, so most answers are a confirmation.
 
-A full walkthrough of one app from idea to a monitored release — including what the agent asks, where it stops, and what the generated documents actually look like — is in **[docs/TUTORIAL.md](docs/TUTORIAL.md)**.
+Six walkthroughs cover the situations you might be starting from — a first 30 minutes, a full app from scratch, a social app, an API you do not control, a project you already started, and an app already in the stores. Pick yours in **[docs/TUTORIALS.md](docs/TUTORIALS.md)**.
 
 ### An app that already ships
 
@@ -143,7 +143,7 @@ Runs a single prompt out of order, and tells you which prerequisites are missing
 | [`status`](docs/COMMANDS.md#mobilekitstatus) | Where the project is, and where the plan disagrees with the repo | nothing |
 
 Full reference, with what each command reads, refuses and produces: **[docs/COMMANDS.md](docs/COMMANDS.md)**.
-End-to-end walkthrough with a worked example: **[docs/TUTORIAL.md](docs/TUTORIAL.md)**.
+Walkthroughs with worked examples, by starting point: **[docs/TUTORIALS.md](docs/TUTORIALS.md)**.
 
 ### State lives in documents, not in a database
 

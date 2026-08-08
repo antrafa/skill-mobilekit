@@ -3,7 +3,7 @@ name: mobilekit
 description: Guided end-to-end workflow for building and modernizing React Native / Expo mobile apps — product discovery, design conception, implementation, store release, and post-release observability. Use when starting a mobile app, deciding what to build next in an Expo project, modernizing a legacy or hybrid mobile app, or on any /mobilekit command. Covers auth, APIs, state, backend, AI, media, analytics, payments, screens, i18n, offline, permissions, testing, accessibility, store compliance, EAS deploy and monitoring.
 license: MIT
 metadata:
-  version: 2.0.0
+  version: 2.1.0
   tags: [react-native, expo, mobile, ios, android, product-discovery, app-store]
 ---
 

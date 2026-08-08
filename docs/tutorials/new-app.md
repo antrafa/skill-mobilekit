@@ -1,10 +1,12 @@
-# Building a complete app with mobilekit
+# Building a complete app from scratch
 
-A walkthrough of one app from idea to a monitored release, showing what you type, what the agent does, and — more usefully — **where it stops and asks you**, because that is where the quality comes from.
+The full path, from idea to a monitored release — what you type, what the agent does, and, more usefully, **where it stops and asks you**, because that is where the quality comes from.
 
-The example throughout is **Sarau**, a book-club app. It is small enough to follow and large enough to exercise most of the library: a hierarchical domain, accounts, offline reading, scheduled reminders, and a handful of capabilities deliberately marked "never" so you can see the plan get cut.
+The example throughout is **Sarau**, a book-club app. Small enough to follow, large enough to exercise most of the library: a hierarchical domain, accounts, offline reading, scheduled reminders, and a handful of capabilities deliberately marked "never" so you can watch the plan get cut.
 
 Substitute your own app and the shape holds.
+
+> **Not your starting point?** [Thirty minutes and no accounts](quickstart.md) · [users see each other's content](social-app.md) · [the data is behind someone else's API](external-api.md) · [a project you already started](existing-project.md) · [an app already in the stores](legacy-app.md). Full index: [TUTORIALS.md](../TUTORIALS.md).
 
 ---
 
@@ -294,9 +296,11 @@ Because mobile has no rollback. A binary already installed on a phone cannot be 
 
 ## Where to look next
 
-- [`COMMANDS.md`](COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../prompts/README.md) — all 51 prompts with a description each, and the reference build order
-- [`../prompts/RULES.md`](../prompts/RULES.md) — the rules every prompt inherits. Worth reading once yourself.
-- [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — adding a prompt, or a whole vertical the library does not cover
+- [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
+- [`../prompts/README.md`](../../prompts/README.md) — all 51 prompts with a description each, and the reference build order
+- [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Worth reading once yourself.
+- [`../CONTRIBUTING.md`](../../CONTRIBUTING.md) — adding a prompt, or a whole vertical the library does not cover
 
-**Already have an app in production?** None of the above is your entry point. Run `/mobilekit:build legacy` — a shipping app has a domain, users and constraints that outrank any interview, so inventory replaces discovery. It reads the code and both store listings, builds the dependency matrix, produces the parity list, and derives `PRODUCT.md` from what it found, asking only about the gaps. From there this walkthrough applies unchanged.
+**Already have an app in production?** None of the above is your entry point. A shipping app has a domain, users and links that outrank any interview, so inventory replaces discovery — [legacy-app.md](legacy-app.md) walks that path, across all four starting points.
+
+**Building something with a shape this example did not cover?** [social-app.md](social-app.md) for an app where members see each other's content, and the authorization and moderation work that comes with it. [external-api.md](external-api.md) for data behind an API you cannot change.
