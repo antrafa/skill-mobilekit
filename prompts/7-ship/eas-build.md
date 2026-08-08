@@ -17,7 +17,7 @@ Set up EAS Build for this app.
 - Which platforms ship, and to which stores? `PRODUCT.md` records this — read it and confirm it still holds.
 - Are the developer accounts and store listings in place? A fact to check: missing accounts block submission, not building.
 - Who owns the credentials — EAS-managed or manually supplied? Recommended default: EAS-managed — it removes the most error-prone manual steps, and remote builds need them server-side anyway. Manual only where a security policy requires holding the keys.
-- Which environments are needed (development, preview, production), and does each point at a different backend? Recommended default: all three, one variable set each — pointing preview at production's backend is how test data reaches real users.
+- Which environments are needed (development, preview, production), and does each point at a different backend? A fact first: `dev-environment.md` already named the environments and their variable sets — read them, and keep the profile names matched. Recommended default: all three, one variable set each — pointing preview at production's backend is how test data reaches real users.
 - Is over-the-air updating wanted? Recommended default: yes, scoped to JS-only fixes. A native dependency added later still needs a store build — confirm the developer understands the boundary.
 
 ### Build
@@ -35,7 +35,7 @@ Set up EAS Build for this app.
 **Verification before the first store build**
 
 - Confirm the bundle contains no secret: build, then search the output for known secret values
-- Test a preview build on a physical device — not a simulator build — before submitting
+- Test a preview build on a physical device — not a simulator build — before submitting. Distribution to testers and the review loop belong to `beta-and-review.md`, which runs next
 
 **Submission and updates** — configure submission for the target stores, then set up update channels matched to build profiles so a preview update cannot reach production users. Update messages should say what changed.
 

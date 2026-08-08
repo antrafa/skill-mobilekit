@@ -13,7 +13,7 @@ Run the first unchecked step of the plan. Alias: `/mobilekit:next`.
 
 ## Every box checked
 
-The plan is done, not the product. Not yet submitted → the ship phase. Submitted → `prompts/8-observability/post-release.md`. A next version taking shape → a discovery round for the delta, then the plan phase to extend `BUILD-PLAN.md`.
+The plan is done, not the product. Not yet submitted → the ship phase. Submitted → `prompts/8-observability/post-release.md`. A next version taking shape → a discovery round for the delta, then the plan phase to extend `BUILD-PLAN.md`. And every Expo SDK cycle, `prompts/9-maintain/sdk-upgrade.md` — on a schedule, not when something breaks.
 
 ## Blocked
 

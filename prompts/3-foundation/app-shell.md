@@ -14,7 +14,7 @@ Build the app shell: root layout, boot sequence, and the app-wide error boundary
 
 ### Grill
 
-- **What must resolve before the first screen shows?** Fonts, store hydration, a stored session, onboarding-seen — list it from what is actually installed and planned, then confirm. Everything on the list resolves behind the splash screen, in one place; everything off it loads after first render.
+- **What must resolve before the first screen shows?** Fonts, store hydration, a stored session, onboarding-seen — and the stored consent decision, where `privacy-consent.md` will apply. List it from what is actually installed and planned, then confirm. Everything on the list resolves behind the splash screen, in one place; everything off it loads after first render.
 - **What are the cold-start destinations?** `DESIGN.md` records them — new user → ?, signed-out → ?, signed-in → ?. If it does not, ask and write the answers back to it.
 - **Route groups?** Recommended default: `(auth)` and `(app)`, plus `(onboarding)` where that flow exists — the redirect then lives in one layout per group instead of one check per screen.
 - **What does the user see when boot fails** — a corrupted store, a hydration error? Recommended default: a plain-language screen with a retry, never a splash that hangs forever.

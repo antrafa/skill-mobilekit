@@ -1,6 +1,6 @@
 # Payment Gateway (Stripe)
 
-For physical goods, services, or bookings. Skip unless `PRODUCT.md` marks payments "now".
+For physical goods, services, or bookings — model F in `PRODUCT.md`'s Monetization section. Skip unless that section selects it, or the Capabilities table marks payments "now".
 
 Digital content and subscriptions inside the app must use store billing instead — see `in-app-purchases.md`. Shipping the wrong one gets the app rejected.
 

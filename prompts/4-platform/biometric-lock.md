@@ -32,7 +32,7 @@ Consult the biometrics and secure-storage APIs for the installed versions before
 
 **The gate**
 
-- One place decides locked vs unlocked, read by the root layout. A per-screen check gets forgotten on the screen added next month
+- One place decides locked vs unlocked, read by the gate `app-shell.md` built in the root layout. A per-screen check gets forgotten on the screen added next month
 - Re-arm from real app-state transitions, and record the time the app left the foreground — a timer that only runs while the app is alive never fires
 - **A mandatory PIN or passcode fallback.** Biometrics fail on wet hands, a changed face, a cracked sensor, and every device with nothing enrolled. A lock with no fallback locks the user out of their own data, and the only remaining fix is a reinstall that also destroys local state
 - Device with no biometric hardware or nothing enrolled: fall back to the passcode, or leave the feature unavailable and say why in settings. Never show a scan prompt that cannot succeed

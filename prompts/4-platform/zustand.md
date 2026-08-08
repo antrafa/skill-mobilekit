@@ -30,7 +30,7 @@ State the resulting field list and wait for confirmation before writing the stor
 - Typed state interfaces, actions named for intent (`selectX`, `completeX`), and a `reset` used by sign-out
 - A `version` and migration function on the persisted store. Adding a field later without one leaves existing installs with stale shapes — cheap now, painful after release
 
-**Hydration** — persisted state loads asynchronously. Gate routing on the store having hydrated, or the first render sees defaults and redirects a returning user to onboarding. Handle it once in the root layout, not per screen.
+**Hydration** — persisted state loads asynchronously. Add hydration to the boot list `app-shell.md` gates behind the splash, or the first render sees defaults and redirects a returning user to onboarding. Once, in that gate — not per screen.
 
 **Dev affordance** — a way to clear persisted state while developing (a debug action or a screen button), visible only in development builds.
 

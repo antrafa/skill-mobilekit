@@ -25,7 +25,7 @@ You are designing the screen and navigation structure of this app. **Write no ap
 Derive the list from the core journey, then confirm it:
 
 1. Walk the core journey from `PRODUCT.md` and name one screen per step. Present that list and ask what is missing.
-2. For each capability marked "now", which screen carries it? A capability with no screen is either unreachable or belongs to a screen already listed.
+2. For each capability marked "now", which screen carries it? A capability with no screen is either unreachable or belongs to a screen already listed. A `## Monetization` section in `PRODUCT.md` counts here: the paywall and each boundary state it names are screens, and they enter the inventory now.
 3. Which of these are the 3 screens the app is pointless without? Those get built first; the rest wait.
 
 Classify each screen: **core** (journey), **support** (profile, settings), **entry** (onboarding, auth), **later**.

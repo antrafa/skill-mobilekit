@@ -29,7 +29,7 @@ Then confirm:
 
 - The confirmed pattern, using design system tokens only
 - Persist a completed flag so it never shows twice; route past it on subsequent launches
-- Handle it in the root layout together with auth state, so a returning signed-in user never sees onboarding flash
+- Plug the completed flag into the gate `app-shell.md` built, next to auth state, so a returning signed-in user never sees onboarding flash
 - For C, store answers using the domain vocabulary from `DOMAIN.md`
 - Restrained motion (fade or slide); honor reduced-motion
 

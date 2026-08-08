@@ -18,10 +18,8 @@ Integrate RevenueCat for purchases and entitlement checks.
 
 ### Grill
 
-- What exactly is behind the paywall — which screens or actions? Get the list; do not guess.
-- Subscription, one-time purchase, or consumable? What tiers and trial?
+- The model, the tiers, the trial, the free/paid boundary and what a non-paying user sees are recorded in `PRODUCT.md` §Monetization — read them; ask only what that section leaves `UNDECIDED`. No section → run `monetization.md` first.
 - Entitlement identifiers as configured in RevenueCat (not product ids).
-- What does a **non**-paying user see: a locked screen, a limited version, or a usage cap?
 - Is entitlement also needed server-side (to gate an API), or is client-side gating enough? Server-side means webhooks — a separate step.
 
 ### Build

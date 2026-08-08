@@ -135,7 +135,6 @@ ui-components                                  (only the shared list from DESIGN
 app-shell                                      (root layout and boot sequence — before any screen or auth)
 onboarding
 auth-clerk | auth-backend                      (skip if PRODUCT.md says no accounts)
-account-recovery                               (if the app has passwords)
 supabase | api-integration                     (whichever backend applies)
 zustand
 react-query                                    (if data comes from a remote source)
@@ -147,30 +146,31 @@ form-screens                                   (if users create data)
 modals-sheets
 profile-screen
 settings-screen
+deep-linking                                   (routes exist now; account-recovery, push, payments and OAuth need it)
+account-recovery                               (if the app has passwords)
 native-permissions                             (before any feature that asks for one)
+secure-backend                                 (before any service with a secret — signed uploads included)
 media-upload                                   (if the app handles photos, video or audio)
 content-moderation                             (if users publish anything others see)
 animations
 dark-mode
 i18n                                           (if multiple languages)
-secure-backend                                 (before any service with a secret)
 ai-features                                    (if AI is in scope)
 in-app-purchases | payments | ads              (the ones PRODUCT.md §Monetization selects)
 privacy-consent                                (before any analytics SDK initializes)
 analytics
 error-tracking
 push-notifications
-deep-linking                                   (needed by push, payments, and OAuth)
 biometric-lock                                 (if the data justifies it)
 offline                                        (if required)
 testing                                        (earlier if the app handles money or auth)
-performance
 accessibility                                  (before first submission)
+performance
 store-compliance                               (before first submission)
 ci-cd                                          (once more than one person commits)
 eas-build
+release-rollback                               (prepared before the first release — beta executes its staged rollout)
 beta-and-review                                (testers before the public; the rejection loop)
-release-rollback                               (prepared before the first release)
 post-release                                   (after real users, not before)
 sdk-upgrade                                    (every SDK cycle, forever)
 ```

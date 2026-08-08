@@ -32,3 +32,5 @@ Do **not** install styling, state management, auth, or analytics libraries here 
 - [ ] `npx expo start` runs and the placeholder route renders on a device or simulator
 - [ ] The source-root decision (`src/` or root) is recorded in AGENTS.md
 - [ ] No dependency installed that no capability in `PRODUCT.md` requires
+
+`dev-environment.md` runs next — dev build vs Expo Go, devices and env files are its decisions, not this prompt's.

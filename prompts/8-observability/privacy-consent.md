@@ -30,7 +30,7 @@ Whether consent is legally required here, and on what basis, belongs to the deve
 **Deferred initialization**
 
 - No analytics, attribution or crash SDK initializes until the consent state is known. Importing the module at the top of a screen is often enough to start it — check what the installed version does on import, not only on the init call.
-- The stored decision is read before the first paint, which puts it in the same root-layout gate as auth and theme hydration. A gate that resolves one frame late is a frame of collection.
+- The stored decision is read before the first paint — add it to the boot list of the gate `app-shell.md` owns, never a second gate — which puts it in the same root-layout gate as auth and theme hydration. A gate that resolves one frame late is a frame of collection.
 - A crash reporter is the common exception argued for. If it ships pre-consent, state exactly what it sends in that window — device model, OS, IP, stack frames, any user id — and get that decided by the policy owner rather than assumed because "crashes aren't personal data".
 
 **The consent surface**

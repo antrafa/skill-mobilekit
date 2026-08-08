@@ -33,7 +33,7 @@ Implement authentication against our own backend.
 
 **Supabase path** — use the client's auth methods and its auth-state subscription as the single source of truth rather than mirroring session state by hand. Configure secure session storage per the installed `@supabase/supabase-js` version's docs (see `supabase.md`).
 
-**Routing** — provider at the root, initial route decided from `isAuthenticated` once loading resolves.
+**Routing** — plug `isAuthenticated` and `isLoading` into the gate `app-shell.md` built in the root layout; the session joins the boot list behind the splash. No second gate.
 
 **Wire the existing UI** — connect the auth UI from `auth-clerk.md` Step 1: loading on submit, inline errors, verification submission, navigate on success. Do not change the designs.
 
