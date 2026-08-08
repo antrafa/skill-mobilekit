@@ -8,7 +8,7 @@ Run this **before** the prompt for the specific service. Every one of them fails
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Set up secure server-side integration for [service].
 
@@ -18,7 +18,7 @@ Set up secure server-side integration for [service].
 
 Publishable/anon keys designed to be public are fine. If the provider's docs call it a secret key, it is server-side only.
 
-### Ask first
+### Grill
 
 - **Where does server-side code run?** Expo API routes in this repo, an existing backend, or a separate service? Expo API routes require a server output target and real hosting — a static export has no routes. Confirm the deployment target before writing one.
 - Which operations genuinely need the secret? Anything else can stay client-side.

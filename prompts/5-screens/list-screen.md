@@ -6,11 +6,11 @@ A browsable collection of one entity, with search and filtering.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Build the list screen.
 
-### Ask first
+### Grill
 
 - **Which entity, and what is the default sort order?** Both from `DOMAIN.md`. A list with an arbitrary order is a list users cannot trust.
 - Roughly how many records — tens, thousands, unbounded? This decides whether pagination is needed at all.

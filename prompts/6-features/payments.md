@@ -2,27 +2,27 @@
 
 For physical goods, services, or bookings. Skip unless `PRODUCT.md` marks payments "now".
 
-Digital content and subscriptions inside the app must use store billing instead — see `13-revenuecat-purchases.md`. Shipping the wrong one gets the app rejected.
+Digital content and subscriptions inside the app must use store billing instead — see `in-app-purchases.md`. Shipping the wrong one gets the app rejected.
 
-Prereqs: a Stripe account, and a server you control (Expo API route or backend) — there is no client-only path. Run `27-secure-backend-integration.md` first; the authentication, authorization, and secret-handling rules for the endpoints below live there.
+Prereqs: a Stripe account, and a server you control (Expo API route or backend) — there is no client-only path. Run `secure-backend.md` first; the authentication, authorization, and secret-handling rules for the endpoints below live there.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Integrate Stripe for payments.
 
 **Check the installed `@stripe/stripe-react-native` and `stripe` versions and follow their docs** (https://docs.stripe.com/payments/accept-a-payment?platform=react-native). API versions and the payment-sheet options change; do not paste initialization from memory.
 
-### Ask first
+### Grill
 
 - What is being charged for, and is the amount computed server-side? **It must be** — an amount sent from the app is an amount the user can edit.
 - One-time payment, saved payment method for later, or recurring billing?
 - Apple Pay / Google Pay? Each needs additional platform configuration and a merchant identifier.
 - Which currencies, and is tax or shipping involved?
-- What happens **after** payment succeeds — which record is created, and where? That record is the order (see `05b-domain-model.md`).
+- What happens **after** payment succeeds — which record is created, and where? That record is the order (see `domain-model.md`).
 - Refunds and cancellations: in scope now?
 
 ### Build

@@ -1,6 +1,6 @@
 # Post-Release Observability
 
-`08-posthog-analytics.md` and `09-sentry-error-tracking.md` install the instrumentation. This one decides **what you actually look at once the app is in users' hands**, and what wakes someone up.
+`analytics.md` and `error-tracking.md` install the instrumentation. This one decides **what you actually look at once the app is in users' hands**, and what wakes someone up.
 
 A dashboard with every event on it is the same as no dashboard. Run this after the first production build reaches real users — not before, because you cannot set a threshold on a number you have never seen.
 
@@ -10,11 +10,11 @@ Prereq: analytics and error tracking already shipping data from a production bui
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Define what this app is monitored on after release.
 
-### Ask first
+### Grill
 
 - Has a production build actually been out long enough to produce a baseline? If not, stop — set the instrumentation up, ship, and come back. Thresholds invented before data are noise generators.
 - Who is on the receiving end of an alert, and through what? An alert nobody reads is worse than no alert: it trains the team to ignore the channel.
@@ -26,7 +26,7 @@ Everything else is diagnostic. These four are the ones checked without being ask
 
 1. **Crash-free session rate** — from the error tracker's release health. This is the single number that says whether the last build is safe. Set the alert on a *drop relative to the previous release*, not an absolute floor.
 2. **The success action, per day** — the action `PRODUCT.md` names as "this app worked". If this falls and nothing crashed, something in the funnel broke silently, which is worse.
-3. **Drop-off at the worst funnel step** — from the funnel built in `08`. Watch the step, not the total.
+3. **Drop-off at the worst funnel step** — from the funnel built in `analytics.md`. Watch the step, not the total.
 4. **New unhandled error types in the current release** — a *new* signature matters; a known one at stable volume does not.
 
 Present these four with the number each is at today. If any cannot be produced, say which instrumentation is missing rather than substituting a proxy.

@@ -2,7 +2,7 @@
 
 For subscriptions and one-time purchases of **digital** content. Skip unless `PRODUCT.md` marks purchases "now".
 
-If the app sells physical goods or services, use `14-payment-gateway.md` instead — app-store billing is required for digital content, and forbidden for most physical goods.
+If the app sells physical goods or services, use `payments.md` instead — app-store billing is required for digital content, and forbidden for most physical goods.
 
 Prereqs: RevenueCat account; App Store Connect and/or Google Play products configured; paid developer accounts. Purchases cannot be tested in Expo Go — a development build and sandbox accounts are required.
 
@@ -10,13 +10,13 @@ Prereqs: RevenueCat account; App Store Connect and/or Google Play products confi
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Integrate RevenueCat for purchases and entitlement checks.
 
-**Check the installed `react-native-purchases` version and follow its docs** (context7, or https://www.revenuecat.com/docs/getting-started/installation/reactnative) for configuration, offerings, and the customer-info listener API.
+**Check the installed `react-native-purchases` version and follow its docs** (RULES.md §3 · canonical: https://www.revenuecat.com/docs/getting-started/installation/reactnative) for configuration, offerings, and the customer-info listener API.
 
-### Ask first
+### Grill
 
 - What exactly is behind the paywall — which screens or actions? Get the list; do not guess.
 - Subscription, one-time purchase, or consumable? What tiers and trial?

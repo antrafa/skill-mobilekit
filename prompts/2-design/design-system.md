@@ -6,18 +6,18 @@ Establish the visual foundation: color, type, spacing, radius, elevation — cen
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Define this app's design system.
 
-### Ask first
+### Grill
 
 `PRODUCT.md` records the design source. Confirm which applies:
 
 - **A — A design reference exists** (Figma export, screenshots, brand palette). Extract the palette, type scale, spacing rhythm, radii, and shadow style from it. Attach it: `@path/to/design.png`
 - **B — Nothing exists yet.** Propose a direction before building it: 2–3 palette options and a font pairing, each in one line with what it signals. Wait for a choice — do not pick a palette for someone's product.
 
-Also confirm: does the app need dark mode now? If yes, define tokens semantically from the start (`background`, `surface`, `foreground`, `muted`) rather than retrofitting later in `25-dark-mode.md`.
+Also confirm: does the app need dark mode now? If yes, define tokens semantically from the start (`background`, `surface`, `foreground`, `muted`) rather than retrofitting later in `dark-mode.md`.
 
 ### Build
 

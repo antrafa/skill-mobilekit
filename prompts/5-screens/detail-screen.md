@@ -6,11 +6,11 @@ Full view of one entity, opened from a list or card.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Build the detail screen.
 
-### Ask first
+### Grill
 
 - **Which entity?** Name it from `DOMAIN.md`. The route and file are named after it — not `[id].tsx` under a generic folder.
 - Which fields belong on this screen, and in what priority? Take them from the entity definition; do not display every column because it exists.

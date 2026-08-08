@@ -6,13 +6,13 @@ Server-state fetching, caching, and mutations. Skip if `PRODUCT.md`'s data scena
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Set up TanStack Query for this app's server data.
 
 Reference for the installed major: https://tanstack.com/query/latest/docs/framework/react/react-native (check `package.json` first).
 
-### Ask first
+### Grill
 
 - Which data in `DOMAIN.md` comes from the server? Only that gets query hooks.
 - Does the app need offline reads (`PRODUCT.md`)? If yes, cache persistence is part of this step, not an afterthought — ask before adding the persistence package.
@@ -36,7 +36,7 @@ Reference for the installed major: https://tanstack.com/query/latest/docs/framew
 - Mutations that invalidate the narrowest key that could have changed. Optimistic updates only where the latency is actually felt, and always with a rollback path
 - Auth: the token comes from the auth layer at request time, not captured at hook creation, or it goes stale after refresh
 
-**Consumers** — every screen handles loading, error, empty, and success. Empty is not an error state and deserves real copy plus a next action (see `24-common-ui-components.md`).
+**Consumers** — every screen handles loading, error, empty, and success. Empty is not an error state and deserves real copy plus a next action (see `ui-components.md`).
 
 ### Done when
 

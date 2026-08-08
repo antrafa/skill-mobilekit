@@ -1,16 +1,16 @@
 # Creating Your AGENTS.md
 
-Generates the `AGENTS.md` that every later prompt relies on. Run it **after** `00-product-discovery.md` — the AGENTS.md is derived from `docs/PRODUCT.md`, not from a generic template.
+Generates the `AGENTS.md` that every later prompt relies on. Run it **after** `product-discovery.md` — the AGENTS.md is derived from `docs/PRODUCT.md`, not from a generic template.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and `docs/PRODUCT.md` first.
+Read `RULES.md` (this library) and `docs/PRODUCT.md` first.
 
 Create an `AGENTS.md` in the project root, filled from `PRODUCT.md`. It is read before every task, so it must be accurate and short — **under 200 lines**. If you are tempted to add a section you cannot fill from `PRODUCT.md` or from the existing code, leave it out.
 
-### Ask first
+### Grill
 
 - Is there an existing `AGENTS.md`, `CLAUDE.md`, or contributing guide to extend instead of replace?
 - Anything the assistant should be forbidden from doing in this repo (touching migrations, editing generated files, running builds)?

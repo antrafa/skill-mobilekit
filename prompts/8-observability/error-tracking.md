@@ -8,13 +8,13 @@ Prereq: a Sentry project and DSN.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Integrate Sentry for error and performance monitoring.
 
-**Check the installed `@sentry/react-native` version and follow its docs** (context7, or https://docs.sentry.io/platforms/react-native/). The API changed substantially at v8 — the old transaction API (`startTransaction` / `transaction.finish()`) was replaced by spans, and Expo integration moved to a config plugin. Do not paste either from memory. Prefer the official wizard for setup, then review what it changed.
+**Check the installed `@sentry/react-native` version and follow its docs** (RULES.md §3 · canonical: https://docs.sentry.io/platforms/react-native/). The API changed substantially at v8 — the old transaction API (`startTransaction` / `transaction.finish()`) was replaced by spans, and Expo integration moved to a config plugin. Do not paste either from memory. Prefer the official wizard for setup, then review what it changed.
 
-### Ask first
+### Grill
 
 - Environments to separate (development, preview, production)?
 - Sample rates: performance tracing at 100% is fine at low volume and expensive later. Confirm the intent.

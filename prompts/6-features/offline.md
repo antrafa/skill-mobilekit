@@ -6,11 +6,11 @@ Skip unless `PRODUCT.md` says the app must work offline. Mobile networks are unr
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Add offline support.
 
-### Ask first — this is the question that decides the cost
+### Grill — this is the question that decides the cost
 
 - **Read-only offline, or offline writes too?**
   - **Reads** — cache what was already fetched and show it when disconnected. Moderate work, no conflicts.
@@ -24,7 +24,7 @@ Add offline support.
 
 **Honest degradation (every app)**
 
-- Detect connectivity and wire it into the data layer, so queries pause offline and resume on reconnect (see `12-react-query.md`)
+- Detect connectivity and wire it into the data layer, so queries pause offline and resume on reconnect (see `react-query.md`)
 - A visible, non-blocking indicator when offline. Never a spinner that spins forever
 - Actions requiring the network are disabled or clearly explained, not silently failing
 - Recovery on reconnect without requiring a restart

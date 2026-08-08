@@ -6,16 +6,16 @@ The user's own account screen.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Build the Profile screen.
 
-### Ask first
+### Grill
 
 - Is this the user's **own** profile, a **public** profile others can view, or both? They are different screens with different privacy rules; do not build one and assume it covers the other.
 - Which stats or figures are worth showing? Take them from `DOMAIN.md` — do not invent metrics to fill a row of cards.
 - Can the user edit their profile here, including avatar upload? Upload means media permissions and storage — a separate decision.
-- Is Profile separate from Settings? If they merge, skip `20-settings-screen.md` and put preferences here instead of building both.
+- Is Profile separate from Settings? If they merge, skip `settings-screen.md` and put preferences here instead of building both.
 - Is account deletion required? **If the app has accounts and ships on the App Store, in-app deletion is required by Apple.** Confirm whether it deletes or anonymizes, and what happens to the user's content.
 
 ### Build

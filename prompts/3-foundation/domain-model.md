@@ -2,13 +2,13 @@
 
 This is the prompt that replaces the generic `Item` / `useItems()` / `/items` scaffolding that every other prompt in this collection falls back on.
 
-Run it **after** `00-product-discovery.md` and **before** `06-supabase-setup.md`, `12-react-query.md`, or any screen prompt. Screens built before the domain exists get retrofitted later, and that retrofit is the most expensive rework in the whole build.
+Run it **after** `product-discovery.md` and **before** `supabase.md`, `react-query.md`, or any screen prompt. Screens built before the domain exists get retrofitted later, and that retrofit is the most expensive rework in the whole build.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first and follow them strictly.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first and follow them strictly.
 
 Define this app's domain model and data access layer.
 
@@ -116,7 +116,7 @@ Then follow only that scenario's section.
 
 ## Types (all scenarios)
 
-- Where a schema exists, generate types from it and treat the generated file as read-only output. For Supabase this is `supabase gen types` — check the current command and flags in the official docs (or via context7) for the installed CLI version rather than copying a snippet from memory.
+- Where a schema exists, generate types from it and treat the generated file as read-only output. For Supabase this is `supabase gen types` — check the current command and flags in the official docs (RULES.md §3) for the installed CLI version rather than copying a snippet from memory.
 - Re-generate whenever the schema changes, and commit the result so type errors surface in review.
 - Export the app's own model types from one place; screens import from there, never from the generated file directly.
 - Model states the domain actually has. If something is `draft | published | archived`, that is a union type, not a `string`.

@@ -8,11 +8,11 @@ Prereq: a Clerk project (https://clerk.com) and its publishable key.
 
 ## Prompt — Step 1: Auth UI, no logic
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Build Sign Up and Sign In screens with UI only — no auth calls yet.
 
-### Ask first
+### Grill
 
 - Which sign-in methods does `PRODUCT.md` list? Email/password, email code, magic link, Google, Apple, phone? Build UI only for those.
 - Does sign-up collect anything beyond credentials (display name, the preferences from onboarding)?
@@ -33,11 +33,11 @@ Mock the outcome for now: the primary button advances the flow so navigation is 
 
 ## Prompt — Step 2: Clerk integration
 
-Read `mobilekit/RULES.md` and AGENTS.md first.
+Read `RULES.md` (this library) and AGENTS.md first.
 
 Replace the mocked auth with Clerk, keeping the existing UI and navigation intact.
 
-**Check the installed `@clerk/clerk-expo` version and follow the docs for that version** (context7, or https://clerk.com/docs/quickstarts/expo). Provider setup, token caching, and hook names have all changed across majors — do not apply steps from memory.
+**Check the installed `@clerk/clerk-expo` version and follow the docs for that version** (RULES.md §3 · canonical: https://clerk.com/docs/quickstarts/expo). Provider setup, token caching, and hook names have all changed across majors — do not apply steps from memory.
 
 ### Build
 
@@ -47,10 +47,10 @@ Replace the mocked auth with Clerk, keeping the existing UI and navigation intac
 - Route on auth state from the root layout: authenticated → the first authenticated route; not authenticated → onboarding or auth. Handle the **loading** state explicitly — an unresolved session must not flash the auth screen at a signed-in user
 - Map Clerk errors to the inline error slots already in the UI. Show the actionable message, not the raw error object
 
-### Ask before proceeding
+### Grill before proceeding
 
 - Where should a newly verified user land — home, or a required setup step (`PRODUCT.md`'s first-session journey)?
-- Does the app need Clerk user data mirrored into your own database (see `05b-domain-model.md`)? If yes, that is a separate step with a webhook or a first-login upsert — do not silently duplicate user rows.
+- Does the app need Clerk user data mirrored into your own database (see `domain-model.md`)? If yes, that is a separate step with a webhook or a first-login upsert — do not silently duplicate user rows.
 
 ### Done when
 

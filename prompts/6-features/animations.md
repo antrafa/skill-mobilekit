@@ -6,19 +6,19 @@ Motion that clarifies state changes. Skip if nothing in the app needs it yet —
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and AGENTS.md first.
+Read `RULES.md` (this library) and AGENTS.md first.
 
 Set up Reanimated and build only the animations this app actually uses.
 
 ### Before you write anything
 
-**Check the installed `react-native-reanimated` version and the Expo SDK, then follow the docs for that major** (context7, or https://docs.swmansion.com/react-native-reanimated/). Specifically:
+**Check the installed `react-native-reanimated` version and the Expo SDK, then follow the docs for that major** (RULES.md §3 · canonical: https://docs.swmansion.com/react-native-reanimated/). Specifically:
 
 - **Do not add a Babel plugin by reflex.** On current Expo SDKs `babel-preset-expo` already handles Reanimated, and Reanimated 4 moved worklet compilation to a separate package. Adding a stale `react-native-reanimated/plugin` entry — or creating a `babel.config.js` that did not exist — breaks the build. Check whether this repo even has a Babel config before touching one.
 - Layout-transition APIs were renamed between majors (the old `Layout` export is deprecated in favor of explicit transitions such as `LinearTransition`). Use what the installed version exports.
 - Reanimated 4 requires the New Architecture. Verify before assuming an upgrade is drop-in.
 
-### Ask first
+### Grill
 
 - Which interactions in `PRODUCT.md`'s core journey deserve motion? Build those. Do not create a library of animated components nothing imports.
 - Is Reanimated needed, or would the platform default do? A screen transition and a pressable's opacity are free.
@@ -31,7 +31,7 @@ Typical set, each added when a screen needs it:
 - **Mount/unmount transitions** for content that appears conditionally, via entering/exiting animations
 - **List item add/remove** via the installed version's layout transition API
 - **Progress indication** driven by a shared value, if the app has progress
-- **Sheet/modal motion** — coordinate with `23-modal-bottom-sheet.md` rather than animating a modal twice
+- **Sheet/modal motion** — coordinate with `modals-sheets.md` rather than animating a modal twice
 
 ### Rules
 

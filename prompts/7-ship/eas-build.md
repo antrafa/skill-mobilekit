@@ -6,13 +6,13 @@ Builds, store submission, and over-the-air updates.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Set up EAS Build for this app.
 
 **Check the installed `eas-cli` version and follow the current docs** (https://docs.expo.dev/build/introduction/). Commands here move: environment-variable management in particular has been reorganized — use the current environment-variable commands rather than older secret commands, and confirm against `eas --help` for the installed version before scripting anything.
 
-### Ask first
+### Grill
 
 - Which platforms ship, and to which stores?
 - Are the developer accounts and store listings in place? Missing accounts block submission, not building.

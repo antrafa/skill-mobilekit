@@ -8,7 +8,7 @@ Not optional and not a nice-to-have: it is a legal requirement in several market
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and AGENTS.md first.
+Read `RULES.md` (this library) and AGENTS.md first.
 
 Audit this app for accessibility and fix what fails.
 

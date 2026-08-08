@@ -8,7 +8,7 @@ Prereqs: physical device; Apple Developer account (iOS); FCM configured (Android
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Set up notifications with `expo-notifications`.
 
@@ -17,7 +17,7 @@ Set up notifications with `expo-notifications`.
 - The notification-handler result fields were renamed — the old single "show alert" flag was split into separate banner and list flags. Use what the installed version's types expect; TypeScript will tell you.
 - **Remote push does not work in Expo Go on recent SDKs.** A development build is required. Confirm the developer has one before debugging "notifications don't arrive".
 
-### Ask first
+### Grill
 
 - **Local, remote, or both?** Local (reminders scheduled on-device) needs no server and no push token. If `PRODUCT.md`'s trigger is a reminder, stop after local — it is a fraction of the work.
 - What event on the server sends a push, and does that server exist yet?

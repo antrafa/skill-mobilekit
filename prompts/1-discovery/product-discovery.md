@@ -2,20 +2,20 @@
 
 Every other prompt in this collection assumes it already knows what you are building. This one is what makes that true.
 
-Run it **before** `00-agents-md-guide.md`. Its output — `docs/PRODUCT.md` — is what the AGENTS.md, the domain model, and every screen prompt read instead of guessing.
+Run it **before** `agents-md.md`. Its output — `docs/PRODUCT.md` — is what the AGENTS.md, the domain model, and every screen prompt read instead of guessing.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md` first.
+Read `RULES.md` (this library) first.
 
 You are running a product discovery interview before any code is written.
 
 ### Hard rules
 
 1. **Do not write application code, do not install packages, and do not create any file other than `docs/PRODUCT.md` until this interview is complete.**
-2. Ask questions in **small batches of 3 to 5**. Wait for answers before continuing. Do not dump the whole questionnaire at once.
+2. **One question per message**, per `RULES.md` §1. Wait for the answer before asking the next. The blocks below are the grill; they are not a questionnaire to hand over.
 3. For every question, propose a **recommended default** so the answer can be a confirmation instead of an essay. State the default explicitly, e.g. "Default: single welcome screen — confirm or change."
 4. **Never infer the domain from the app name, the folder name, or an existing template.** A repo scaffolded from a tutorial tells you nothing about the product being built.
 5. If an answer is vague ("some kind of feed", "the usual settings"), ask one follow-up. Do not resolve the ambiguity yourself.
@@ -56,7 +56,7 @@ Record these nouns verbatim. From here on, code uses these names — never `Item
 14. Does content differ per user, or does everyone see the same content?
 15. Does the app need to work offline?
 
-Do not design any schema here. Stop after recording the answers and hand this to `05b-domain-model.md`.
+Do not design any schema here. Stop after recording the answers and hand this to `domain-model.md`.
 
 ### Block E — Identity
 
@@ -75,7 +75,7 @@ For each: needed **now**, needed **later**, or **never**?
 23. Multiple languages in the UI (i18n).
 24. Dark mode.
 25. Media upload (camera, photos, audio).
-25b. Links that open the app from outside it — shared links, email, notifications (`32-deep-linking.md`).
+25b. Links that open the app from outside it — shared links, email, notifications (`deep-linking.md`).
 
 Anything marked "never" gets no prompt run and no dependency installed.
 
@@ -137,6 +137,6 @@ Keep it under 100 lines. It is read before every task, so it must stay skimmable
 
 ## After this
 
-- Run `00-agents-md-guide.md` — build the AGENTS.md **from** `PRODUCT.md`, not from a generic template.
-- Run `05b-domain-model.md` — turn the domain vocabulary into types and, if needed, a schema.
+- Run `agents-md.md` — build the AGENTS.md **from** `PRODUCT.md`, not from a generic template.
+- Run `domain-model.md` — turn the domain vocabulary into types and, if needed, a schema.
 - Every later prompt: read `docs/PRODUCT.md` first. If a prompt needs a decision that is `UNDECIDED` there, **ask, then update `PRODUCT.md`** — do not decide it inline and move on.

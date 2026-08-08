@@ -1,16 +1,16 @@
 # Common UI Components
 
-The building blocks every screen composes from. Run after `03-design-system.md` — components consume tokens, they do not define them.
+The building blocks every screen composes from. Run after `design-system.md` — components consume tokens, they do not define them.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Build the shared UI components for this app.
 
-### Ask first
+### Grill
 
 **Build what the confirmed screens need, and nothing else.** Walk `PRODUCT.md`'s core journey, list the components those screens require, and confirm the list. A component library with unused variants is dead code that still has to be maintained and reviewed.
 
@@ -24,7 +24,7 @@ Then confirm:
 Build only the ones the answers justify:
 
 - **Button** — variants and sizes actually used; loading state that replaces the label with an indicator while keeping the button's width stable (a resizing button on submit is a visible jump); disabled distinct from loading; optional icon
-- **Input** — label, placeholder, error slot, focus styling, disabled, secure and multiline variants. Coordinate with `21-form-screens.md` so form fields are not built twice
+- **Input** — label, placeholder, error slot, focus styling, disabled, secure and multiline variants. Coordinate with `form-screens.md` so form fields are not built twice
 - **Card** — surface with the design system's radius and elevation; a pressable variant with press feedback
 - **Avatar** — image with initials fallback and the sizes in use
 - **Badge / Chip** — status labels and selectable filters. Selected state must be distinguishable without color alone

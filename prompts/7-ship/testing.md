@@ -6,11 +6,11 @@ Cover what breaking would actually hurt. A prototype needs almost none of this; 
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Set up testing for this app.
 
-### Ask first
+### Grill
 
 - **What would be worst if it silently broke?** Payment, auth, data loss, the success action from `PRODUCT.md`. That list is the test scope. Coverage percentage is not a goal — a repo at 80% coverage with the checkout untested is untested.
 - Is the stage in `PRODUCT.md` production or prototype? A prototype gets domain-logic tests and nothing else.
@@ -21,7 +21,7 @@ Set up testing for this app.
 
 **1. Domain logic (highest value, cheapest)**
 
-Pure functions: validation rules, calculations, state transitions, mappers from `05b-domain-model.md`. No renderer, no mocks, fast. If domain logic is currently tangled into components, that is the finding — the extraction is worth more than the test.
+Pure functions: validation rules, calculations, state transitions, mappers from `domain-model.md`. No renderer, no mocks, fast. If domain logic is currently tangled into components, that is the finding — the extraction is worth more than the test.
 
 **2. Critical component behavior**
 

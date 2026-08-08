@@ -6,11 +6,11 @@ Screens where the user produces data. Skip if all content in `PRODUCT.md` is aut
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Build the create/edit form for a domain entity.
 
-### Ask first
+### Grill
 
 - **Which entity, and which fields?** Take them from `DOMAIN.md`. Required vs. optional is a domain decision already recorded there — do not re-invent it in the UI.
 - One screen or a multi-step flow? More than ~7 fields usually wants steps.

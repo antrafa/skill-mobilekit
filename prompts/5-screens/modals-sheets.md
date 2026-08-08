@@ -6,11 +6,11 @@ Overlay surfaces for confirmations, pickers, and short flows.
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and AGENTS.md first.
+Read `RULES.md` (this library) and AGENTS.md first.
 
 Implement the overlay surfaces this app needs.
 
-### Ask first
+### Grill
 
 - **Which overlays does the app actually use, and for what?** List them before building anything. Common: destructive confirmation, action list, filter panel, short form, success/error acknowledgement.
 - Would a **route** serve better than a modal? Expo Router can present a route as a modal, which keeps back-button behavior, deep linking, and state handling for free. For anything with more than one field, prefer the route. Recommend this before adding a sheet library.

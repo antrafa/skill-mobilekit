@@ -6,13 +6,13 @@ Install and configure NativeWind (Tailwind for React Native).
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and AGENTS.md first.
+Read `RULES.md` (this library) and AGENTS.md first.
 
 Set up NativeWind in this Expo app.
 
 ### Before you write anything
 
-**The setup differs substantially between versions, and stale steps are the single most common failure here.** Check `package.json` for the installed `nativewind` and `tailwindcss` versions, then follow the official installation guide **for those exact majors** (context7, or https://www.nativewind.dev). Specifically:
+**The setup differs substantially between versions, and stale steps are the single most common failure here.** Check `package.json` for the installed `nativewind` and `tailwindcss` versions, then follow the official installation guide **for those exact majors** (RULES.md §3 · canonical: https://www.nativewind.dev). Specifically:
 
 - Whether a `tailwind.config.js` is required at all, or the theme is defined in CSS
 - Which Tailwind directives or `@import` lines the CSS entry file needs
@@ -35,4 +35,4 @@ Do not create `tailwind.config.js` or `babel.config.js` because an older guide m
 - [ ] No existing screen was modified
 - [ ] You state which version's setup you followed, and any step in this prompt that no longer applied
 
-Leave the design tokens to `03-design-system.md` — this prompt only makes styling work.
+Leave the design tokens to `design-system.md` — this prompt only makes styling work.

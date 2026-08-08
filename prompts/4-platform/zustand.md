@@ -6,16 +6,16 @@ Global client state with persistence.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Set up Zustand for the state this app actually shares.
 
-### Ask first — what belongs in a global store?
+### Grill — what belongs in a global store?
 
 Do not create a store with placeholder fields. Derive the fields from `PRODUCT.md`, then confirm:
 
 - Which values are read by more than one screen and must survive a restart? (onboarding completed, chosen preference, local progress)
-- Which are **server** data? Those belong in React Query (`12-react-query.md`), not here. A store that caches server responses is a second, staler cache.
+- Which are **server** data? Those belong in React Query (`react-query.md`), not here. A store that caches server responses is a second, staler cache.
 - Which are UI-only? Those stay in component state — modal visibility and form drafts do not belong in a global store.
 - Anything sensitive? Tokens go in `expo-secure-store`, never in a persisted AsyncStorage store.
 

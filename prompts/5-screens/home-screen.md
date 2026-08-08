@@ -6,11 +6,11 @@ The first authenticated screen. Its job is to get the user to `PRODUCT.md`'s suc
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Build the Home screen.
 
-### Ask first
+### Grill
 
 - **What is the one thing a returning user comes here to do?** The screen is designed around that, and everything else is secondary. Get the answer before laying anything out.
 - **Layout pattern — ask, do not choose:**
@@ -28,7 +28,7 @@ Build the Home screen.
 ### Build
 
 - A header with whatever identity the pattern needs — user name and avatar from the auth provider, with a fallback for a missing avatar
-- The confirmed pattern, composed from the components in `24-common-ui-components.md` rather than one-off views
+- The confirmed pattern, composed from the components in `ui-components.md` rather than one-off views
 - Data through the layer already chosen: React Query for server data, the store for local state, `data/` for authored content. Do not add a second fetching path here
 - Names and labels from `DOMAIN.md` vocabulary
 - Long lists rendered with a virtualized list, not a mapped `ScrollView`

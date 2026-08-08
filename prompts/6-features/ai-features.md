@@ -2,17 +2,17 @@
 
 Text, voice, or realtime AI in the app. Skip unless `PRODUCT.md` marks AI "now".
 
-Prereq: `27-secure-backend-integration.md`. Every model call goes through a server you control — a provider key in the app is someone else's free inference.
+Prereq: `secure-backend.md`. Every model call goes through a server you control — a provider key in the app is someone else's free inference.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md`, `docs/DOMAIN.md` and AGENTS.md first.
 
 Build the AI feature described in `PRODUCT.md`.
 
-### Ask first
+### Grill
 
 - **What problem does the AI solve that a normal feature would not?** If the answer is vague, stop here — an LLM added because it is available is latency and cost with a chat bubble on top.
 - **Which interaction shape?** These are three different builds:
@@ -26,7 +26,7 @@ Build the AI feature described in `PRODUCT.md`.
 
 ### Build
 
-**Server side** (per `27`)
+**Server side** (per `secure-backend.md`)
 
 - Provider key server-side only; the app calls your endpoint
 - Prompts live in version-controlled files, not inline strings scattered across handlers. A prompt is behavior — it gets reviewed and changed deliberately

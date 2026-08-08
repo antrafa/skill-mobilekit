@@ -1,20 +1,20 @@
 # Settings Screen
 
-App preferences. Skip this screen if `19-profile-screen.md` already hosts them — two screens of settings is worse than one.
+App preferences. Skip this screen if `profile-screen.md` already hosts them — two screens of settings is worse than one.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Build the Settings screen.
 
-### Ask first
+### Grill
 
 **Only include a setting that changes real behavior.** A toggle wired to nothing is a bug with a nice UI. For each candidate, confirm it applies:
 
-- Theme (light / dark / system) — only if dark mode is built or being built (`25-dark-mode.md`)
+- Theme (light / dark / system) — only if dark mode is built or being built (`dark-mode.md`)
 - Display language — only if i18n is in scope; `PRODUCT.md` records this
 - Notification preferences — only if notifications exist, and the toggle must reach the real permission and subscription state, not just a local boolean
 - Analytics / crash-reporting opt-out — only if those SDKs are installed. If a privacy policy or regional law promises an opt-out, the toggle must actually stop collection
@@ -25,7 +25,7 @@ Also ask: which of these are per-device and which follow the account to another 
 
 ### Build
 
-- Sectioned rows with headers, using the common components from `24-common-ui-components.md`
+- Sectioned rows with headers, using the common components from `ui-components.md`
 - Toggles that write to the persisted store **and** call through to the underlying system — permission request, SDK opt-out, theme application. Verify the effect, not the switch position
 - Destructive rows visually distinct and confirmed before acting
 - About section: version and build number read from the app config, not hard-coded. Include licenses if any dependency requires attribution

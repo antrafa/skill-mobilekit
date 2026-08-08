@@ -1,16 +1,16 @@
 # Design Conception (run after discovery, before any screen)
 
-`PRODUCT.md` says what the app is. `03-design-system.md` says what things look like. Between them sits the question neither answers: **which screens exist, how you move between them, and what each one shows when it has nothing to show.**
+`PRODUCT.md` says what the app is. `design-system.md` says what things look like. Between them sits the question neither answers: **which screens exist, how you move between them, and what each one shows when it has nothing to show.**
 
 Skipping this is why screens get rewritten. A home screen built before the navigation shape is decided gets rebuilt when the tab bar arrives; a list built before its empty state is considered ships a blank rectangle.
 
-Run this **before** `05b-domain-model.md` if the app is UI-led, or right after it if the data shape is the hard part. Either order works — both must precede any screen prompt.
+Run this **before** `domain-model.md` if the app is UI-led, or right after it if the data shape is the hard part. Either order works — both must precede any screen prompt.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and `docs/PRODUCT.md` first.
+Read `RULES.md` (this library) and `docs/PRODUCT.md` first.
 
 You are designing the screen and navigation structure of this app. **Write no application code and install nothing.** The only output is `docs/DESIGN.md`.
 
@@ -18,7 +18,7 @@ You are designing the screen and navigation structure of this app. **Write no ap
 
 1. Every screen you list must trace back to a step in the core journey or a capability marked "now" in `PRODUCT.md`. A screen that traces to neither does not go in the list — say why you dropped it.
 2. Use the domain vocabulary from `PRODUCT.md`. Not "item detail" — the real noun.
-3. Ask in batches of 3–5 with a recommended default. Do not dump the whole thing at once.
+3. **One question per message** with a recommended default, per `RULES.md` §1. The blocks below are the grill, not a form to hand over.
 4. Anything undecided is recorded as `UNDECIDED — ask before assuming`. Never fill it with a plausible guess.
 
 ### Block A — Screen inventory
@@ -40,7 +40,7 @@ Classify each screen: **core** (journey), **support** (profile, settings), **ent
 5. If tabs: which screens are tabs, and which are pushed on top of a tab? A screen reachable from two tabs needs to be decided now, not discovered later.
 6. Which screens are **modal or sheet** rather than a push? Anything the user must finish or dismiss — a form, a confirmation, a picker.
 7. Where does the app open on cold start, for: a new user, a returning signed-in user, a returning signed-out user? Each is a different route and each is a redirect someone forgets to write.
-8. Which screens require authentication? What happens when a signed-out user reaches one via a link? (This is the input `32-deep-linking.md` needs.)
+8. Which screens require authentication? What happens when a signed-out user reaches one via a link? (This is the input `deep-linking.md` needs.)
 
 ### Block C — States per screen
 
@@ -61,13 +61,13 @@ Do not write the copy for all of them here. Write the *decision* — the copy co
 
 9. `PRODUCT.md` records the design source. Confirm which applies:
    - **A — A reference exists** (Figma, screenshots, a live app, a brand palette). Ask for it: `@path/to/reference.png`. Describe what you extract from it — palette, type rhythm, density, corner style — and confirm before it becomes tokens.
-   - **B — Nothing exists.** Do not propose a palette yet. Propose 2–3 *directions* in one line each — what the app should feel like and what that implies (e.g. "calm and dense, like a reading app: muted surface, tight spacing, one accent"). Get a direction chosen; the palette is `03-design-system.md`'s job.
+   - **B — Nothing exists.** Do not propose a palette yet. Propose 2–3 *directions* in one line each — what the app should feel like and what that implies (e.g. "calm and dense, like a reading app: muted surface, tight spacing, one accent"). Get a direction chosen; the palette is `design-system.md`'s job.
 10. Density and target: one-handed phone use, tablet too, landscape? Each changes layout, not just size.
-11. Is there an accessibility floor to hit now rather than audit later — larger minimum text, high contrast, no color-only meaning? Cheap now, expensive in `33-accessibility-audit.md`.
+11. Is there an accessibility floor to hit now rather than audit later — larger minimum text, high contrast, no color-only meaning? Cheap now, expensive in `accessibility.md`.
 
 ### Block E — The shared pieces
 
-12. Reading the screen list, which components appear on 3 or more screens? That set — and only that set — is what `24-common-ui-components.md` builds. A component library built before this list is speculation.
+12. Reading the screen list, which components appear on 3 or more screens? That set — and only that set — is what `ui-components.md` builds. A component library built before this list is speculation.
 
 ---
 
@@ -120,7 +120,7 @@ Keep it skimmable. Screen prompts read it before every screen; a document nobody
 
 ## After this
 
-- `03-design-system.md` turns the visual direction into tokens.
-- `05b-domain-model.md` turns the domain vocabulary into types.
-- `24-common-ui-components.md` builds exactly the shared-component list — nothing else.
+- `design-system.md` turns the visual direction into tokens.
+- `domain-model.md` turns the domain vocabulary into types.
+- `ui-components.md` builds exactly the shared-component list — nothing else.
 - Every screen prompt (15–23) reads `DESIGN.md` for its states before building.

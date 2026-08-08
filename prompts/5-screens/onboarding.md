@@ -6,11 +6,11 @@ The first screen a new user sees.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Build the onboarding for this app.
 
-### Ask first
+### Grill
 
 `PRODUCT.md` describes the first session. Confirm the pattern — **ask, do not choose**:
 

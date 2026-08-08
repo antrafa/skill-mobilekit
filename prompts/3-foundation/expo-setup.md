@@ -6,11 +6,11 @@ Initialize a new Expo project. Skip this prompt if a project already exists — 
 
 ## Prompt
 
-Read `mobilekit/RULES.md` and `docs/PRODUCT.md` first.
+Read `RULES.md` (this library) and `docs/PRODUCT.md` first.
 
 Create a new Expo project with TypeScript and file-based routing.
 
-### Ask first
+### Grill
 
 - App name, slug, and bundle identifiers (iOS `com.x.y`, Android package)?
 - Deep-link scheme?

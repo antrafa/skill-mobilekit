@@ -2,17 +2,17 @@
 
 Opening the app directly on a specific screen from a URL, a notification, or another app.
 
-Needed by push notifications (`10`), OAuth callbacks (`04`/`05`), payment returns (`14`), and any share feature — so most apps need at least the basics.
+Needed by push notifications (`push-notifications.md`), OAuth callbacks (`auth-clerk.md` / `auth-backend.md`), payment returns (`payments.md`), and any share feature — so most apps need at least the basics.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Set up deep linking.
 
-### Ask first
+### Grill
 
 - **Custom scheme, or universal links / app links on a real domain?**
   - Custom scheme (`myapp://`) — no domain needed, works for notifications and OAuth callbacks. Enough for internal navigation.
@@ -29,7 +29,7 @@ Set up deep linking.
 - Parameters validated on arrival — a link is untrusted input; a malformed id must produce a not-found state, never a crash
 - Pending-destination handling: capture the target, complete authentication, then continue. Also correct when onboarding sits between the link and the destination
 - A sane back stack. Landing deep in a hierarchy from a cold start must still allow going back to something that exists, not straight out of the app
-- Coordinate with notifications (`10`) so payload routing goes through this same mapping instead of a second one
+- Coordinate with `push-notifications.md` so payload routing goes through this same mapping instead of a second one
 
 ### Done when
 

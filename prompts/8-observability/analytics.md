@@ -8,13 +8,13 @@ Prereq: a PostHog project and API key.
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Add PostHog to this app.
 
-**Check the installed `posthog-react-native` version and follow its docs** (context7, or https://posthog.com/docs/libraries/react-native). Whether the provider takes an API key directly or a pre-constructed client, and how autocapture is configured, differ across versions — do not paste initialization from memory.
+**Check the installed `posthog-react-native` version and follow its docs** (RULES.md §3 · canonical: https://posthog.com/docs/libraries/react-native). Whether the provider takes an API key directly or a pre-constructed client, and how autocapture is configured, differ across versions — do not paste initialization from memory.
 
-### Ask first — what is worth measuring?
+### Grill — what is worth measuring?
 
 An event list copied from a template produces dashboards nobody reads. Derive it instead:
 

@@ -1,18 +1,18 @@
 # Authentication with Your Own Backend
 
-Use this instead of `04-authentication-clerk.md` when auth is handled by Supabase Auth or your own API.
+Use this instead of `auth-clerk.md` when auth is handled by Supabase Auth or your own API.
 
-For the auth **UI**, run Step 1 of `04-authentication-clerk.md` first — it is provider-agnostic.
+For the auth **UI**, run Step 1 of `auth-clerk.md` first — it is provider-agnostic.
 
 ---
 
 ## Prompt
 
-Read `mobilekit/RULES.md`, `docs/PRODUCT.md` and AGENTS.md first.
+Read `RULES.md` (this library), `docs/PRODUCT.md` and AGENTS.md first.
 
 Implement authentication against our own backend.
 
-### Ask first
+### Grill
 
 - **Supabase Auth or a custom API?** Recommended: Supabase Auth if the app already uses Supabase — session refresh, email verification, and password reset are solved there, and hand-rolling them is where custom auth usually breaks.
 - If custom API: what are the real endpoints, request/response shapes, and token lifetimes? Get the contract — do not assume `/api/auth/login`.
@@ -31,11 +31,11 @@ Implement authentication against our own backend.
 
 **API layer** — one module with the auth calls, typed against the real contract from the questions above. Errors are returned as domain results, not thrown strings; the UI needs to tell "wrong password" from "network down".
 
-**Supabase path** — use the client's auth methods and its auth-state subscription as the single source of truth rather than mirroring session state by hand. Configure secure session storage per the installed `@supabase/supabase-js` version's docs (see `06-supabase-setup.md`).
+**Supabase path** — use the client's auth methods and its auth-state subscription as the single source of truth rather than mirroring session state by hand. Configure secure session storage per the installed `@supabase/supabase-js` version's docs (see `supabase.md`).
 
 **Routing** — provider at the root, initial route decided from `isAuthenticated` once loading resolves.
 
-**Wire the existing UI** — connect the screens from `04` Step 1: loading on submit, inline errors, verification submission, navigate on success. Do not change the designs.
+**Wire the existing UI** — connect the auth UI from `auth-clerk.md` Step 1: loading on submit, inline errors, verification submission, navigate on success. Do not change the designs.
 
 ### Done when
 
