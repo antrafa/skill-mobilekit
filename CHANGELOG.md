@@ -4,6 +4,34 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] — 2026-08-10
+
+### Added
+
+- **Contract decisions in `legacy-modernization.md`** — the parity list covers what users
+  see; a new all-scenarios step covers what the app talks to. One row per technical
+  contract — API endpoints, authentication, sync/offline model, local storage, push, deep
+  links — each marked **keep / replace / wrap** by the developer with the inventory in
+  front of them, never defaulted. "Wrap" keeps a contract behind one adapter so screens
+  migrate now and the contract stays replaceable later. The table lands in
+  `docs/MODERNIZATION.md` and the `Done when` checklist enforces it.
+
+### Fixed
+
+- **The legacy handoff was one-sided.** `legacy-modernization.md` said "the rest of the
+  library works normally", but the design phase invented screens a live app already
+  answers, and the plan phase built `BUILD-PLAN.md` from the greenfield reference order,
+  competing with `MODERNIZATION.md`'s migration sequence. Both phases now recognise
+  `docs/MODERNIZATION.md`: design derives `DESIGN.md` from the screens that ship and the
+  parity list, grilling only where the redesign deliberately changes something; plan takes
+  the migration sequence as the spine and uses the reference order only for what it does
+  not cover. Contracts marked keep/wrap rule out competing prompts — a kept backend is
+  `api-integration`, never `supabase`. The tutorial and the command reference reflect it.
+- `install.sh` linked Antigravity skills into `~/.gemini/antigravity/skills`, a directory
+  Antigravity does not read. Global skills live in `~/.gemini/config/skills`
+  (antigravity.google/docs/skills); detection now keys on `~/.gemini/antigravity`, since
+  `~/.gemini` alone can mean only Gemini CLI is installed.
+
 ## [2.2.0] — 2026-08-08
 
 ### Added
