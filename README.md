@@ -60,7 +60,7 @@ Clone anywhere and point your agent at the directory. `AGENTS.md` in the repo ro
 |---|---|---|
 | **Claude Code** | `~/.claude/skills/mobilekit` | `~/.claude/commands/mobilekit/` → `/mobilekit:next` |
 | **Codex** | `~/.codex/skills/mobilekit` | `~/.codex/prompts/mobilekit-*.md` → `/mobilekit-next` |
-| **Antigravity** | `~/.gemini/antigravity/skills/mobilekit` | — reads `SKILL.md` |
+| **Antigravity** | `~/.gemini/config/skills/mobilekit` | — reads `SKILL.md` |
 | **Cursor** | `~/.cursor/skills/mobilekit` | — reads `SKILL.md` |
 | **Anything else** | any path | — reads `AGENTS.md` |
 

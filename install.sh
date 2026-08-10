@@ -89,10 +89,11 @@ else
   echo "Codex: not installed, skipped"
 fi
 
-# --- Antigravity: global skills live under the Gemini config dir
-if [ -d "$HOME/.gemini" ]; then
+# --- Antigravity: global skills live in ~/.gemini/config/skills
+# (https://antigravity.google/docs/skills — ~/.gemini alone may be just Gemini CLI)
+if [ -d "$HOME/.gemini/antigravity" ]; then
   echo "Antigravity:"
-  link "$REPO" "$HOME/.gemini/antigravity/skills/$NAME"
+  link "$REPO" "$HOME/.gemini/config/skills/$NAME"
 else
   echo "Antigravity: not installed, skipped"
 fi
