@@ -24,6 +24,10 @@ Icon, adaptive icon, splash. These are design deliverables, not build configurat
 
 If arguments name one concern ("just the screens", "just the tokens"), run only that step.
 
+## If `docs/MODERNIZATION.md` exists
+
+The screens already ship. Derive them from the running app and the parity list — a "keep" row's current behaviour is its specification — and grill only where the redesign deliberately changes something. Inventing screens a live app already answers is the design-phase version of re-interviewing.
+
 ## Report
 
 Which screens were dropped and why, what is still `UNDECIDED`, which identity assets are missing, and point at the plan phase.

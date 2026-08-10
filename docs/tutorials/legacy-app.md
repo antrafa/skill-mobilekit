@@ -189,7 +189,7 @@ Step 2 is the one to notice. It ships an app that looks identical to users and d
 
 Then the handoff. `docs/PRODUCT.md` is **derived from the inventory** rather than interviewed: domain vocabulary taken from the existing code and store copy, capabilities marked from what actually ships, the journey taken from the screens that exist. You are asked only about the gaps.
 
-From that point the rest of the library works normally — `domain-model.md` next, then [new-app.md](new-app.md)'s build loop applies unchanged.
+From that point the rest of the library works normally, with one difference at each step — `domain-model.md` next; design derives `DESIGN.md` from the screens that ship instead of inventing them; and the plan phase takes `MODERNIZATION.md`'s sequence as its spine, so `BUILD-PLAN.md` is the migration order broken into prompt-sized boxes rather than the greenfield reference order. Then [new-app.md](new-app.md)'s build loop applies unchanged.
 
 ---
 

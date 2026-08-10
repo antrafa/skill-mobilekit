@@ -84,18 +84,36 @@ The cheapest path of the four, and mostly `sdk-upgrade.md`. The work that belong
 
 ---
 
+## Contracts — keep or replace (all scenarios)
+
+The parity list covers what users see; this covers what the app talks to. One row per technical contract, each marked **keep / replace / wrap**, decided by the developer with the inventory in front of them — never defaulted:
+
+- **API endpoints** — the backend contract. Old app versions in the wild pin it harder than taste does; a replaced endpoint breaks every build you cannot update.
+- **Authentication** — mechanism and credential store. Replacing it signs everyone out unless the old credential is read once and exchanged.
+- **Sync / offline model** — queues, drain triggers, conflict rules. Usually the least documented and the most load-bearing part of the inventory.
+- **Local storage** — schemas the new code must still read at least once, or the data on updating devices is gone.
+- **Push** — provider and token registration; a replaced sender is silent until every device re-registers.
+- **Deep links** — the URL contract (hard rule 4 says it survives; this row records how).
+
+**Wrap** means keep the contract behind one adapter so screens migrate now and the contract is replaceable later — the honest middle when "keep" blocks the target stack and "replace" breaks users you cannot update.
+
+---
+
 ## The plan (all scenarios)
 
 Write `docs/MODERNIZATION.md`:
 
 - **Inventory** — features, screens, native capabilities (push, camera, location, biometrics, background work, payments), and every dependency with its support status.
 - **Parity list** — one row per user-visible behaviour, each marked keep / drop / defer. Confirm it with someone who uses the app, not only against the code; the code does not know which behaviours users depend on.
+- **Contract decisions** — the keep / replace / wrap table above, with a reason per replace.
 - **The chosen path and its reason**, plus the paths rejected and theirs.
 - **The sequence**, in verifiable steps that each end in something shippable. A step ending in "the migration is half done" is not a step, it is a stall.
 - **What is deliberately dropped**, and who approved each drop, by name.
 - **Risks with a trigger** — the observable that says the risk has arrived, not a severity adjective.
 
-Then derive `docs/PRODUCT.md` from the inventory, using the output structure in `product-discovery.md`: domain vocabulary taken from the existing code and store copy, capabilities marked from what actually ships, journey taken from the screens that exist. Ask **only about the gaps**. A live app has already answered its audience, its central object and its core journey — re-interviewing a maintainer on questions their app answers is how they stop trusting the process. Run `domain-model.md` next, and the rest of the library works normally from that point.
+Then derive `docs/PRODUCT.md` from the inventory, using the output structure in `product-discovery.md`: domain vocabulary taken from the existing code and store copy, capabilities marked from what actually ships, journey taken from the screens that exist. Ask **only about the gaps**. A live app has already answered its audience, its central object and its core journey — re-interviewing a maintainer on questions their app answers is how they stop trusting the process.
+
+From here the normal flow continues, with one difference at each step: run `domain-model.md` next; the design phase derives `docs/DESIGN.md` from the screens that ship and the parity list, grilling only where the redesign deliberately changes something; the plan phase builds `docs/BUILD-PLAN.md` **from the sequence in `docs/MODERNIZATION.md`**, using the greenfield reference order only for what the sequence does not cover. Two competing plans is a stall — the migration sequence is the spine.
 
 ---
 
@@ -107,5 +125,6 @@ Then derive `docs/PRODUCT.md` from the inventory, using the output structure in 
 - [ ] The chosen path is the developer's decision, recorded in `docs/MODERNIZATION.md` with its reason
 - [ ] The first step of the sequence is shippable on its own
 - [ ] User sessions, local data and existing links each have a stated fate: preserved, migrated, or broken with a named recovery
+- [ ] Every external contract — endpoints, auth, sync, storage, push, links — carries a recorded keep / replace / wrap decision
 - [ ] `docs/PRODUCT.md` exists, derived from the app rather than invented, so the normal flow can continue
 - [ ] Anything unverified stated explicitly, per `RULES.md` §7

@@ -8,6 +8,8 @@ Read `prompts/RULES.md` first.
 
 ## Build the plan
 
+**If `docs/MODERNIZATION.md` exists, its sequence is the spine.** Keep its step order, expand each step into prompt-sized boxes, and use the reference order below only for what the sequence does not cover. Contracts it marks "keep" or "wrap" rule out the competing prompt without discussion — a kept backend is `api-integration`, never `supabase`.
+
 Start from the reference order in `prompts/README.md`, then **cut it down**:
 
 - Remove every step whose capability `PRODUCT.md` marks "later" or "never". No payments step for an app with no payments.

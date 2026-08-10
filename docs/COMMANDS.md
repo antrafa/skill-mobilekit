@@ -224,7 +224,7 @@ Next:       design
 
 **A new app** starts at `discovery`. There is no product yet, so it gets interviewed into existence.
 
-**An app that already ships** starts at `prompts/9-maintain/legacy-modernization.md`, reachable with `/mobilekit:build legacy`. A live app has a domain, users, and constraints that outrank any interview, so discovery is replaced by inventory: what the code does, what the store listing claims, which dependencies are unmaintained, what feature parity actually consists of. It produces `docs/MODERNIZATION.md` and derives `docs/PRODUCT.md` from what it found — asking only about the gaps. From that point the normal flow works.
+**An app that already ships** starts at `prompts/9-maintain/legacy-modernization.md`, reachable with `/mobilekit:build legacy`. A live app has a domain, users, and constraints that outrank any interview, so discovery is replaced by inventory: what the code does, what the store listing claims, which dependencies are unmaintained, what feature parity actually consists of. It produces `docs/MODERNIZATION.md` and derives `docs/PRODUCT.md` from what it found — asking only about the gaps. From that point the normal flow works: design derives screens from the app that ships, and plan takes `MODERNIZATION.md`'s sequence as the spine of `BUILD-PLAN.md`.
 
 It covers four starting points: React Native bare or ejected and several versions behind, Expo several SDKs behind, a hybrid Cordova/Ionic/WebView app, and native Swift/Kotlin adopting React Native incrementally.
 
