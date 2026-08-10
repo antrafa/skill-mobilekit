@@ -30,4 +30,4 @@ The screens already ship. Derive them from the running app and the parity list â
 
 ## Report
 
-Which screens were dropped and why, what is still `UNDECIDED`, which identity assets are missing, and point at the plan phase.
+Which screens were dropped and why, what is still `UNDECIDED`, which identity assets are missing, and point at the plan phase. If `docs/LAUNCHES.md` exists, offer `prompts/1-discovery/market-signal.md` moment #2 â€” there is now something to show the people who replied.

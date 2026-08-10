@@ -34,6 +34,7 @@ Each is a file in `workflow/`. Read the one you are running; skip the rest.
 | Where the project is | [`workflow/status.md`](workflow/status.md) | nothing |
 | Watch production | [`prompts/8-observability/post-release.md`](prompts/8-observability/post-release.md) | the four numbers |
 | Modernize an existing app | [`prompts/9-maintain/legacy-modernization.md`](prompts/9-maintain/legacy-modernization.md) | `docs/MODERNIZATION.md` |
+| Market contact per phase (optional) | [`prompts/1-discovery/market-signal.md`](prompts/1-discovery/market-signal.md) | `docs/LAUNCHES.md` |
 
 Slash commands, where the host has them, are thin aliases: `/mobilekit:next` → `workflow/next.md`. Where it has none, read the phase file directly — that is the whole mechanism.
 

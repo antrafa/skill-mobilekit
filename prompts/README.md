@@ -1,6 +1,6 @@
 # mobilekit — prompt library
 
-57 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
+58 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
 
 Folders are the phase order. **Filenames are the ids**: a prompt keeps its name wherever it moves, so `BUILD-PLAN.md` entries and cross-references between prompts survive reorganization.
 
@@ -30,6 +30,7 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | [Rules](./RULES.md) | Read before every prompt: grill one question at a time, request docs, invent nothing |
 | [product-discovery](./1-discovery/product-discovery.md) | **Start here for a new app.** Interview that defines the product → `docs/PRODUCT.md` |
 | [monetization](./1-discovery/monetization.md) | Concept round: how the app earns — model, free/paid boundary, trial → `PRODUCT.md §Monetization` |
+| [market-signal](./1-discovery/market-signal.md) | Optional, recurring: the product in front of real people at each phase boundary → `docs/LAUNCHES.md` |
 | [agents-md](./1-discovery/agents-md.md) | Build a project-specific AGENTS.md from `PRODUCT.md` |
 
 ### `2-design` — what does it look like

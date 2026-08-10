@@ -136,6 +136,7 @@ Keep it under 100 lines. It is read before every task, so it must stay skimmable
 ## After this
 
 - If the app earns money — or that is still open — run `monetization.md`: it decides the model and appends the `## Monetization` section.
+- Want proof anyone wants this before building it? `market-signal.md` puts the pitch in front of real people — the win is one reply — and starts `docs/LAUNCHES.md`. Optional, and cheapest right now.
 - Run `agents-md.md` — build the AGENTS.md **from** `PRODUCT.md`, not from a generic template.
 - Run `domain-model.md` — turn the domain vocabulary into types and, if needed, a schema.
 - Every later prompt: read `docs/PRODUCT.md` first. If a prompt needs a decision that is `UNDECIDED` there, **ask, then update `PRODUCT.md`** — do not decide it inline and move on.

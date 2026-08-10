@@ -6,7 +6,7 @@ This is the escape hatch for existing projects and one-off additions.
 
 ## Resolve the topic
 
-Match the argument against the prompt index in `prompts/README.md`. A filename matches directly; a word matches by subject — "auth", "analytics", "offline", "deploy", "permissions", "media", "legacy".
+Match the argument against the prompt index in `prompts/README.md`. A filename matches directly; a word matches by subject — "auth", "analytics", "offline", "deploy", "permissions", "media", "legacy", "launch".
 
 Ambiguous — "auth" maps to `auth-clerk`, `auth-backend` and `biometric-lock` — list the candidates one line each and ask. No match → say so and list the nearest three. A prompt that does not exist in the library is not improvised.
 

@@ -40,4 +40,4 @@ A simulator build proves nothing about fonts, shadows, permissions, or push. Con
 
 ## Report
 
-Per step: passed, failed with output, or skipped by request. Then point at `prompts/8-observability/post-release.md` for what to watch once users are in it, and at `prompts/8-observability/release-rollback.md` for what happens when one of those numbers goes bad.
+Per step: passed, failed with output, or skipped by request. Then point at `prompts/8-observability/post-release.md` for what to watch once users are in it, and at `prompts/8-observability/release-rollback.md` for what happens when one of those numbers goes bad. If `docs/LAUNCHES.md` exists, the release is `market-signal.md` moment #4 — the announcement goes to the responders first.

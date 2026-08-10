@@ -20,7 +20,7 @@ There is no database and no config file. **Three documents in the project's `doc
 | `docs/DESIGN.md` | `design` | Screen work is guesswork |
 | `docs/BUILD-PLAN.md` | `plan` | There is no "next step" to run |
 
-A fourth, `docs/DOMAIN.md`, is written during the build by the `domain-model` prompt. A legacy app also gets `docs/MODERNIZATION.md`.
+A fourth, `docs/DOMAIN.md`, is written during the build by the `domain-model` prompt. A legacy app also gets `docs/MODERNIZATION.md`, and a project running the optional `market-signal` prompt keeps its launch log in `docs/LAUNCHES.md` — neither gates anything.
 
 This is deliberate: the documents are readable by a person who has never heard of this tool, and they are diffable in review. A command that cannot find its prerequisite says so and names the command that produces it, rather than filling the gap with a plausible guess.
 
@@ -95,7 +95,7 @@ Pass an argument to run one step only: `/mobilekit:design screens`.
 
 ## `/mobilekit:plan`
 
-Cuts 57 prompts down to the ones your app actually needs, in order.
+Cuts 58 prompts down to the ones your app actually needs, in order.
 
 **Prerequisite** `docs/PRODUCT.md`. `docs/DESIGN.md` strongly preferred — without it, screen steps are guesses.
 **Writes** `docs/BUILD-PLAN.md`, a checklist of unchecked boxes.

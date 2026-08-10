@@ -108,7 +108,7 @@ The loading and error rows look like paperwork on a local-only app. They are the
 /mobilekit:plan
 ```
 
-57 prompts in, this out:
+58 prompts in, this out:
 
 ```markdown
 # Build Plan
@@ -219,4 +219,4 @@ Next:       /mobilekit:next
 - [`new-app.md`](new-app.md) — the same loop run to a monitored release: accounts, a backend, push, `ship`, and what `store-compliance` actually costs. This is your next read.
 - [`existing-project.md`](existing-project.md) — adopting the skill in a repo that already has screens
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Short, and worth reading yourself once. [`../prompts/README.md`](../../prompts/README.md) lists all 57 prompts and the reference order the plan cuts down from.
+- [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Short, and worth reading yourself once. [`../prompts/README.md`](../../prompts/README.md) lists all 58 prompts and the reference order the plan cuts down from.

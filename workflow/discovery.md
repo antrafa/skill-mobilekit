@@ -21,4 +21,4 @@ Discovery interviews a product that does not exist yet. A released app is invent
 
 ## Report
 
-The filled sections, every `UNDECIDED` left, and point at the design phase.
+The filled sections, every `UNDECIDED` left, and point at the design phase. Offer `prompts/1-discovery/market-signal.md` — optional, and this is the cheapest moment to learn whether anyone wants the app.
