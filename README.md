@@ -4,9 +4,9 @@
 
 **A phase-driven workflow for building React Native / Expo apps with an AI coding agent — from "I have an idea" to "I know what broke in production".**
 
-58 prompts · 8 phases · 9 phase commands · works with Claude Code, Codex, Antigravity, Cursor, and anything that reads `AGENTS.md`
+59 prompts · 8 phases · 8 commands · works with Claude Code, Codex, Antigravity, Cursor, and anything that reads `AGENTS.md`
 
-[Install](#install) · [Quick start](#quick-start) · [Tutorials](docs/TUTORIALS.md) · [Command reference](docs/COMMANDS.md) · [Prompt library](prompts/README.md) · [Contributing](CONTRIBUTING.md)
+[Install](#install) · [How to use it](#how-to-use-it) · [Tutorials](docs/TUTORIALS.md) · [Command reference](docs/COMMANDS.md) · [Prompt library](prompts/README.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
@@ -74,46 +74,65 @@ For an agent with its own command directory:
 
 ---
 
-## Quick start
+## How to use it
 
-### A new app
+Three things are all there is to know: the flow is a fixed spine of commands, you can join it at three different points, and two commands are safe at any moment — `status` says where you are, `build` runs one thing out of order.
 
-```bash
-cd my-app
-```
+### The whole flow, one example
 
-```
-/mobilekit:init          # inspects the repo, writes AGENTS.md
-/mobilekit:discovery     # the product interview → docs/PRODUCT.md
-/mobilekit:design        # screens, navigation, states → docs/DESIGN.md
-/mobilekit:plan          # cuts 58 prompts to the ones you need → docs/BUILD-PLAN.md
-/mobilekit:next          # runs one step. repeat.
-/mobilekit:ship          # the release gate
-```
-
-Discovery takes ten to twenty minutes of your attention and is the step that decides whether everything after it is worth anything. It asks one question at a time, with a recommended default for each, so most answers are a confirmation.
-
-Six walkthroughs cover the situations you might be starting from — a first 30 minutes, a full app from scratch, a social app, an API you do not control, a project you already started, and an app already in the stores. Pick yours in **[docs/TUTORIALS.md](docs/TUTORIALS.md)**.
-
-### An app that already ships
+A new app, from an empty folder to a monitored release:
 
 ```
-/mobilekit:build legacy
+cd my-app                        # 1. a folder, git init'd
+/mobilekit:init                  # 2. inspects the repo, writes AGENTS.md
+/mobilekit:discovery             # 3. the product interview → docs/PRODUCT.md
+/mobilekit:design                # 4. screens, navigation, states → docs/DESIGN.md
+/mobilekit:plan                  # 5. cuts 59 prompts to your checklist → docs/BUILD-PLAN.md
+/mobilekit:next                  # 6. runs the first unchecked step — repeat until the plan is empty
+/mobilekit:ship                  # 7. the release gate: tests, a11y, compliance, build, beta, submission
+/mobilekit:build post-release    # 8. once real users are in: the four numbers you watch
+/mobilekit:build next-feature    # 9. plan empty, data in: the numbers pick the next cycle → back to 6
 ```
 
-A live app has a domain, users and constraints that outrank any interview, so discovery is replaced by inventory: what the code does, what the store listing claims, which dependencies are unmaintained, what feature parity actually consists of. It writes `docs/MODERNIZATION.md`, derives `docs/PRODUCT.md` from what it found, and asks only about the gaps.
+Steps 2–5 produce documents and no code; the build happens inside step 6, one checklist box per run. Discovery is the ten to twenty minutes that decide whether everything after it is worth anything — one question at a time, each with a recommended default, so most answers are a confirmation.
 
-Four starting points are covered: React Native bare or ejected and several versions behind, Expo several SDKs behind, a hybrid Cordova/Ionic/WebView app, and native Swift/Kotlin adopting React Native incrementally.
+And there is no "finish": after the first release the loop is 6 → 7 → 8 → 9, plus `/mobilekit:build sdk-upgrade` every Expo SDK cycle.
 
-### One thing, in an existing project
+### Where to start
 
-```
-/mobilekit:build auth
-/mobilekit:build media-upload
-/mobilekit:build offline
-```
+| Your situation | Start with | What happens |
+|---|---|---|
+| An idea, no code | `/mobilekit:init` → `discovery` | The interview defines the product before anything is scaffolded |
+| A half-built Expo project, never shipped | `/mobilekit:init`, then the flow above | Discovery and design read what exists; `plan` marks what is already done as done instead of queueing it |
+| An app already in the stores | `/mobilekit:build legacy` | Inventory replaces the interview: `docs/MODERNIZATION.md` is written, `PRODUCT.md` derived from the code and the store listing, and the flow continues from `design` — with the migration sequence as the plan's spine |
 
-Runs a single prompt out of order, and tells you which prerequisites are missing rather than working around them silently.
+Joining works in one direction only: you can enter late with an existing codebase, but you cannot skip a document forward — every command checks its prerequisites and refuses with the name of the command that produces what is missing. That refusal is the navigation.
+
+**When in doubt, run `/mobilekit:status`.** It reads the documents, says which phase the project is in, reports where the plan disagrees with the repo, and names the next command. It changes nothing, so it is never the wrong move.
+
+Six walkthroughs with worked examples, by starting point, are in **[docs/TUTORIALS.md](docs/TUTORIALS.md)**.
+
+### Every command
+
+**The spine — run in this order, each once (`next` repeats):**
+
+| Command | Run when | Needs | Writes |
+|---|---|---|---|
+| [`init`](docs/COMMANDS.md#mobilekitinit) | Once, first, in the project root | — | `AGENTS.md` |
+| [`discovery`](docs/COMMANDS.md#mobilekitdiscovery) | Right after init, before any code | — | `docs/PRODUCT.md` |
+| [`design`](docs/COMMANDS.md#mobilekitdesign) | After discovery, before any screen | `PRODUCT.md` | `docs/DESIGN.md` |
+| [`plan`](docs/COMMANDS.md#mobilekitplan) | After design | `PRODUCT.md` (+ `DESIGN.md`) | `docs/BUILD-PLAN.md` |
+| [`next`](docs/COMMANDS.md#mobilekitnext) | Repeatedly, until the plan is empty | `BUILD-PLAN.md` | code, one ticked box per run |
+| [`ship`](docs/COMMANDS.md#mobilekitship) | Plan done, release intended | an app that builds | a submitted build |
+
+**Any time, out of order — these never break the flow:**
+
+| Command | What for |
+|---|---|
+| [`status`](docs/COMMANDS.md#mobilekitstatus) | Where am I, what drifted, what runs next. Read-only. |
+| [`build <topic>`](docs/COMMANDS.md#mobilekitbuild-topic) | One prompt out of order — `build auth`, `build offline`, `build media-upload`… It names missing prerequisites instead of silently working around them. |
+
+`build` is also how you reach everything that has no command of its own: `build legacy` (the third entry point above), `build post-release` and `build next-feature` (the after-release loop), `build market-signal` (optional: the product in front of real people at each phase boundary), `build sdk-upgrade`.
 
 ---
 
@@ -131,18 +150,7 @@ Runs a single prompt out of order, and tells you which prerequisites are missing
 └─ 9-maintain ─────── legacy modernization, SDK upgrades
 ```
 
-| Command | What it does | Writes |
-|---|---|---|
-| [`init`](docs/COMMANDS.md#mobilekitinit) | Inspects the project, writes `AGENTS.md`, routes a legacy app | `AGENTS.md` |
-| [`discovery`](docs/COMMANDS.md#mobilekitdiscovery) | The product interview — never infers the domain | `docs/PRODUCT.md` |
-| [`design`](docs/COMMANDS.md#mobilekitdesign) | Screen inventory, navigation shape, four states per screen, tokens | `docs/DESIGN.md` |
-| [`plan`](docs/COMMANDS.md#mobilekitplan) | Cuts 58 prompts down to only what this app needs | `docs/BUILD-PLAN.md` |
-| [`next`](docs/COMMANDS.md#mobilekitnext) | Runs the first unchecked step, one at a time | ticks the box |
-| [`build <topic>`](docs/COMMANDS.md#mobilekitbuild-topic) | One prompt out of order — the escape hatch | — |
-| [`ship`](docs/COMMANDS.md#mobilekitship) | Release gate: tests → a11y → perf → consent → compliance → build | — |
-| [`status`](docs/COMMANDS.md#mobilekitstatus) | Where the project is, and where the plan disagrees with the repo | nothing |
-
-Full reference, with what each command reads, refuses and produces: **[docs/COMMANDS.md](docs/COMMANDS.md)**.
+Full command reference, with what each one reads, refuses and produces: **[docs/COMMANDS.md](docs/COMMANDS.md)**.
 Walkthroughs with worked examples, by starting point: **[docs/TUTORIALS.md](docs/TUTORIALS.md)**.
 
 ### State lives in documents, not in a database
