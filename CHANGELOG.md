@@ -4,6 +4,41 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] — 2026-08-10
+
+### Added
+
+- **`1-discovery/market-signal.md`** — the check the rest of the library cannot perform:
+  whether anyone outside the repo wants the app. An optional, recurring ritual that closes
+  each phase with real-market contact — the pitch after `PRODUCT.md`, what it looks like
+  after `DESIGN.md`, the beta invite, the public release — logged in `docs/LAUNCHES.md`
+  with the responders who carry across moments. It never gates a phase: workflows offer it
+  in their reports, and `status` shows the signal line only when the log exists. Hard
+  rules: the developer sends everything, silence is a result, a friend's reply is
+  labelled, and missing the same target twice means rereading `PRODUCT.md`, not a third
+  rewrite.
+- **`8-observability/next-feature.md`** — closes the post-release loop. When
+  `BUILD-PLAN.md` empties and real users are in, it turns the weakest of the four numbers,
+  `PRODUCT.md`'s "later" column and the qualitative signal into the next cycle, appended
+  to `BUILD-PLAN.md` one prompt per box — so `next` runs it with no new mechanics.
+  Candidates without a number are recorded as bets, never dressed up as data.
+- **Activation recorded in `DESIGN.md`** — `PRODUCT.md` already named the success action;
+  nothing said which screen carries it or the shortest first-run path to it.
+  `design-conception.md` now records the activation path; `beta-and-review.md` uses it as
+  the beta's pass bar and invites `market-signal` responders first; `analytics.md` derives
+  the funnel from its steps. 59 prompts now.
+
+### Changed
+
+- The README's Quick start became **How to use it**: the whole loop in one listing —
+  through `ship`, `post-release` and `next-feature` back to `next` — the three entry
+  points, the refuse-and-name navigation rule, and every command with when to run it,
+  what it needs and what it writes.
+
+### Fixed
+
+- The README claimed nine phase commands; there are eight.
+
 ## [2.3.0] — 2026-08-10
 
 ### Added
