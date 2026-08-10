@@ -40,6 +40,7 @@ Classify each screen: **core** (journey), **support** (profile, settings), **ent
 6. Which screens are **modal or sheet** rather than a push? Anything the user must finish or dismiss — a form, a confirmation, a picker.
 7. Where does the app open on cold start, for: a new user, a returning signed-in user, a returning signed-out user? Each is a different route and each is a redirect someone forgets to write.
 8. Which screens require authentication? What happens when a signed-out user reaches one via a link? (This is the input `deep-linking.md` needs.)
+8b. `PRODUCT.md` names a success action. Which screen carries it, and what is the shortest path a first-time user walks from cold start to reaching it once? That path is the **activation path** — onboarding and every empty state along it point forward to the next step, and everything not on it can wait. It is also what "an activated user" means downstream: the beta pass bar in `beta-and-review.md` and the funnel in `analytics.md` both read it.
 
 ### Block C — States per screen
 
@@ -92,6 +93,10 @@ Modal / sheet: [...]
 Cold start: new → [route] · signed-in → [route] · signed-out → [route]
 Auth-required: [...] · Unauthenticated arrival: [redirect | prompt | preview]
 
+## Activation
+Success action: [from PRODUCT.md] · Screen: [...]
+First-run path: [cold start → … → success action]
+
 ## States
 ### [Screen name]
 - Empty: [what is shown, one action offered]
@@ -123,3 +128,4 @@ Keep it skimmable. Screen prompts read it before every screen; a document nobody
 - `domain-model.md` turns the domain vocabulary into types.
 - `ui-components.md` builds exactly the shared-component list — nothing else.
 - Every screen prompt (15–23) reads `DESIGN.md` for its states before building.
+- `beta-and-review.md` uses the activation path as the beta's pass bar; `analytics.md` derives the funnel from its steps.

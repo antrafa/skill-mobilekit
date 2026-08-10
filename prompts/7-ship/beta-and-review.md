@@ -14,8 +14,8 @@ Put the app in testers' hands, then take it through store review.
 
 ### Grill
 
-- **Who tests, on what?** Recommended default: TestFlight internal and Play internal track with the team first, then a named external group — real users on both platforms, including at least one old low-end Android — before the public. The developer's own phone is not a beta.
-- **What must the beta answer before go?** Recommended default: crash-free rate holding at the threshold `post-release.md` will watch, and the core journey completed by someone who was never shown how. A beta with no exit criteria runs forever.
+- **Who tests, on what?** Recommended default: TestFlight internal and Play internal track with the team first, then a named external group — real users on both platforms, including at least one old low-end Android — before the public. The developer's own phone is not a beta. If `docs/LAUNCHES.md` exists (`market-signal.md`), its responders are the first external invitees — they asked for this build — and the invite's outcome is logged there.
+- **What must the beta answer before go?** Recommended default: crash-free rate holding at the threshold `post-release.md` will watch, and at least one tester who was never shown how reaching the success action — the activation path `DESIGN.md` records is the pass bar. A beta with no exit criteria runs forever.
 - **How does feedback come back?** Recommended default: the store's built-in feedback plus one named channel, triaged by one owner. Feedback nobody owns is feedback nobody reads.
 - **Who answers the reviewer?** One name with access to the store consoles, checking daily while a submission is in review. Rejections carry reply deadlines; a message nobody sees becomes an abandoned submission.
 

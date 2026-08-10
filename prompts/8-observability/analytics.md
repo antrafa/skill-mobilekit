@@ -19,7 +19,7 @@ Add PostHog to this app.
 An event list copied from a template produces dashboards nobody reads. Derive it instead:
 
 - What is the **success action** in `PRODUCT.md`? That is the one event that must exist.
-- What are the 2–3 steps immediately before it? Those are the funnel.
+- What are the 2–3 steps immediately before it? Those are the funnel — `DESIGN.md`'s Activation path, if recorded, names them in order.
 - Which drop-off do you actually suspect? Instrument that, and add an abandonment event where the user leaves before succeeding.
 - A/B tests: is there a real decision waiting on data? If not, skip them — an unused experiment is dead code.
 - Feature flags: **the kill switch is not speculative.** `release-rollback.md` counts on a remote flag as the only lever that reaches an already-installed native build immediately. Ask which shipped features would be turned off in an incident — payments, uploads, AI calls are the usual candidates — and wrap those. Flags beyond the kill switches need a real decision waiting on them.
