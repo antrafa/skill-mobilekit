@@ -130,7 +130,7 @@ Most bugs reported as "the app is broken" are one of those four missing. Decidin
 /mobilekit:plan
 ```
 
-58 prompts go in, your app's steps come out. Four things happen:
+59 prompts go in, your app's steps come out. Four things happen:
 
 1. Every capability marked later/never is removed, and appears in a **Skipped** table with the reason — so six months later you can see it was a decision, not an oversight.
 2. Generic screen steps are replaced by your real screens, core first.
@@ -301,7 +301,7 @@ Because mobile has no rollback. A binary already installed on a phone cannot be 
 ## Where to look next
 
 - [`COMMANDS.md`](../COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../../prompts/README.md) — all 58 prompts with a description each, and the reference build order
+- [`../prompts/README.md`](../../prompts/README.md) — all 59 prompts with a description each, and the reference build order
 - [`../prompts/RULES.md`](../../prompts/RULES.md) — the rules every prompt inherits. Worth reading once yourself.
 - [`../CONTRIBUTING.md`](../../CONTRIBUTING.md) — adding a prompt, or a whole vertical the library does not cover
 

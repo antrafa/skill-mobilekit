@@ -36,6 +36,6 @@ Everything above splits at a single question: **is your app in production?**
 ## Reference, once you are running
 
 - [`COMMANDS.md`](COMMANDS.md) — every command: what it reads, what it refuses, what it produces
-- [`../prompts/README.md`](../prompts/README.md) — all 58 prompts with a description each, and the reference build order
+- [`../prompts/README.md`](../prompts/README.md) — all 59 prompts with a description each, and the reference build order
 - [`../prompts/RULES.md`](../prompts/RULES.md) — the rules every prompt inherits. Worth reading once yourself; it is short.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — adding a prompt, or a vertical the library does not cover

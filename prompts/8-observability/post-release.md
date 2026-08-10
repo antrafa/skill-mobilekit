@@ -56,6 +56,7 @@ For each: state the threshold, where it fires, and **what the responder does**. 
 
 - A confirmed production error becomes a fix, and the fix references the issue. Errors that stay open across three releases are either not real or not owned — decide which.
 - When a funnel step is confirmed broken, the fix ships behind the same event, so the same number proves it recovered.
+- When the plan is empty and the question becomes "what next?", these four numbers are the input — `next-feature.md` turns them into the next cycle of `BUILD-PLAN.md`.
 
 ### Done when
 

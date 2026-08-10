@@ -1,6 +1,6 @@
 # mobilekit — prompt library
 
-58 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
+59 prompts for building production-quality React Native apps with Expo, organized by phase. Drive them with the [phases](../workflow/) — or paste one by hand.
 
 Folders are the phase order. **Filenames are the ids**: a prompt keeps its name wherever it moves, so `BUILD-PLAN.md` entries and cross-references between prompts survive reorganization.
 
@@ -111,6 +111,7 @@ Where a prompt offers a menu ("Option A / B / C"), that is a question for you, n
 | [analytics](./8-observability/analytics.md) | Event tracking, feature flags, and A/B testing |
 | [error-tracking](./8-observability/error-tracking.md) | Crash and error reporting with readable stack traces |
 | [post-release](./8-observability/post-release.md) | The four numbers you watch once real users are in it |
+| [next-feature](./8-observability/next-feature.md) | The plan ran out: turn the four numbers into the next cycle of `BUILD-PLAN.md` |
 | [release-rollback](./8-observability/release-rollback.md) | The levers when a release goes bad, prepared before it does |
 
 ### `9-maintain` — keeping it alive
@@ -175,6 +176,7 @@ eas-build
 release-rollback                               (prepared before the first release — beta executes its staged rollout)
 beta-and-review                                (testers before the public; the rejection loop)
 post-release                                   (after real users, not before)
+next-feature                                   (when the plan is empty — the four numbers pick the next cycle)
 sdk-upgrade                                    (every SDK cycle, forever)
 ```
 
