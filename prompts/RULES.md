@@ -57,3 +57,4 @@ Where the installed version's docs contradict a step in a prompt, follow the doc
 - State what you skipped, what you assumed, and what you could not verify.
 - Walk the prompt's `Done when` checklist and mark each item met, not met, or not verifiable. A box you did not test stays unticked.
 - A failed step is reported with its output.
+- **The next step is named by its command, never by a file.** Prompt filenames are internal ids the developer never types. A prompt that is a phase's own step uses the phase command (`/mobilekit:design`, not `design-conception.md`); every other prompt goes through `/mobilekit:build <id>` (`/mobilekit:build domain-model`, not `domain-model.md`) — in the host's invocation form, or as "run the mobilekit <id> step" where the host has no commands.
