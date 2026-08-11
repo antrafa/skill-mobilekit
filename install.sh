@@ -68,8 +68,28 @@ link_commands_flat() {
   done
 }
 
+# A command exists twice on purpose: commands/<x>.md for Claude Code, codex/<x>/SKILL.md for
+# Codex. Both hosts read a `name:` key and want different values in it, so the files cannot be
+# merged — see codex/README.md. Drift between the two sets is the failure this catches.
+check_command_parity() {
+  local f n missing=0
+  for f in "$REPO"/commands/*.md; do
+    n="$(basename "$f" .md)"
+    [ -f "$REPO/codex/$n/SKILL.md" ] || { printf '  MISSING  codex/%s/SKILL.md\n' "$n" >&2; missing=1; }
+  done
+  for f in "$REPO"/codex/*/SKILL.md; do
+    n="$(basename "$(dirname "$f")")"
+    [ -f "$REPO/commands/$n.md" ] || { printf '  MISSING  commands/%s.md\n' "$n" >&2; missing=1; }
+  done
+  [ "$missing" = 0 ] && printf '  ok       commands/ and codex/ agree\n'
+  return "$missing"
+}
+
 echo "$NAME at $REPO"
 [ "$CHECK" = 1 ] && echo "(check only — nothing will be written)"
+
+echo "Commands:"
+check_command_parity || conflict=$((conflict+1))
 
 # --- Claude Code: namespaced command dir, so the whole directory links at once
 if [ -d "$HOME/.claude" ]; then

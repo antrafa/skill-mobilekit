@@ -20,7 +20,7 @@ The phases are files in [`workflow/`](./workflow/), one per phase — read the o
 9-maintain       legacy modernization, SDK upgrades
 ```
 
-Slash commands in [`commands/`](./commands/) are thin aliases for the phase files, for hosts that support them. Without slash commands, read the phase file directly — that is the whole mechanism, and nothing is lost.
+Slash commands in [`commands/`](./commands/) are thin aliases for the phase files, for hosts that support them. Codex reads a second set of the same aliases from [`codex/`](./codex/README.md), because it discovers commands as nested skills rather than as prompt files. Without either, read the phase file directly — that is the whole mechanism, and nothing is lost.
 
 Two things hold regardless of which agent you are:
 
@@ -35,3 +35,4 @@ This repo is the skill, not an app built with it. See [CONTRIBUTING.md](./CONTRI
 - **Filenames in `prompts/` are the ids.** A prompt keeps its name wherever it moves; `BUILD-PLAN.md` entries and the cross-references between prompts depend on it.
 - Folder numbers (`1-discovery`) are phase order and may be reorganized; `prompts/README.md`, `SKILL.md` and the `workflow/` files carry links to fix — `grep -rl 'prompts/' workflow/ SKILL.md AGENTS.md prompts/README.md` finds them all.
 - A new prompt goes in the folder matching its phase and gets a row in `prompts/README.md`.
+- A new command is written twice: `commands/<name>.md` for Claude Code, `codex/<name>/SKILL.md` for Codex. Both hosts read a `name:` key and want different values in it, so one file cannot serve both — [`codex/README.md`](./codex/README.md) has the detail. `install.sh --check` fails when one side is missing a command the other has.
