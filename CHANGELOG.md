@@ -4,6 +4,32 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] — 2026-08-11
+
+### Added
+
+- **`codex/` — one nested skill per command, so the Codex `$` picker shows descriptions.**
+  Codex reads no frontmatter from custom prompts, so the eight commands listed under
+  `/prompts:` appear bare; its skills surface reads `name`, `description` and
+  `metadata.short-description`, and discovers nested `SKILL.md` files recursively.
+  `codex/<name>/SKILL.md` mirrors each command onto that surface as `$mobilekit-<name>`,
+  description in the picker and matchable by intent. Both hosts read a `name:` key and
+  demand different values in it, so each command exists twice on purpose —
+  `install.sh --check` now fails when the two sets drift apart. Skills get no template
+  substitution, so the two commands that take an argument say so in prose instead of
+  `$ARGUMENTS`. The `/prompts:` entries stay linked: they are the only `/`-invoked route
+  Codex has.
+- The root `SKILL.md` carries `metadata.short-description`, the field the Codex `$`
+  picker prefers over the long description.
+
+### Changed
+
+- **The next step is named by its command, never by a file.** Phase reports were pointing
+  developers at internal prompt files (`domain-model.md`, `design-conception.md`) they do
+  not know how to invoke. `prompts/RULES.md` now binds the developer-facing edge to the
+  phase command or `/mobilekit:build <id>`, in the host's invocation form; filenames stay
+  the internal ids.
+
 ## [2.4.0] — 2026-08-10
 
 ### Added

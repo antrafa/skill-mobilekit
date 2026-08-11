@@ -4,7 +4,7 @@ description: Guided end-to-end workflow for building and modernizing React Nativ
 license: MIT
 metadata:
   short-description: Build or modernize a React Native / Expo app
-  version: 2.4.0
+  version: 2.5.0
   tags: [react-native, expo, mobile, ios, android, product-discovery, app-store]
 ---
 
